@@ -32,7 +32,7 @@ namespace BenimSalonum.Entities.Tools
             BenimSalonumContext context = new BenimSalonumContext();
             try
             {
-                foreach (var item in context.KullaniciRolleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.KullaniciAdi == kullaniciEntity.KullaniciAdi && c.FormAdi == "FrmAnaMenu" && c.Yetki == false).ToList())
+                foreach (var item in context.KullaniciRolleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FormAdi == "FrmAnaMenu" && c.Yetki == false).ToList())
                 {
                     form.Items.SingleOrDefault(c => c.Name == item.KontrolAdi).Enabled = false;
                 }
@@ -40,7 +40,6 @@ namespace BenimSalonum.Entities.Tools
             catch (Exception)
             {
             }
-
         }
     }
 }

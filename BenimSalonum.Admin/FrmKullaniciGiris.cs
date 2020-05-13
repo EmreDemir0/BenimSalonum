@@ -146,6 +146,7 @@ namespace BenimSalonum.Admin
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
+            context = new BenimSalonumContext();
             if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
             {
                 girisBasarili = true;
@@ -156,7 +157,6 @@ namespace BenimSalonum.Admin
                 if (aktif)
                 {
                     MessageBox.Show("Bu Kullanıcı Daha Önceden Oturum Açmış. " + "\n" + txtKullaniciAdi.Text + " - " + sonGiris);
-                    context = new BenimSalonumContext();
                 }
                 else
                 {
@@ -193,6 +193,8 @@ namespace BenimSalonum.Admin
         {
             if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
             {
+                RoleTool.kullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text);
+
                 context = new BenimSalonumContext();
                 FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.FirstOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
                 frmKullanicilar.ShowDialog();

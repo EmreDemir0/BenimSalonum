@@ -103,7 +103,7 @@ namespace BenimSalonum.BackOffice
             RoleTool.RolleriYukle(ribbonControlAnaMenu);
             try
             {
-                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi}";
+                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi + "ID : "+RoleTool.kullaniciEntity.KullaniciID}";
             }
             catch (Exception)
             {

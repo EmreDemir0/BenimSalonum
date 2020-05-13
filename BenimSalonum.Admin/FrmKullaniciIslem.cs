@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using BenimSalonum.Entities.DataAccess;
 using BenimSalonum.Entities.Context;
 using BenimSalonum.Entities.Tables;
+using BenimSalonum.Entities.Tools;
 
 namespace BenimSalonum.Admin
 {
@@ -53,7 +54,7 @@ namespace BenimSalonum.Admin
         {
             if (!string.IsNullOrEmpty(_entity.KullaniciAdi))
             {
-                foreach (var item in context.KullaniciRolleri.Where(c => c.KullaniciAdi == _entity.KullaniciAdi).ToList())
+                foreach (var item in context.KullaniciRolleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.KullaniciAdi == _entity.KullaniciAdi).ToList())
                 {
                     treeList1.SetNodeCheckState(treeList1.Nodes[item.RootId].Nodes[item.ParentId], item.Yetki == true ? CheckState.Checked : CheckState.Unchecked, true);
                 }
@@ -66,9 +67,10 @@ namespace BenimSalonum.Admin
                 for (int j = 0; j < treeList1.Nodes[i].Nodes.Count; j++)
                 {
                     if (context.KullaniciRolleri.Count(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.RootId == i && c.ParentId == j) == 0)
-                    {//!=0
+                    {
                         context.KullaniciRolleri.Add(new KullaniciRol
                         {
+                            KullaniciID=RoleTool.kullaniciEntity.KullaniciID,
                             KullaniciAdi = txtKullaniciAdi.Text,
                             FormAdi = treeList1.Nodes[i].GetDisplayText(treeListColumn2),
                             KontrolAdi = treeList1.Nodes[i].Nodes[j].GetDisplayText(treeListColumn2),
@@ -92,27 +94,16 @@ namespace BenimSalonum.Admin
         }
 
         private void btnPasifYap_Click(object sender, EventArgs e)
-        { 
-                context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == _entity.KullaniciAdi).Aktif = false;
-            try
-            {
+        {
+            context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == _entity.KullaniciAdi).Aktif = false;            
                 context.SaveChanges();
                 toggleAktif.IsOn = false;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_entity.Parola))
             {
-                txtParola.Text = parola;
                 txtParola.Text = parola;
             }
             if (string.IsNullOrEmpty(_entity.HatirlatmaCevap))
@@ -130,6 +121,7 @@ namespace BenimSalonum.Admin
                 {
                     _entity.KayitTarihi = DateTime.Now;
                 }
+
                 if (kullaniciDal.AddOrUpDate(context, _entity))
                 {
                     Kaydet();

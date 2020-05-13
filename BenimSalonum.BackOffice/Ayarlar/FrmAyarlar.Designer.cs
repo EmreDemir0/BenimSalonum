@@ -70,18 +70,18 @@
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYetkiliAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage5 = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.txtFirmaAdi = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txtFaturaUnvani = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.txtVergiDairesi = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.txtVergiNo = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txtEposta = new DevExpress.XtraEditors.TextEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.txtAdres = new DevExpress.XtraEditors.TextEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.txtVergiNo = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.txtVergiDairesi = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFaturaUnvani = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.txtFirmaAdi = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.navigationPage6 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.txtSmsOrjinator = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -110,12 +110,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDepoKodu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             this.navigationPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaUnvani.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEposta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAdres.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaUnvani.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).BeginInit();
             this.navigationPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmsOrjinator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmsParola.Properties)).BeginInit();
@@ -156,7 +156,7 @@
             this.navigationPage3.Controls.Add(this.labelControl3);
             this.navigationPage3.Controls.Add(this.comboFaturaAyar);
             this.navigationPage3.Name = "navigationPage3";
-            this.navigationPage3.Size = new System.Drawing.Size(798, 479);
+            this.navigationPage3.Size = new System.Drawing.Size(620, 406);
             // 
             // comboBilgiFisiYaziciSec
             // 
@@ -394,7 +394,7 @@
             this.navigationPage2.Controls.Add(this.lookUpDepoKodu);
             this.navigationPage2.Controls.Add(this.labelControl1);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(798, 479);
+            this.navigationPage2.Size = new System.Drawing.Size(620, 406);
             // 
             // lookUpKasaKodu
             // 
@@ -480,6 +480,7 @@
             this.lookUpDepoKodu.Properties.ValueMember = "Id";
             this.lookUpDepoKodu.Size = new System.Drawing.Size(322, 20);
             this.lookUpDepoKodu.TabIndex = 0;
+            this.lookUpDepoKodu.EditValueChanged += new System.EventHandler(this.lookUpDepoKodu_EditValueChanged);
             // 
             // gridLookUpEdit1View
             // 
@@ -540,70 +541,6 @@
             this.navigationPage5.Name = "navigationPage5";
             this.navigationPage5.Size = new System.Drawing.Size(620, 406);
             // 
-            // txtFirmaAdi
-            // 
-            this.txtFirmaAdi.Location = new System.Drawing.Point(107, 16);
-            this.txtFirmaAdi.Name = "txtFirmaAdi";
-            this.txtFirmaAdi.Size = new System.Drawing.Size(404, 20);
-            this.txtFirmaAdi.TabIndex = 16;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl9.Location = new System.Drawing.Point(12, 13);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(89, 25);
-            this.labelControl9.TabIndex = 15;
-            this.labelControl9.Text = "Firma Adı :";
-            // 
-            // txtFaturaUnvani
-            // 
-            this.txtFaturaUnvani.Location = new System.Drawing.Point(107, 42);
-            this.txtFaturaUnvani.Name = "txtFaturaUnvani";
-            this.txtFaturaUnvani.Size = new System.Drawing.Size(404, 20);
-            this.txtFaturaUnvani.TabIndex = 18;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl10.Location = new System.Drawing.Point(12, 39);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(89, 25);
-            this.labelControl10.TabIndex = 17;
-            this.labelControl10.Text = "Fatura Ünvanı :";
-            // 
-            // txtVergiDairesi
-            // 
-            this.txtVergiDairesi.Location = new System.Drawing.Point(107, 70);
-            this.txtVergiDairesi.Name = "txtVergiDairesi";
-            this.txtVergiDairesi.Size = new System.Drawing.Size(404, 20);
-            this.txtVergiDairesi.TabIndex = 20;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl11.Location = new System.Drawing.Point(12, 67);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(89, 25);
-            this.labelControl11.TabIndex = 19;
-            this.labelControl11.Text = "Vergi Dairesi :";
-            // 
-            // txtVergiNo
-            // 
-            this.txtVergiNo.Location = new System.Drawing.Point(107, 98);
-            this.txtVergiNo.Name = "txtVergiNo";
-            this.txtVergiNo.Size = new System.Drawing.Size(404, 20);
-            this.txtVergiNo.TabIndex = 22;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl12.Location = new System.Drawing.Point(12, 95);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(89, 25);
-            this.labelControl12.TabIndex = 21;
-            this.labelControl12.Text = "Vergi No :";
-            // 
             // txtEposta
             // 
             this.txtEposta.Location = new System.Drawing.Point(107, 152);
@@ -635,6 +572,70 @@
             this.labelControl14.Size = new System.Drawing.Size(89, 25);
             this.labelControl14.TabIndex = 23;
             this.labelControl14.Text = "Adres :";
+            // 
+            // txtVergiNo
+            // 
+            this.txtVergiNo.Location = new System.Drawing.Point(107, 98);
+            this.txtVergiNo.Name = "txtVergiNo";
+            this.txtVergiNo.Size = new System.Drawing.Size(404, 20);
+            this.txtVergiNo.TabIndex = 22;
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl12.Location = new System.Drawing.Point(12, 95);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(89, 25);
+            this.labelControl12.TabIndex = 21;
+            this.labelControl12.Text = "Vergi No :";
+            // 
+            // txtVergiDairesi
+            // 
+            this.txtVergiDairesi.Location = new System.Drawing.Point(107, 70);
+            this.txtVergiDairesi.Name = "txtVergiDairesi";
+            this.txtVergiDairesi.Size = new System.Drawing.Size(404, 20);
+            this.txtVergiDairesi.TabIndex = 20;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl11.Location = new System.Drawing.Point(12, 67);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(89, 25);
+            this.labelControl11.TabIndex = 19;
+            this.labelControl11.Text = "Vergi Dairesi :";
+            // 
+            // txtFaturaUnvani
+            // 
+            this.txtFaturaUnvani.Location = new System.Drawing.Point(107, 42);
+            this.txtFaturaUnvani.Name = "txtFaturaUnvani";
+            this.txtFaturaUnvani.Size = new System.Drawing.Size(404, 20);
+            this.txtFaturaUnvani.TabIndex = 18;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.Location = new System.Drawing.Point(12, 39);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(89, 25);
+            this.labelControl10.TabIndex = 17;
+            this.labelControl10.Text = "Fatura Ünvanı :";
+            // 
+            // txtFirmaAdi
+            // 
+            this.txtFirmaAdi.Location = new System.Drawing.Point(107, 16);
+            this.txtFirmaAdi.Name = "txtFirmaAdi";
+            this.txtFirmaAdi.Size = new System.Drawing.Size(404, 20);
+            this.txtFirmaAdi.TabIndex = 16;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl9.Location = new System.Drawing.Point(12, 13);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(89, 25);
+            this.labelControl9.TabIndex = 15;
+            this.labelControl9.Text = "Firma Adı :";
             // 
             // navigationPage6
             // 
@@ -749,12 +750,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDepoKodu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             this.navigationPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaUnvani.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEposta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAdres.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVergiDairesi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFaturaUnvani.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirmaAdi.Properties)).EndInit();
             this.navigationPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSmsOrjinator.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSmsParola.Properties)).EndInit();
