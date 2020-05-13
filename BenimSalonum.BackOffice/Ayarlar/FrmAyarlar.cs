@@ -27,8 +27,9 @@ namespace BenimSalonum.BackOffice.Ayarlar
         public FrmAyarlar(KullaniciAyarlari entity)
         {
             InitializeComponent();
+
             _entity = entity;
-            _entity.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
+
             //comboFaturaYaziciSec.Properties.Items.AddRange(YaziciListesi());
             //comboBilgiFisiYaziciSec.Properties.Items.AddRange(YaziciListesi());
 
@@ -57,23 +58,45 @@ namespace BenimSalonum.BackOffice.Ayarlar
 
             /////////////////////////////////////
             ///
-            lookUpDepoKodu.Properties.DataSource = depoDal.GetALL(context);
-            lookUpDepoKodu.EditValue = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_VarsayilanDepo);
 
-            lookUpKasaKodu.Properties.DataSource = kasaDal.GetALL(context);
-            lookUpKasaKodu.EditValue = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_VarsayilanKasa);
 
-            comboFaturaAyar.SelectedIndex = Convert.ToInt32(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_FaturaYazdirmaAyari));
+            lookUpDepoKodu.Properties.DataSource = depoDal.DepoListele(context);
+            lookUpDepoKodu.EditValue = _entity.SatisAyarlari_VarsayilanDepo;
 
-            toggleGuncelleme.IsOn = Convert.ToBoolean(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.GenelAyarlar_GuncellemeKontrol));
+            lookUpKasaKodu.Properties.DataSource = kasaDal.KasaListeleAyar(context);
+            lookUpKasaKodu.EditValue = _entity.SatisAyarlari_VarsayilanKasa;
 
-            comboBilgiFisi.SelectedIndex = Convert.ToInt32(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_BilgiFisiYazdırmaAyari));
+            comboFaturaAyar.SelectedIndex = _entity.SatisAyarlari_FaturaYazdirmaAyari;
 
-            comboFaturaYaziciSec.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_FaturaYazici).ToString();
+            toggleGuncelleme.IsOn =_entity.GenelAyarlar_GuncellemeKontrol;
 
-            comboBilgiFisiYaziciSec.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_BilgiFisiYazici).ToString();
+            comboBilgiFisi.SelectedIndex = _entity.SatisAyarlari_BilgiFisiYazdırmaAyari;
 
-            txtFirmaAdi.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.FirmaAyarlari_FirmaAdi).ToString();
+            comboFaturaYaziciSec.Text = _entity.SatisAyarlari_FaturaYazici;
+
+            comboBilgiFisiYaziciSec.Text = _entity.SatisAyarlari_BilgiFisiYazici;
+
+            txtFirmaAdi.Text = _entity.FirmaAyarlari_FirmaAdi;
+
+
+            //lookUpDepoKodu.Properties.DataSource = depoDal.GetALL(context);
+            ////lookUpDepoKodu.EditValue = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_VarsayilanDepo);
+            //lookUpDepoKodu.EditValue = _entity.SatisAyarlari_VarsayilanDepo;
+
+            //lookUpKasaKodu.Properties.DataSource = kasaDal.GetALL(context);
+            //lookUpKasaKodu.EditValue = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_VarsayilanKasa);
+
+            //comboFaturaAyar.SelectedIndex = Convert.ToInt32(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_FaturaYazdirmaAyari));
+
+            //toggleGuncelleme.IsOn = Convert.ToBoolean(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.GenelAyarlar_GuncellemeKontrol));
+
+            //comboBilgiFisi.SelectedIndex = Convert.ToInt32(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_BilgiFisiYazdırmaAyari));
+
+            //comboFaturaYaziciSec.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_FaturaYazici).ToString();
+
+            //comboBilgiFisiYaziciSec.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.SatisAyarlari_BilgiFisiYazici).ToString();
+
+            //txtFirmaAdi.Text = context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.FirmaAyarlari_FirmaAdi).ToString();
 
             labelControl4.Text = "Kayıt Durumu : ";
         }

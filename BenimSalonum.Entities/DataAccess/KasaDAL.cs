@@ -11,6 +11,18 @@ namespace BenimSalonum.Entities.DataAccess
 {
     public class KasaDAL : EntityReposityoryBase<BenimSalonumContext,Kasa,KasaValidator >
     {
+        public object KasaListeleAyar(BenimSalonumContext context)
+        {
+            var result = (from c in context.Kasalar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID) select c).AsEnumerable().Select(c => new
+            {
+                c.KasaKodu,
+                c.KasaAdi,
+                c.YetkiliKodu,
+                c.YetkiliAdi,
+                c.Aciklama
+            }).ToList();
+            return result;
+        }
         public object KasaListele(BenimSalonumContext context)
         {
             var result = context.Kasalar.Where(c=> c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).GroupJoin(context.KasaHareketleri, c => c.Id, c => c.KasaId, (kasa, kasahareket) =>

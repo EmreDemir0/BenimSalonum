@@ -60,7 +60,7 @@ namespace BenimSalonum.BackOffice.Depo
 
         private void cmbYetkiliKodu_Validated(object sender, EventArgs e)
         {
-            string secilenKod = cmbYetkiliKodu.SelectedItem.ToString();
+            string secilenKod = cmbYetkiliKodu.SelectedItem.ToString()??"";
             string gelenYetkili = context.Personeller.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.PersonelKodu == secilenKod).PersonelAdi;
 
             if (cmbYetkiliAdi.Text != gelenYetkili)
@@ -71,7 +71,7 @@ namespace BenimSalonum.BackOffice.Depo
 
         private void cmbYetkiliAdi_Validated(object sender, EventArgs e)
         {
-            string secilenAd = cmbYetkiliAdi.SelectedItem.ToString();
+            string secilenAd = cmbYetkiliAdi.SelectedItem.ToString()??"";
             string gelenKod = context.Personeller.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.PersonelAdi == secilenAd).PersonelKodu;
 
             if (cmbYetkiliKodu.Text != gelenKod)

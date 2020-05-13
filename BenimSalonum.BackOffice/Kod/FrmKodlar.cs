@@ -22,7 +22,7 @@ namespace BenimSalonum.BackOffice.Kod
     {
         BenimSalonumContext context = new BenimSalonumContext();
         KodDAL kodDal = new KodDAL();
-        //private entities.Tables.Kod _entity;
+        private Entities.Tables.Kod _entity;
         private string _tablo;
 
         public FrmKodlar(string tablo)
@@ -60,7 +60,7 @@ namespace BenimSalonum.BackOffice.Kod
         private void gridKod_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             Entities.Tables.Kod row = (Entities.Tables.Kod)e.Row;
-            if (context.Kodlar.Local.Any(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == row.OnEki))
+            if (context.Kodlar.Local.Any(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == row.OnEki && c.Tablo == _tablo))
             {
                 XtraMessageBox.Show("Aynı Ön Ekle Kod Kaydedilemez");
                 gridKod.CancelUpdateCurrentRow();

@@ -29,7 +29,8 @@ namespace BenimSalonum.Entities.Tools
         }
         public static void RolleriYukle(RibbonControl form)
         {
-            BenimSalonumContext context = new BenimSalonumContext(); try
+            BenimSalonumContext context = new BenimSalonumContext();
+            try
             {
                 foreach (var item in context.KullaniciRolleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.KullaniciAdi == kullaniciEntity.KullaniciAdi && c.FormAdi == "FrmAnaMenu" && c.Yetki == false).ToList())
                 {

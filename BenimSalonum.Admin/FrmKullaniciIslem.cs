@@ -38,6 +38,7 @@ namespace BenimSalonum.Admin
 
             labelKullaniciID.DataBindings.Add("Text", _entity, "KullaniciID");
             toggleDurumu.DataBindings.Add("EditValue", _entity, "Durumu");
+            toggleAktif.DataBindings.Add("EditValue", _entity, "Aktif");
             txtKullaniciAdi.DataBindings.Add("Text", _entity, "KullaniciAdi", false, DataSourceUpdateMode.OnPropertyChanged);
             txtParola.DataBindings.Add("Text", _entity, "Parola", false, DataSourceUpdateMode.OnPropertyChanged);
             txtAdi.DataBindings.Add("Text", _entity, "Adi", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -88,6 +89,23 @@ namespace BenimSalonum.Admin
         private void btnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPasifYap_Click(object sender, EventArgs e)
+        { 
+                context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == _entity.KullaniciAdi).Aktif = false;
+            try
+            {
+                context.SaveChanges();
+                toggleAktif.IsOn = false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)

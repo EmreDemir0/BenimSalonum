@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKullaniciIslem));
-            this.ımageList2 = new System.Windows.Forms.ImageList();
+            this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -44,7 +45,7 @@
             this.txtCevap = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
-            this.ımageList1 = new System.Windows.Forms.ImageList();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.txtSoyadi = new DevExpress.XtraEditors.TextEdit();
@@ -59,6 +60,9 @@
             this.txtGorevi = new DevExpress.XtraEditors.TextEdit();
             this.groupGenel = new DevExpress.XtraEditors.GroupControl();
             this.labelKullaniciID = new System.Windows.Forms.Label();
+            this.btnPasifYap = new DevExpress.XtraEditors.SimpleButton();
+            this.toggleAktif = new DevExpress.XtraEditors.ToggleSwitch();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -75,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtGorevi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupGenel)).BeginInit();
             this.groupGenel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleAktif.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList2
@@ -92,7 +97,7 @@
             // 
             this.groupControl1.Controls.Add(this.treeList1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 330);
+            this.groupControl1.Location = new System.Drawing.Point(0, 337);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(423, 400);
             this.groupControl1.TabIndex = 52;
@@ -259,6 +264,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.btnPasifYap);
             this.groupControl2.Controls.Add(this.btnKaydet);
             this.groupControl2.Controls.Add(this.btnKapat);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -427,6 +433,8 @@
             // 
             // groupGenel
             // 
+            this.groupGenel.Controls.Add(this.toggleAktif);
+            this.groupGenel.Controls.Add(this.labelControl10);
             this.groupGenel.Controls.Add(this.labelKullaniciID);
             this.groupGenel.Controls.Add(this.txtParolaTekrar);
             this.groupGenel.Controls.Add(this.labelControl9);
@@ -449,7 +457,7 @@
             this.groupGenel.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupGenel.Location = new System.Drawing.Point(0, 50);
             this.groupGenel.Name = "groupGenel";
-            this.groupGenel.Size = new System.Drawing.Size(423, 280);
+            this.groupGenel.Size = new System.Drawing.Size(423, 287);
             this.groupGenel.TabIndex = 51;
             this.groupGenel.Text = "Genel Bilgiler";
             // 
@@ -461,6 +469,40 @@
             this.labelKullaniciID.Size = new System.Drawing.Size(0, 13);
             this.labelKullaniciID.TabIndex = 27;
             this.labelKullaniciID.Visible = false;
+            // 
+            // btnPasifYap
+            // 
+            this.btnPasifYap.ImageOptions.ImageIndex = 3;
+            this.btnPasifYap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPasifYap.ImageOptions.SvgImage")));
+            this.btnPasifYap.Location = new System.Drawing.Point(5, 26);
+            this.btnPasifYap.Name = "btnPasifYap";
+            this.btnPasifYap.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.btnPasifYap.Size = new System.Drawing.Size(168, 40);
+            this.btnPasifYap.TabIndex = 4;
+            this.btnPasifYap.Text = "Oturum Aktif Hatası";
+            this.btnPasifYap.Click += new System.EventHandler(this.btnPasifYap_Click);
+            // 
+            // toggleAktif
+            // 
+            this.toggleAktif.EditValue = true;
+            this.toggleAktif.Location = new System.Drawing.Point(109, 259);
+            this.toggleAktif.Name = "toggleAktif";
+            this.toggleAktif.Properties.OffText = "Pasif";
+            this.toggleAktif.Properties.OnText = "Aktif";
+            this.toggleAktif.Size = new System.Drawing.Size(95, 18);
+            this.toggleAktif.TabIndex = 29;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Options.UseTextOptions = true;
+            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl10.Location = new System.Drawing.Point(0, 257);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(103, 20);
+            this.labelControl10.TabIndex = 28;
+            this.labelControl10.Text = "Uygulamada Online :";
             // 
             // FrmKullaniciIslem
             // 
@@ -493,6 +535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupGenel)).EndInit();
             this.groupGenel.ResumeLayout(false);
             this.groupGenel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleAktif.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,5 +572,8 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private System.Windows.Forms.Label labelKullaniciID;
+        private DevExpress.XtraEditors.SimpleButton btnPasifYap;
+        private DevExpress.XtraEditors.ToggleSwitch toggleAktif;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }

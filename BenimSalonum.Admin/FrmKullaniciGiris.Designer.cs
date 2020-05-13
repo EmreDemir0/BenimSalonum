@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKullaniciGiris));
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnKullaniciGiris = new DevExpress.XtraEditors.SimpleButton();
             this.btnUnuttum = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
@@ -58,7 +58,7 @@
             // 
             this.groupControl2.Appearance.BackColor = System.Drawing.Color.Gray;
             this.groupControl2.Appearance.Options.UseBackColor = true;
-            this.groupControl2.Controls.Add(this.simpleButton1);
+            this.groupControl2.Controls.Add(this.btnKullaniciGiris);
             this.groupControl2.Controls.Add(this.btnUnuttum);
             this.groupControl2.Controls.Add(this.btnKapat);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -68,14 +68,16 @@
             this.groupControl2.TabIndex = 55;
             this.groupControl2.Text = " Menü";
             // 
-            // simpleButton1
+            // btnKullaniciGiris
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(334, 34);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 4;
-            this.simpleButton1.Text = "simpleButton1";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnKullaniciGiris.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKullaniciGiris.ImageOptions.SvgImage")));
+            this.btnKullaniciGiris.Location = new System.Drawing.Point(138, 25);
+            this.btnKullaniciGiris.Name = "btnKullaniciGiris";
+            this.btnKullaniciGiris.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.btnKullaniciGiris.Size = new System.Drawing.Size(129, 40);
+            this.btnKullaniciGiris.TabIndex = 4;
+            this.btnKullaniciGiris.Text = "Kullanıcı Ayarları";
+            this.btnKullaniciGiris.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnUnuttum
             // 
@@ -282,7 +284,7 @@
         private DevExpress.XtraEditors.TextEdit txtKullaniciAdi;
         private DevExpress.XtraEditors.SimpleButton btnDatabase;
         private DevExpress.XtraEditors.LabelControl labelControlCS;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnKullaniciGiris;
     }
 }
 

@@ -269,7 +269,7 @@ namespace BenimSalonum.BackOffice
         {
             if (frmAyarlar == null || frmAyarlar.IsDisposed)
             {
-                frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.Where(c=>c.KullaniciID==RoleTool.kullaniciEntity.KullaniciID).FirstOrDefault());
+                frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.FirstOrDefault(c=>c.KullaniciID==RoleTool.kullaniciEntity.KullaniciID));
                 frmAyarlar.MdiParent = this;
                 frmAyarlar.Show();
             }

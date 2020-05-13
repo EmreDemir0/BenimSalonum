@@ -32,5 +32,19 @@ namespace BenimSalonum.Entities.DataAccess
             }).ToList();
             return result;
         }
+        public object DepoListele(BenimSalonumContext context)
+        {
+            var result = (from c in context.Depolar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID) select c).AsEnumerable().Select(c => new
+            {
+                c.DepoKodu,
+                c.DepoAdi,
+                c.YetkiliKodu,
+                c.YetkiliAdi,
+                c.Aciklama
+            }).ToList();
+            return result;
+        }
     }
-}
+    }
+    
+

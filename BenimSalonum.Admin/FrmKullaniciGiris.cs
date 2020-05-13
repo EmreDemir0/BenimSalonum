@@ -146,7 +146,7 @@ namespace BenimSalonum.Admin
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            if (context.Kullanicilar.Any(c =>c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
+            if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
             {
                 girisBasarili = true;
                 bool aktif = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text).Aktif;
@@ -165,7 +165,7 @@ namespace BenimSalonum.Admin
 
                     context.KullaniciLoglari.Add(new KullaniciLog
                     {
-                        KullaniciID=context.Kullanicilar.SingleOrDefault(c=>c.KullaniciAdi==txtKullaniciAdi.Text).KullaniciID,
+                        KullaniciID = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text).KullaniciID,
                         KullaniciAdi = txtKullaniciAdi.Text,
                         SonGirisTarihi = DateTime.Now,
                         YapilanIslem = "Oturum Açma",
@@ -191,8 +191,12 @@ namespace BenimSalonum.Admin
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            FrmKullanicilar newfrm = new FrmKullanicilar();
-            newfrm.ShowDialog();
+            if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
+            {
+                context = new BenimSalonumContext();
+                FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.FirstOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
+                frmKullanicilar.ShowDialog();
+            }
         }
     }
 }

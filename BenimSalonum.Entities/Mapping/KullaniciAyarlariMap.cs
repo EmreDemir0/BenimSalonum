@@ -17,7 +17,6 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.KullaniciID).HasMaxLength(15);
             this.Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             //
-            this.Property(p => p.GenelAyarlar_GuncellemeKontrol).HasMaxLength(50);
             //
             this.Property(p => p.smsAyarlari_KullaniciAdi).HasMaxLength(50);
             this.Property(p => p.smsAyarlari_KullaniciNo).HasMaxLength(50);

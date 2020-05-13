@@ -12,7 +12,7 @@ namespace BenimSalonum.Entities.Tables.OtherTables
         public string KullaniciID { get; set; }
         public int Id { get; set; }
         //
-        public string GenelAyarlar_GuncellemeKontrol { get; set; }
+        public bool GenelAyarlar_GuncellemeKontrol { get; set; }
         //sms
         public string smsAyarlari_KullaniciAdi { get; set; }
         public string smsAyarlari_KullaniciNo { get; set; }

@@ -41,6 +41,7 @@
             this.GridControlKullanici = new DevExpress.XtraGrid.GridControl();
             this.GridViewKullanici = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAktif = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKullaniciAdi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAdi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -170,6 +171,7 @@
             // 
             this.GridViewKullanici.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
+            this.colAktif,
             this.colDurumu,
             this.colKullaniciAdi,
             this.colAdi,
@@ -190,6 +192,14 @@
             this.colId.Name = "colId";
             this.colId.OptionsColumn.AllowEdit = false;
             // 
+            // colAktif
+            // 
+            this.colAktif.Caption = "Aktif";
+            this.colAktif.FieldName = "Aktif";
+            this.colAktif.Name = "colAktif";
+            this.colAktif.Visible = true;
+            this.colAktif.VisibleIndex = 1;
+            // 
             // colDurumu
             // 
             this.colDurumu.FieldName = "Durumu";
@@ -204,7 +214,7 @@
             this.colKullaniciAdi.Name = "colKullaniciAdi";
             this.colKullaniciAdi.OptionsColumn.AllowEdit = false;
             this.colKullaniciAdi.Visible = true;
-            this.colKullaniciAdi.VisibleIndex = 1;
+            this.colKullaniciAdi.VisibleIndex = 2;
             // 
             // colAdi
             // 
@@ -212,7 +222,7 @@
             this.colAdi.Name = "colAdi";
             this.colAdi.OptionsColumn.AllowEdit = false;
             this.colAdi.Visible = true;
-            this.colAdi.VisibleIndex = 2;
+            this.colAdi.VisibleIndex = 3;
             // 
             // colSoyadi
             // 
@@ -220,7 +230,7 @@
             this.colSoyadi.Name = "colSoyadi";
             this.colSoyadi.OptionsColumn.AllowEdit = false;
             this.colSoyadi.Visible = true;
-            this.colSoyadi.VisibleIndex = 3;
+            this.colSoyadi.VisibleIndex = 4;
             // 
             // colGorevi
             // 
@@ -228,7 +238,7 @@
             this.colGorevi.Name = "colGorevi";
             this.colGorevi.OptionsColumn.AllowEdit = false;
             this.colGorevi.Visible = true;
-            this.colGorevi.VisibleIndex = 4;
+            this.colGorevi.VisibleIndex = 5;
             // 
             // colParola
             // 
@@ -236,7 +246,7 @@
             this.colParola.Name = "colParola";
             this.colParola.OptionsColumn.AllowEdit = false;
             this.colParola.Visible = true;
-            this.colParola.VisibleIndex = 5;
+            this.colParola.VisibleIndex = 6;
             // 
             // colHatirlatmaSorusu
             // 
@@ -244,7 +254,7 @@
             this.colHatirlatmaSorusu.Name = "colHatirlatmaSorusu";
             this.colHatirlatmaSorusu.OptionsColumn.AllowEdit = false;
             this.colHatirlatmaSorusu.Visible = true;
-            this.colHatirlatmaSorusu.VisibleIndex = 6;
+            this.colHatirlatmaSorusu.VisibleIndex = 7;
             // 
             // colHatirlatmaCevap
             // 
@@ -252,7 +262,7 @@
             this.colHatirlatmaCevap.Name = "colHatirlatmaCevap";
             this.colHatirlatmaCevap.OptionsColumn.AllowEdit = false;
             this.colHatirlatmaCevap.Visible = true;
-            this.colHatirlatmaCevap.VisibleIndex = 7;
+            this.colHatirlatmaCevap.VisibleIndex = 8;
             // 
             // colKayitTarihi
             // 
@@ -260,7 +270,7 @@
             this.colKayitTarihi.Name = "colKayitTarihi";
             this.colKayitTarihi.OptionsColumn.AllowEdit = false;
             this.colKayitTarihi.Visible = true;
-            this.colKayitTarihi.VisibleIndex = 8;
+            this.colKayitTarihi.VisibleIndex = 9;
             // 
             // colSonGirisTarihi
             // 
@@ -268,7 +278,8 @@
             this.colSonGirisTarihi.Name = "colSonGirisTarihi";
             this.colSonGirisTarihi.OptionsColumn.AllowEdit = false;
             this.colSonGirisTarihi.Visible = true;
-            this.colSonGirisTarihi.VisibleIndex = 9;
+            this.colSonGirisTarihi.VisibleIndex = 10;
+            this.colSonGirisTarihi.Width = 71;
             // 
             // FrmKullanicilar
             // 
@@ -315,5 +326,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colHatirlatmaCevap;
         private DevExpress.XtraGrid.Columns.GridColumn colKayitTarihi;
         private DevExpress.XtraGrid.Columns.GridColumn colSonGirisTarihi;
+        private DevExpress.XtraGrid.Columns.GridColumn colAktif;
     }
 }

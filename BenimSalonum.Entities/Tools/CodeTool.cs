@@ -32,6 +32,7 @@ namespace BenimSalonum.Entities.Tools
             manager.Form = _form;
             popupMenu = new PopupMenu(manager);
         }
+
         public void barButonOlustur()
         {
             _context = new BenimSalonumContext();
@@ -42,7 +43,7 @@ namespace BenimSalonum.Entities.Tools
                 {
                     Name = "btnKod" + kod.SonDeger,
                     Tag = kod.Id,
-                    Caption = KodOlustur()
+                    Caption = KodOlustur(kod.OnEki, kod.SonDeger)
                 };
                 item.ItemClick += Buton_Click;
                 popupMenu.AddItem(item);
@@ -95,17 +96,12 @@ namespace BenimSalonum.Entities.Tools
             text.Focus();
         }
 
-        public string KodOlustur()
+        public string KodOlustur(string kodOnEki, int kodSonDeger)
         {
-            var kod = _context.Kodlar.SingleOrDefault(c => c.OnEki == "FS" && c.Tablo == "Fis");
-            string onEki = kod.OnEki;
-            string sonDeger = kod.SonDeger.ToString();
-            int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
+            int sifirSayisi = 10 - (kodOnEki.Length + kodSonDeger);
             string sifirDizisi = new string('0', sifirSayisi);
             //    kod.SonDeger++;
-            _context.SaveChanges();
-
-            return onEki + sifirDizisi + sonDeger;
+            return kodOnEki + sifirDizisi + kodSonDeger;
         }
         public string YeniFisOdemeKoduOlustur()
         {
