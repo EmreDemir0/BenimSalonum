@@ -122,8 +122,6 @@ namespace BenimSalonum.Entities.Tools
             if (buton != null)
             {
                 int id = Convert.ToInt32(buton.Item.Tag.ToString());
-                System.Windows.Forms.MessageBox.Show(id.ToString());
-
                 _context.Kodlar.SingleOrDefault(c => c.Id == id).SonDeger++;
                 _context.SaveChanges();
             }

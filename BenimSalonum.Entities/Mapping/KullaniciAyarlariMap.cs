@@ -23,6 +23,10 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.smsAyarlari_Parola).HasMaxLength(50);
             this.Property(p => p.smsAyarlari_Orjinator).HasMaxLength(50);
             ///
+            this.Property(p => p.SatisAyarlari_VarsayilanDepo).HasMaxLength(15);
+            this.Property(p => p.SatisAyarlari_VarsayilanKasa).HasMaxLength(15);
+            this.Property(p => p.SatisAyarlari_FaturaYazdirmaAyari).HasMaxLength(50);
+            this.Property(p => p.SatisAyarlari_BilgiFisiYazdırmaAyari).HasMaxLength(50);
             this.Property(p => p.SatisAyarlari_FaturaYazici).HasMaxLength(50);
             this.Property(p => p.SatisAyarlari_BilgiFisiYazici).HasMaxLength(50);
             this.Property(p => p.SatisAyarlari_FisKodu).HasMaxLength(50);

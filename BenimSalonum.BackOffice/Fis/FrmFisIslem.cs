@@ -48,9 +48,10 @@ namespace BenimSalonum.BackOffice.Fis
 
         string gelenFisKodu;
 
-        public FrmFisIslem(string fisKodu = null, string fisTuru = null, int? cariId = null, bool siparisFaturalandir = false)
+        KullaniciAyarlari KullaniciAyarlariEntity;
+        public FrmFisIslem(string fisKodu = null, string fisTuru = null, int? cariId = null, bool siparisFaturalandir = false, KullaniciAyarlari _kullaniciAyarlariEntity = null)
         {
-          //  kodOlustur = new CodeTool(this, CodeTool.Table.Fis);
+            //  kodOlustur = new CodeTool(this, CodeTool.Table.Fis);
 
 
             InitializeComponent();
@@ -68,31 +69,31 @@ namespace BenimSalonum.BackOffice.Fis
             txtToplam.Font = new Font("Microsoft Sans Serif", 10);
             txtAcikHesap.Font = new Font("Microsoft Sans Serif", 10);
 
-            context.Depolar.Load();
-            context.Stoklar.Load();
-            context.Kasalar.Load();
+            context.Depolar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
+            context.Stoklar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
+            context.Kasalar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
 
             if (fisKodu != null)
             {
-                _fisentity = context.Fisler.Where(c => c.FisKodu == fisKodu).SingleOrDefault();
+                _fisentity = context.Fisler.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu).SingleOrDefault();
                 if (siparisFaturalandir)
                 {
                     _fisentity.FisTuru = "Toptan Satış Faturası";//BURADA BİR SEÇME ŞANSI VER.
                 }
-                context.StokHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+                context.StokHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu).Load();
                 if (string.IsNullOrEmpty(_fisentity.FisBaglantiKodu))
                 {
-                    context.KasaHareketleri.Where(c => c.FisKodu == _fisentity.FisKodu).Load();
+                    context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisKodu).Load();
                 }
                 else
                 {
-                    context.KasaHareketleri.Where(c => c.FisKodu == _fisentity.FisBaglantiKodu).Load();
+                    context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisBaglantiKodu).Load();
                 }
-                context.KasaHareketleri.Where(c => c.FisKodu == fisKodu).Load();
-                context.PersonelHareketleri.Where(c => c.FisKodu == fisKodu).Load();
+                // context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu).Load();
+                context.PersonelHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu).Load();
 
                 toggleBakiyeTuru.IsOn =
-                    context.KasaHareketleri.Count(c => c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
+                    context.KasaHareketleri.Count(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu && c.Hareket == "Kasa Giriş") == 0;
                 if (_fisentity.CariId != null)
                 {
                     _entityBakiye = this.cariDal.CariBakiyesi(context, Convert.ToInt32(_fisentity.CariId));
@@ -111,6 +112,7 @@ namespace BenimSalonum.BackOffice.Fis
             {
                 _fisentity.FisTuru = fisTuru;
                 timer1.Enabled = true;
+                KullaniciAyarlariEntity = _kullaniciAyarlariEntity;
             }
 
             // timer1.Enabled = false;
@@ -386,7 +388,7 @@ namespace BenimSalonum.BackOffice.Fis
                         KasaHareket entityKasaHareket = new KasaHareket
                         {
                             OdemeTuruId = Convert.ToInt32(buton.Tag),
-                            KasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa)),
+                            KasaId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanKasa),
                             Tarih = DateTime.Now,
                             Tutar = txtOdenmesiGereken.Value
                         };
@@ -404,7 +406,7 @@ namespace BenimSalonum.BackOffice.Fis
                                 //cari türüne personel ekleyip seçerekte yapabiliriz.
                                 //en mantıklısı cari ve personeli birleştirmek mantıklı olacaktır.
                                 OdemeTuruId = Convert.ToInt32(buton.Tag),
-                                KasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa)),
+                                KasaId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanKasa),
                                 Tarih = DateTime.Now,
                                 Tutar = Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colOdenecekTutar)),
                                 Aciklama = $"{gridViewPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString()} - {gridViewPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString()} || Aylık Maaş : {Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colAylikMaas)).ToString("C2")} || Prim Tutarı : {Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colPrimTutari)).ToString("C2")}"
@@ -436,9 +438,10 @@ namespace BenimSalonum.BackOffice.Fis
             StokHareket stokHareket = new StokHareket();
             IndirimDAL indirimDal = new IndirimDAL();
 
+            stokHareket.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
             stokHareket.StokId = entity.Id;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(context, entity.StokKodu);
-            stokHareket.DepoId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanDepo));
+            stokHareket.DepoId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanDepo);
             stokHareket.BirimFiyati = new[] { "Alış Faturası", "Alış İade Faturası" }.Contains(txtFisTuru.Text) ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Tarih = DateTime.Now;
@@ -492,7 +495,7 @@ namespace BenimSalonum.BackOffice.Fis
             if (e.KeyCode == Keys.Enter)
             {
                 Entities.Tables.Stok entity;
-                entity = context.Stoklar.Where(c => c.Barkod == txtBarkod.Text).SingleOrDefault();
+                entity = context.Stoklar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Barkod == txtBarkod.Text).SingleOrDefault();
                 if (entity != null)
                 {
                     int index = gridStokHareket.RowCount;
@@ -624,7 +627,7 @@ namespace BenimSalonum.BackOffice.Fis
         private void repoBirimFiyat_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             int fiyatSecilen = Convert.ToInt32(gridStokHareket.GetFocusedRowCellValue(colStokId));
-            Entities.Tables.Stok fiyatEntity = context.Stoklar.Where(c => c.Id == fiyatSecilen).SingleOrDefault();
+            Entities.Tables.Stok fiyatEntity = context.Stoklar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Id == fiyatSecilen).SingleOrDefault();
             barFiyat1.Tag = txtFisTuru.Text == "Alış Faturası" ? fiyatEntity.AlisFiyati1 ?? 0 : fiyatEntity.SatisFiyati1 ?? 0;
             barFiyat2.Tag = txtFisTuru.Text == "Alış Faturası"
                 ? fiyatEntity.AlisFiyati2 ?? 0
@@ -748,6 +751,9 @@ namespace BenimSalonum.BackOffice.Fis
 
 
             ///////////////////////////////////////////////////////////
+            ///w
+            ///
+            context.StokHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
             foreach (var stokVeri in context.StokHareketleri.Local.ToList())
             {
                 stokVeri.Tarih = stokVeri.Tarih == null
@@ -756,8 +762,9 @@ namespace BenimSalonum.BackOffice.Fis
                 stokVeri.FisKodu = txtKod.Text;
                 stokVeri.Hareket = ayarlar.StokHareketi;
                 stokVeri.Siparis = txtFisTuru.Text.Contains("Sipariş Fişi") ? stokVeri.Siparis = true : stokVeri.Siparis = false;
+                stokVeri.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
             }
-
+            context.PersonelHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
             foreach (var itemHareket in context.PersonelHareketleri.Local.ToList())
             {
                 itemHareket.FisKodu = txtKod.Text;
@@ -777,6 +784,7 @@ namespace BenimSalonum.BackOffice.Fis
             _fisentity.IskontoOrani = txtIskontoOran.Value;
             _fisentity.IskontoTutar = txtIskontoTutar.Value;
 
+
             if (string.IsNullOrEmpty(_fisentity.Tarih.ToString()))
             {
                 _fisentity.Tarih = DateTime.Now;
@@ -795,13 +803,19 @@ namespace BenimSalonum.BackOffice.Fis
                     fisOdeme.Aciklama = _fisentity.FisKodu + " <=Nolu Faturaya Ait Ödeme Fişi";
                     fisOdeme.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
                     fisOdeme.FisBaglantiKodu = _fisentity.FisKodu;
+                    fisOdeme.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
                 }
                 else
                 {
-                    fisOdeme = context.Fisler.SingleOrDefault(c => c.FisKodu == _fisentity.FisBaglantiKodu);
+                    fisOdeme = context.Fisler.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisBaglantiKodu);
                 }
                 /// sonradan
-                _fisentity.FisBaglantiKodu = fisOdeme.FisKodu;
+                /// 
+                if (fisOdeme != null)
+                {
+                    _fisentity.FisBaglantiKodu = fisOdeme.FisKodu;
+
+                }
 
                 if (ayarlar.BakiyeTuru == "Borç")
                 {
@@ -819,9 +833,10 @@ namespace BenimSalonum.BackOffice.Fis
                     XtraMessageBox.Show("Ödenmesi gereken tutar ödenmemiş görünüyor");
                     return;
                 }
-
+                context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
                 foreach (var kasaVeri in context.KasaHareketleri.Local.ToList())
                 {
+                    kasaVeri.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
                     kasaVeri.Tarih = kasaVeri.Tarih == null
                         ? Convert.ToDateTime(txtTarih.DateTime)
                         : Convert.ToDateTime(kasaVeri.Tarih);
@@ -841,7 +856,7 @@ namespace BenimSalonum.BackOffice.Fis
             {
                 KullaniciID = RoleTool.kullaniciEntity.KullaniciID,
                 KullaniciAdi = RoleTool.kullaniciEntity.KullaniciAdi,
-                YapilanIslem = "Fiş & Fatura Ekle & Düzenle" + txtKod,
+                YapilanIslem = "Fiş & Fatura Ekle & Düzenle" + txtKod.Text,
                 YapilanIslemTarihi = DateTime.Now
             });
 
@@ -878,7 +893,7 @@ namespace BenimSalonum.BackOffice.Fis
             {
                 foreach (var itemhHareket in form.secilen.ToList())
                 {
-                    if (context.PersonelHareketleri.Local.Count(c => c.Donemi == time && c.PersonelKodu == itemhHareket.PersonelKodu) == 0)
+                    if (context.PersonelHareketleri.Local.Count(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Donemi == time && c.PersonelKodu == itemhHareket.PersonelKodu) == 0)
                     {
                         personelHareketDal.AddOrUpDate(context, itemhHareket);
                     }
@@ -910,7 +925,7 @@ namespace BenimSalonum.BackOffice.Fis
             {
                 if (string.IsNullOrEmpty(gelenFisKodu) || gelenFisKodu == "")
                 {
-                    txtIskontoOran.Value =Convert.ToDecimal(context.Cariler.SingleOrDefault(c => c.CariKodu == txtCariKodu.Text).IskontoOrani);
+                    txtIskontoOran.Value = Convert.ToDecimal(context.Cariler.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.CariKodu == txtCariKodu.Text).IskontoOrani);
                     txtIskontoOran.Focus();
                     Toplamlar();
                 }

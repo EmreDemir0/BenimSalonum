@@ -28,7 +28,7 @@ namespace BenimSalonum.BackOffice.Fis
         }
         public void ListeleFisler()
         {
-            FislerGridControl.DataSource = fisDal.GetALL(context);
+            FislerGridControl.DataSource = fisDal.GetALL(context).Where(c => c.KullaniciID ==RoleTool.kullaniciEntity.KullaniciID);
         }
         private void Duzenle()
         {
@@ -184,7 +184,7 @@ namespace BenimSalonum.BackOffice.Fis
         }
         private void FisIslem_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmFisIslem form = new FrmFisIslem(null, e.Item.Caption);
+            FrmFisIslem form = new FrmFisIslem(null, e.Item.Caption,_kullaniciAyarlariEntity: context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
             form.ShowDialog();
         }
 

@@ -8,8 +8,7 @@ namespace BenimSalonum.Entities.Validations
     {
         public FisValidator()
         {
-           // RuleFor(p => pFaturaUnvani).NotEmpty().WithMessage("Fatura Ünvanı Alanı Boş Olamaz");
-            RuleFor(p => p.FisKodu).IsUnique().WithMessage("Bu Fiş Kodu Daha Önce Eklenmiş");
+            RuleFor(p => p.FaturaUnvani).NotEmpty().WithMessage("Fatura Ünvanı Alanı Boş Olamaz");
         }
     }
 }

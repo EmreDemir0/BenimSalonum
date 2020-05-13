@@ -353,12 +353,12 @@
             // 
             // cmbYetkiliAdi
             // 
+            this.cmbYetkiliAdi.Enabled = false;
             this.cmbYetkiliAdi.FormattingEnabled = true;
             this.cmbYetkiliAdi.Location = new System.Drawing.Point(93, 52);
             this.cmbYetkiliAdi.Name = "cmbYetkiliAdi";
             this.cmbYetkiliAdi.Size = new System.Drawing.Size(302, 21);
             this.cmbYetkiliAdi.TabIndex = 22;
-            this.cmbYetkiliAdi.Validated += new System.EventHandler(this.cmbYetkiliAdi_Validated);
             // 
             // cmbYetkiliKodu
             // 

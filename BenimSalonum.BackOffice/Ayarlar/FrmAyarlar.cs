@@ -34,8 +34,10 @@ namespace BenimSalonum.BackOffice.Ayarlar
             //comboBilgiFisiYaziciSec.Properties.Items.AddRange(YaziciListesi());
 
             toggleGuncelleme.DataBindings.Add("EditValue", _entity, "GenelAyarlar_GuncellemeKontrol");
-            lookUpDepoKodu.DataBindings.Add("Text", _entity, "SatisAyarlari_VarsayilanDepo");
-            lookUpKasaKodu.DataBindings.Add("Text", _entity, "SatisAyarlari_VarsayilanKasa");
+
+            cmbDepoVars.DataBindings.Add("Text", _entity, "SatisAyarlari_VarsayilanDepo");
+
+            cmbKasaVars.DataBindings.Add("Text", _entity, "SatisAyarlari_VarsayilanKasa");
 
             comboFaturaAyar.DataBindings.Add("Text", _entity, "SatisAyarlari_FaturaYazdirmaAyari");
             comboBilgiFisi.DataBindings.Add("Text", _entity, "SatisAyarlari_BilgiFisiYazdırmaAyari");
@@ -56,22 +58,23 @@ namespace BenimSalonum.BackOffice.Ayarlar
             txtSmsOrjinator.DataBindings.Add("Text", _entity, "smsAyarlari_Orjinator");
 
 
-            /////////////////////////////////////
-            ///
+            /////////////////////////////////////            
 
-            lookUpDepoKodu.EditValue = _entity.SatisAyarlari_VarsayilanDepo;
 
-            lookUpDepoKodu.Properties.DataSource = depoDal.DepoListele(context);
+            cmbDepoVars.DataSource = context.Depolar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.DepoKodu).ToList();
 
-            lookUpKasaKodu.Text = _entity.SatisAyarlari_VarsayilanKasa.ToString();
+            cmbKasaVars.DataSource = context.Kasalar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.KasaKodu).ToList();
 
-            lookUpKasaKodu.Properties.DataSource = kasaDal.KasaListeleAyar(context);
 
-            comboFaturaAyar.SelectedIndex = _entity.SatisAyarlari_FaturaYazdirmaAyari;
+            cmbDepoVars.Text = _entity.SatisAyarlari_VarsayilanDepo;
+            cmbKasaVars.Text = _entity.SatisAyarlari_VarsayilanKasa;
+
+
+            comboFaturaAyar.SelectedIndex = Convert.ToInt32(_entity.SatisAyarlari_FaturaYazdirmaAyari);
 
             toggleGuncelleme.IsOn = _entity.GenelAyarlar_GuncellemeKontrol;
 
-            comboBilgiFisi.SelectedIndex = _entity.SatisAyarlari_BilgiFisiYazdırmaAyari;
+            comboBilgiFisi.SelectedIndex = Convert.ToInt32(_entity.SatisAyarlari_BilgiFisiYazdırmaAyari);
 
             comboFaturaYaziciSec.Text = _entity.SatisAyarlari_FaturaYazici;
 
@@ -80,6 +83,45 @@ namespace BenimSalonum.BackOffice.Ayarlar
             txtFirmaAdi.Text = _entity.FirmaAyarlari_FirmaAdi;
 
             labelControl4.Text = "Kayıt Durumu : ";
+            DepoYukle();
+            KasaYukle();
+        }
+        public void DepoYukle()
+        {
+            string secilenKod = cmbDepoVars.SelectedItem.ToString() ?? "";
+            string gelenYetkili = context.Depolar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.DepoKodu == secilenKod).DepoAdi;
+
+            if (cmbDepoAdiVars.Text != gelenYetkili)
+            {
+                if (!string.IsNullOrEmpty(cmbDepoAdiVars.Text))
+                {
+                    cmbDepoAdiVars.Text = null;
+                    cmbDepoAdiVars.Text = gelenYetkili;
+                }
+                else
+                {
+                    cmbDepoAdiVars.Text = gelenYetkili;
+                }
+            }
+        }
+        public void KasaYukle()
+        {
+
+            string secilenKod = cmbKasaVars.SelectedItem.ToString() ?? "";
+            string gelenYetkili = context.Kasalar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.KasaKodu == secilenKod).KasaAdi;
+
+            if (cmbKasaAdiVars.Text != gelenYetkili)
+            {
+                if (!string.IsNullOrEmpty(cmbKasaAdiVars.Text))
+                {
+                    cmbKasaAdiVars.Text = null;
+                    cmbKasaAdiVars.Text = gelenYetkili;
+                }
+                else
+                {
+                    cmbKasaAdiVars.Text = gelenYetkili;
+                }
+            }
         }
         //private List<string> YaziciListesi()
         //{
@@ -90,7 +132,6 @@ namespace BenimSalonum.BackOffice.Ayarlar
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-
             if (kullaniciAyarlariDal.AddOrUpDate(context, _entity))
             {
                 try
@@ -119,9 +160,14 @@ namespace BenimSalonum.BackOffice.Ayarlar
             this.Close();
         }
 
-        private void lookUpDepoKodu_EditValueChanged(object sender, EventArgs e)
+        private void cmbDepoVars_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DepoYukle();
+        }
 
+        private void cmbKasaVars_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KasaYukle();
         }
     }
 }

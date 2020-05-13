@@ -103,7 +103,7 @@ namespace BenimSalonum.BackOffice
             RoleTool.RolleriYukle(ribbonControlAnaMenu);
             try
             {
-                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi + "ID : "+RoleTool.kullaniciEntity.KullaniciID}";
+                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi + "ID : " + RoleTool.kullaniciEntity.KullaniciID}";
             }
             catch (Exception)
             {
@@ -261,7 +261,7 @@ namespace BenimSalonum.BackOffice
         }
         private void FisIslem_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmFisIslem form11 = new FrmFisIslem(null, e.Item.Caption);
+            FrmFisIslem form11 = new FrmFisIslem(null, e.Item.Caption, _kullaniciAyarlariEntity: context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
             form11.ShowDialog();
         }
 
@@ -269,7 +269,7 @@ namespace BenimSalonum.BackOffice
         {
             if (frmAyarlar == null || frmAyarlar.IsDisposed)
             {
-                frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.FirstOrDefault(c=>c.KullaniciID==RoleTool.kullaniciEntity.KullaniciID));
+                frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
                 frmAyarlar.MdiParent = this;
                 frmAyarlar.Show();
             }

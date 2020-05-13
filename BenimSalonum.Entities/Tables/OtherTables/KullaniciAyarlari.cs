@@ -20,10 +20,10 @@ namespace BenimSalonum.Entities.Tables.OtherTables
         public string smsAyarlari_Orjinator { get; set; }
 
         //satis ayarlari
-        public int SatisAyarlari_VarsayilanDepo { get; set; }
-        public int SatisAyarlari_VarsayilanKasa { get; set; }
-        public int SatisAyarlari_FaturaYazdirmaAyari { get; set; }
-        public int SatisAyarlari_BilgiFisiYazdırmaAyari { get; set; }
+        public string SatisAyarlari_VarsayilanDepo { get; set; }
+        public string SatisAyarlari_VarsayilanKasa { get; set; }
+        public string SatisAyarlari_FaturaYazdirmaAyari { get; set; }
+        public string SatisAyarlari_BilgiFisiYazdırmaAyari { get; set; }
         public string SatisAyarlari_FaturaYazici { get; set; }
         public string SatisAyarlari_BilgiFisiYazici { get; set; }
         public string SatisAyarlari_FisKodu { get; set; }

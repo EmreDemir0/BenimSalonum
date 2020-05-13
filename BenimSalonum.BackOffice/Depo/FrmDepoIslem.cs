@@ -25,7 +25,6 @@ namespace BenimSalonum.BackOffice.Depo
         {
             InitializeComponent();
             cmbYetkiliKodu.DataSource = context.Personeller.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.PersonelKodu).ToList();
-            cmbYetkiliAdi.DataSource = context.Personeller.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.PersonelAdi).ToList();
 
             _entity = entity;
             _entity.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
@@ -65,19 +64,26 @@ namespace BenimSalonum.BackOffice.Depo
 
             if (cmbYetkiliAdi.Text != gelenYetkili)
             {
-                cmbYetkiliAdi.SelectedText = gelenYetkili;
+                if (!string.IsNullOrEmpty(cmbYetkiliAdi.Text))
+                {
+                    cmbYetkiliAdi.Text = null;
+                    cmbYetkiliAdi.SelectedText = gelenYetkili;
+                }
+                else
+                {
+                    cmbYetkiliAdi.SelectedText = gelenYetkili;
+                }
             }
         }
 
-        private void cmbYetkiliAdi_Validated(object sender, EventArgs e)
-        {
-            string secilenAd = cmbYetkiliAdi.SelectedItem.ToString()??"";
-            string gelenKod = context.Personeller.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.PersonelAdi == secilenAd).PersonelKodu;
-
-            if (cmbYetkiliKodu.Text != gelenKod)
-            {
-                cmbYetkiliKodu.SelectedText = gelenKod;
-            }
-        }
+        //private void cmbYetkiliAdi_Validated(object sender, EventArgs e)
+        //{
+        //    string secilenAd = cmbYetkiliAdi.SelectedItem.ToString()??"";
+        //    string gelenKod = context.Personeller.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.PersonelAdi == secilenAd).PersonelKodu;
+        //    if (cmbYetkiliKodu.Text != gelenKod)
+        //    {
+        //        cmbYetkiliKodu.SelectedText = gelenKod;
+        //    }
+        //}
     }
 }

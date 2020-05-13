@@ -98,6 +98,7 @@ namespace BenimSalonum.Admin
             context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == _entity.KullaniciAdi).Aktif = false;            
                 context.SaveChanges();
                 toggleAktif.IsOn = false;
+            this.Close();
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
