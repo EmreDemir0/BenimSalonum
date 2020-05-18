@@ -352,28 +352,31 @@ namespace BenimSalonum.Admin
                             Fis stokDevirFisi = new Fis();
                             StokHareket hareketGiris = new StokHareket();
 
+
+                            //STOK GİRİŞ
+                            stokDevirFisi.FisTuru = "Stok Devir Fişi";
+                            stokDevirFisi.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
+                            stokDevirFisi.Tarih = DateTime.Now;
+                            stokDevirFisi.ToplamTutar = bakiye.StokGiris * item.AlisFiyati1; // bu gereksiz olabilr.
+                            hedefContext.Fisler.Add(stokDevirFisi);
+
+                            hareketGiris.StokId = item.Id;
+                            hareketGiris.Hareket = "Stok Giriş";
+                            hareketGiris.Miktar = bakiye.StokGiris;
+                            hareketGiris.FisKodu = stokDevirFisi.FisKodu;
+                            hareketGiris.BirimFiyati = item.AlisFiyati1;
+                            hareketGiris.Kdv = item.AlisKdv;
+                            hareketGiris.Tarih = DateTime.Now;
+                            hareketGiris.DepoId = toggleDepoAktar.IsOn ? Convert.ToInt32(lookUpDepoKodu.EditValue) : 1;
+                            //Clone aldığımızda problem olmaması için. sadece kaydı ifledik.
                             if (bakiye.StokGiris > 0)
                             {
-                                //STOK GİRİŞ
-                                stokDevirFisi.FisTuru = "Stok Devir Fişi";
-                                stokDevirFisi.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
-                                stokDevirFisi.Tarih = DateTime.Now;
-                                stokDevirFisi.ToplamTutar = bakiye.StokGiris * item.AlisFiyati1; // bu gereksiz olabilr.
-                                hedefContext.Fisler.Add(stokDevirFisi);
-
-                                hareketGiris.StokId = item.Id;
-                                hareketGiris.Hareket = "Stok Giriş";
-                                hareketGiris.Miktar = bakiye.StokGiris;
-                                hareketGiris.FisKodu = stokDevirFisi.FisKodu;
-                                hareketGiris.BirimFiyati = item.AlisFiyati1;
-                                hareketGiris.Kdv = item.AlisKdv;
-                                hareketGiris.Tarih = DateTime.Now;
-                                hareketGiris.DepoId = toggleDepoAktar.IsOn ? Convert.ToInt32(lookUpDepoKodu.EditValue) : 1;
                                 hedefContext.StokHareketleri.Add(hareketGiris);
                             }
+
+                            //STOK ÇIKIŞ
                             if (bakiye.StokCikis > 0)
                             {
-                                //STOK ÇIKIŞ
 
                                 Fis StokCikisDevir = stokDevirFisi.Clone();
                                 StokCikisDevir.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
@@ -393,11 +396,9 @@ namespace BenimSalonum.Admin
                 }
             }
 
+            //CARİ DEVİR İŞLEMLERİ
 
-            //KuLLANICI AKTARMA İŞLEMİNDE YÖNETİCİ OLUSTURULACAK ANCAK 
-            // PROGRAMIN AÇILISINDA GİRİŞ SAYFASINDA YÖNETİCİ OLSUITURMA İŞLEMİNİ BURAYADA TAŞI 
-            // VE O İŞLEMİ SADECE DEVİRDE VE İLK AÇILIŞTA YAP 
-            //YÖNETİCİ YOKSA DİYE KONTROL ET.
+
             hedefContext.SaveChanges();
         }
 

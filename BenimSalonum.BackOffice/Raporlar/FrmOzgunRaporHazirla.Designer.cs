@@ -126,7 +126,8 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("StokDAL", "Stok Listesi", "StokListele"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("CariDAL", "Cari Listesi", "CariListele"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("KasaDAL", "Kasa Listesi", "KasaListele"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("DepoDAL", "Depo Listesi")});
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("DepoDAL", "Depo Listesi", "DepoBazindaStokListele"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("StokHareketDAL", "Stok Hareket Listesi", "GetALL")});
             this.checkedListBoxControl1.Location = new System.Drawing.Point(0, 50);
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
             this.checkedListBoxControl1.Size = new System.Drawing.Size(798, 463);

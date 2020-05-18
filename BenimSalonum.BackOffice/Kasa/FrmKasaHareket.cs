@@ -26,6 +26,7 @@ namespace BenimSalonum.BackOffice.Kasa
             _kasaId = kasaId;
             var kasaBilgi = context.Kasalar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Id == kasaId);
             LblBaslik.Text = kasaBilgi.KasaKodu + " - " + kasaBilgi.KasaAdi + " Hareketleri";
+            Guncelle();
         }
         public void Guncelle()
         {

@@ -67,6 +67,7 @@
             this.toolStripMenuItemSil = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHareket = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGuncelle = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxAcik)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KasaGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KasaGridControl)).BeginInit();
@@ -500,12 +501,23 @@
             this.toolStripMenuItemGuncelle.Text = "Güncelle";
             this.toolStripMenuItemGuncelle.Click += new System.EventHandler(this.toolStripMenuItemGuncelle_Click);
             // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
+            this.dropDownButton1.Location = new System.Drawing.Point(1314, 10);
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.dropDownButton1.Size = new System.Drawing.Size(50, 40);
+            this.dropDownButton1.TabIndex = 31;
+            // 
             // FrmKasaAnasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 736);
             this.ContextMenuStrip = this.contextMenuKasa;
+            this.Controls.Add(this.dropDownButton1);
             this.Controls.Add(this.picBoxAcik);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.LblBaslik);
@@ -568,5 +580,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSil;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHareket;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGuncelle;
+        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
     }
 }

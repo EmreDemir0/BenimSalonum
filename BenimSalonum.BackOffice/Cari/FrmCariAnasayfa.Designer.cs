@@ -549,7 +549,6 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.btnCariFiltreIptal);
             this.splitContainerControl1.Panel1.Controls.Add(this.CariFilterControl);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.dropDownButton1);
             this.splitContainerControl1.Panel2.Controls.Add(this.CariGridControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1364, 686);
@@ -596,13 +595,12 @@
             // 
             // dropDownButton1
             // 
-            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
-            this.dropDownButton1.Location = new System.Drawing.Point(1275, 2);
+            this.dropDownButton1.Location = new System.Drawing.Point(1312, 4);
             this.dropDownButton1.Name = "dropDownButton1";
             this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.dropDownButton1.Size = new System.Drawing.Size(54, 30);
+            this.dropDownButton1.Size = new System.Drawing.Size(50, 40);
             this.dropDownButton1.TabIndex = 30;
             // 
             // contextMenuCari
@@ -665,6 +663,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 736);
             this.ContextMenuStrip = this.contextMenuCari;
+            this.Controls.Add(this.dropDownButton1);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.picBoxAcik);
             this.Controls.Add(this.splitContainerControl1);

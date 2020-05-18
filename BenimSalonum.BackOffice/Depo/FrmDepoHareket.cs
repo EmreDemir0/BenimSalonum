@@ -35,7 +35,7 @@ namespace BenimSalonum.BackOffice.Depo
         private void Guncelle()
         {
             gridcontDepoHareket.DataSource = stokHareketDal.GetALL(context, c => c.DepoId == _depoId);
-            gridcontIstatistik.DataSource = stokHareketDal.DepoStokListele(context, _depoId);
+            gridcontDepoStok.DataSource = stokHareketDal.DepoStokListele(context, _depoId);
             gridcontIstatistik.DataSource = stokHareketDal.DepoIstatistikListele(context, _depoId);
         }
 

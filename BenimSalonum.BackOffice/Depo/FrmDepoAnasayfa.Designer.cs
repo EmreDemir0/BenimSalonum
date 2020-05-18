@@ -62,6 +62,7 @@
             this.colAciklama = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.btnCariFiltreIptal = new DevExpress.XtraEditors.SimpleButton();
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             this.picBoxAcik = new System.Windows.Forms.PictureBox();
             this.contextMenuDepo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemEkle = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,6 @@
             this.toolStripMenuItemSil = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHareket = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGuncelle = new System.Windows.Forms.ToolStripMenuItem();
-            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -432,7 +432,6 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.btnCariFiltre);
             this.splitContainerControl1.Panel1.Controls.Add(this.DepoFilterControl);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.dropDownButton1);
             this.splitContainerControl1.Panel2.Controls.Add(this.DepoGridControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1364, 686);
@@ -451,6 +450,17 @@
             this.btnCariFiltreIptal.Size = new System.Drawing.Size(37, 36);
             this.btnCariFiltreIptal.TabIndex = 9;
             this.btnCariFiltreIptal.Click += new System.EventHandler(this.btnCariFiltreIptal_Click);
+            // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
+            this.dropDownButton1.Location = new System.Drawing.Point(1307, 0);
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.dropDownButton1.Size = new System.Drawing.Size(50, 50);
+            this.dropDownButton1.TabIndex = 31;
             // 
             // picBoxAcik
             // 
@@ -509,23 +519,13 @@
             this.toolStripMenuItemGuncelle.Text = "Güncelle";
             this.toolStripMenuItemGuncelle.Click += new System.EventHandler(this.toolStripMenuItemGuncelle_Click);
             // 
-            // dropDownButton1
-            // 
-            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
-            this.dropDownButton1.Location = new System.Drawing.Point(1281, 2);
-            this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.dropDownButton1.Size = new System.Drawing.Size(54, 30);
-            this.dropDownButton1.TabIndex = 31;
-            // 
             // FrmDepoAnasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 736);
             this.ContextMenuStrip = this.contextMenuDepo;
+            this.Controls.Add(this.dropDownButton1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.picBoxAcik);

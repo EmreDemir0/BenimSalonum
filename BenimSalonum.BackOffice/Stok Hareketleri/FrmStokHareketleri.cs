@@ -19,11 +19,12 @@ namespace BenimSalonum.BackOffice.Stok_Hareketleri
     {
         BenimSalonumContext context = new BenimSalonumContext();
         StokHareketDAL stokHareketDal = new StokHareketDAL();
+        ExportTool export;
 
         public FrmStokHareketleri()
         {
             InitializeComponent();
-
+            export = new ExportTool(this, gridStokHareketGenel, dropDownButton1);
         }
         private void Listele()
         {

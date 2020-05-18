@@ -75,7 +75,8 @@ namespace BenimSalonum.BackOffice.Hızlı_Satış
             KayitKapat();
             hizliSatisGrupDal.AddOrUpDate(context, new HizliSatisGrup
             {
-                GrupAdi = txtGrupAdi.Text,
+                KullaniciID = RoleTool.kullaniciEntity.KullaniciID,
+                GrupAdi = txtGrupAdi.Text
             });
             hizliSatisGrupDal.Save(context);
             txtGrupAdi.Text = "";
@@ -106,13 +107,14 @@ namespace BenimSalonum.BackOffice.Hızlı_Satış
             {
                 foreach (var itemStok in form.secilen)
                 {
-                    if (context.HizliSatislar.Count(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Barkod == itemStok.Barkod) == 0)
+                    if (context.HizliSatislar.Count(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Barkod == itemStok.Barkod && c.GrupId != itemStok.Id) == 0)
                     {
-                        hizliSatisDal.AddOrUpDate(context, new Entities.Tables.HizliSatis
+                        hizliSatisDal.AddOrUpDate(context, new HizliSatis
                         {
                             Barkod = itemStok.Barkod,
                             UrunAdi = itemStok.StokAdi,
                             GrupId = (int)gridViewGrupEkle.GetFocusedRowCellValue(colId),
+                            KullaniciID = RoleTool.kullaniciEntity.KullaniciID
                         });
                         hizliSatisDal.Save(context);
                     }
