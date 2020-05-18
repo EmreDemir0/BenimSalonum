@@ -123,6 +123,7 @@
             this.completionWizardPage1});
             this.wizardControl1.Size = new System.Drawing.Size(898, 648);
             this.wizardControl1.WizardStyle = DevExpress.XtraWizard.WizardStyle.WizardAero;
+            this.wizardControl1.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick_1);
             // 
             // welcomeWizardPage1
             // 

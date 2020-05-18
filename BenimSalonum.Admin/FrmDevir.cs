@@ -28,8 +28,6 @@ namespace BenimSalonum.Admin
 
         SqlConnectionStringBuilder connHedef = new SqlConnectionStringBuilder();
 
-
-
         List<string> dbList;
 
         CodeTool kodOlustur;
@@ -65,7 +63,6 @@ namespace BenimSalonum.Admin
                 CheckButton buton = new CheckButton
                 {
                     Name = item,
-                    //Text = item.Replace("BS",""),
                     Text = item,
                     GroupIndex = 1,
                     Height = 100,
@@ -105,7 +102,7 @@ namespace BenimSalonum.Admin
                 CheckButton buton = new CheckButton
                 {
                     Name = item,
-                    Text = item.Replace("BS",""),
+                    Text = item,
                     GroupIndex = 2,
                     Height = 100,
                     Width = 100
@@ -117,7 +114,7 @@ namespace BenimSalonum.Admin
 
         private void YeniDonemEkle(object sender, EventArgs e)
         {
-            CheckButton butonDonem = (CheckButton)sender;
+            SimpleButton butonDonem = (SimpleButton)sender;
             FrmDonemSec form = new FrmDonemSec();
             form.ShowDialog();
             if (!dbList.Contains("BS" + form.donem))
@@ -239,6 +236,21 @@ namespace BenimSalonum.Admin
         }
         private void DevirYap()
         {
+            //OdemeTuru Aktarımı
+            if (toggleOdemeTuruAktar.IsOn)
+            {
+                foreach (var item in kaynakContext.OdemeTurleri.AsNoTracking().ToList())
+                {
+                    hedefContext.OdemeTurleri.Add(item);
+                }
+            }
+            else
+            {
+                OdemeTuru yeniOdeme = new OdemeTuru();
+                yeniOdeme.OdemeTuruKodu = "001";
+                yeniOdeme.OdemeTuruAdi = "Nakit";
+                hedefContext.OdemeTurleri.Add(yeniOdeme);
+            }
             //Kasa Aktarımı
             if (toggleKasaAktar.IsOn)
             {
@@ -253,7 +265,24 @@ namespace BenimSalonum.Admin
                 yeniKasa.KasaKodu = "001";
                 yeniKasa.KasaAdi = "Merkez Kasa";
                 hedefContext.Kasalar.Add(yeniKasa);
+            }          
+            //Depo Aktarımı
+            if (toggleDepoAktar.IsOn)
+            {
+                foreach (var item in kaynakContext.Depolar.AsNoTracking().ToList())
+                {
+                    hedefContext.Depolar.Add(item);
+                }
             }
+            else
+            {
+                Depo yeniDepo = new Depo();
+                yeniDepo.DepoKodu = "001";
+                yeniDepo.DepoAdi = "Merkez Depo";
+                hedefContext.Depolar.Add(yeniDepo);
+            }
+
+            hedefContext.SaveChanges();
             //Tanım Aktarımı
             if (toggleTanimlariAktar.IsOn)
             {
@@ -303,36 +332,6 @@ namespace BenimSalonum.Admin
                 }
             }
 
-            //Depo Aktarımı
-            if (toggleDepoAktar.IsOn)
-            {
-                foreach (var item in kaynakContext.Depolar.AsNoTracking().ToList())
-                {
-                    hedefContext.Depolar.Add(item);
-                }
-            }
-            else
-            {
-                Depo yeniDepo = new Depo();
-                yeniDepo.DepoKodu = "001";
-                yeniDepo.DepoAdi = "Merkez Depo";
-                hedefContext.Depolar.Add(yeniDepo);
-            }
-            //OdemeTuru Aktarımı
-            if (toggleOdemeTuruAktar.IsOn)
-            {
-                foreach (var item in kaynakContext.OdemeTurleri.AsNoTracking().ToList())
-                {
-                    hedefContext.OdemeTurleri.Add(item);
-                }
-            }
-            else
-            {
-                OdemeTuru yeniOdeme = new OdemeTuru();
-                yeniOdeme.OdemeTuruKodu = "001";
-                yeniOdeme.OdemeTuruAdi = "Nakit";
-                hedefContext.OdemeTurleri.Add(yeniOdeme);
-            }
             //Stok Aktarımı
             if (toggleStokAktar.IsOn)
             {
@@ -374,7 +373,7 @@ namespace BenimSalonum.Admin
 
                             //STOK GİRİŞ
                             stokDevirFisi.FisTuru = "Stok Devir Fişi";
-                            stokDevirFisi.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
+                            stokDevirFisi.FisKodu = kodOlustur.yeniDevirFisiOlustur();
                             stokDevirFisi.Tarih = DateTime.Now;
                             stokDevirFisi.ToplamTutar = bakiye.StokGiris * item.AlisFiyati1; // bu gereksiz olabilr.
                             hedefContext.Fisler.Add(stokDevirFisi);
@@ -398,7 +397,7 @@ namespace BenimSalonum.Admin
                             {
 
                                 Fis StokCikisDevir = stokDevirFisi.Clone();
-                                StokCikisDevir.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
+                                StokCikisDevir.FisKodu = kodOlustur.yeniDevirFisiOlustur();
                                 StokCikisDevir.ToplamTutar = bakiye.StokCikis * item.SatisFiyati1;
                                 hedefContext.Fisler.Add(StokCikisDevir);
 
@@ -416,7 +415,110 @@ namespace BenimSalonum.Admin
             }
 
             //CARİ DEVİR İŞLEMLERİ
+            if (toggleCariAktar.IsOn)
+            {
 
+
+                foreach (var item in kaynakContext.Cariler.AsNoTracking().ToList())
+                {
+                    CariDAL cariDal = new CariDAL();
+                    CariBakiye bakiye = cariDal.CariBakiyesi(kaynakContext, item.Id);
+                    hedefContext.Cariler.Add(item);
+                    if (toggleCariBakiyeAktar.IsOn && toggleCariBorcAlacakAktar.IsOn)
+                    {
+                        if (bakiye.Bakiye != 0)
+                        {
+                            Fis cariDevir = new Fis();
+                            cariDevir.CariId = item.Id;
+                            cariDevir.FisTuru = "Cari Devir Fişi";
+                            cariDevir.Tarih = DateTime.Now;
+                            cariDevir.FisKodu = kodOlustur.yeniDevirFisiOlustur();
+                            cariDevir.ToplamTutar = Math.Abs(bakiye.Bakiye);
+                            if (bakiye.Bakiye < 0)
+                            {
+                                cariDevir.Borc = Math.Abs(bakiye.Bakiye);
+                                cariDevir.Alacak = null;
+                                hedefContext.Fisler.Add(cariDevir);
+
+                                KasaHareket kasaBorc = new KasaHareket();
+                                kasaBorc.FisKodu = cariDevir.FisKodu;
+                                kasaBorc.CariId = item.Id;
+                                kasaBorc.Hareket = "Kasa Çıkış";
+                                kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
+                                kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                                kasaBorc.Tarih = DateTime.Now;
+                                kasaBorc.Tutar = Math.Abs(bakiye.Bakiye);
+                                hedefContext.KasaHareketleri.Add(kasaBorc);
+                            }
+                            else
+                            {
+                                cariDevir.Borc = null;
+                                cariDevir.Alacak = Math.Abs(bakiye.Bakiye); ;
+                                hedefContext.Fisler.Add(cariDevir);
+
+                                KasaHareket kasaAlacak = new KasaHareket();
+                                kasaAlacak.FisKodu = cariDevir.FisKodu;
+                                kasaAlacak.CariId = item.Id;
+                                kasaAlacak.Hareket = "Kasa Giriş";
+                                kasaAlacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
+                                kasaAlacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                                kasaAlacak.Tarih = DateTime.Now;
+                                kasaAlacak.Tutar = Math.Abs(bakiye.Bakiye);
+                                hedefContext.KasaHareketleri.Add(kasaAlacak);
+                            }
+                        }
+                    }
+                    else if (toggleCariBakiyeAktar.IsOn && !toggleCariBorcAlacakAktar.IsOn)
+                    {
+                        if (bakiye.Alacak != 0)
+                        {
+                            Fis alacakFis = new Fis();
+                            alacakFis.CariId = item.Id;
+                            alacakFis.FisTuru = "Cari Devir Fişi";
+                            alacakFis.Tarih = DateTime.Now;
+                            alacakFis.FisKodu = kodOlustur.yeniDevirFisiOlustur();
+                            alacakFis.Alacak = Math.Abs(bakiye.Bakiye);
+                            alacakFis.Borc = null;
+                            alacakFis.ToplamTutar = bakiye.Alacak;
+
+                            hedefContext.Fisler.Add(alacakFis);
+
+                            KasaHareket alacak = new KasaHareket();
+                            alacak.FisKodu = alacakFis.FisKodu;
+                            alacak.CariId = item.Id;
+                            alacak.Hareket = "Kasa Giriş";
+                            alacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
+                            alacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                            alacak.Tarih = DateTime.Now;
+                            alacak.Tutar = Math.Abs(bakiye.Alacak);
+                            hedefContext.KasaHareketleri.Add(alacak);
+                        }
+                        if (bakiye.Borc != 0)
+                        {
+                            Fis borcFis = new Fis();
+                            borcFis.CariId = item.Id;
+                            borcFis.FisTuru = "Cari Devir Fişi";
+                            borcFis.Tarih = DateTime.Now;
+                            borcFis.FisKodu = kodOlustur.yeniDevirFisiOlustur();
+                            borcFis.Alacak = null;
+                            borcFis.Borc = bakiye.Borc;
+                            borcFis.ToplamTutar = bakiye.Alacak;
+
+                            hedefContext.Fisler.Add(borcFis);
+
+                            KasaHareket kasaBorc = new KasaHareket();
+                            kasaBorc.FisKodu = borcFis.FisKodu;
+                            kasaBorc.CariId = item.Id;
+                            kasaBorc.Hareket = "Kasa Çıkış";
+                            kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
+                            kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                            kasaBorc.Tarih = DateTime.Now;
+                            kasaBorc.Tutar = Math.Abs(bakiye.Alacak);
+                            hedefContext.KasaHareketleri.Add(kasaBorc);
+                        }
+                    }
+                }
+            }
 
             hedefContext.SaveChanges();
         }
@@ -431,5 +533,9 @@ namespace BenimSalonum.Admin
             }
         }
 
+        private void wizardControl1_FinishClick_1(object sender, CancelEventArgs e)
+        {
+            DevirYap();
+        }
     }
 }
