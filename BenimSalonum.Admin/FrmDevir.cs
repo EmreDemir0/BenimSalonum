@@ -237,6 +237,8 @@ namespace BenimSalonum.Admin
         private void DevirYap()
         {
             //OdemeTuru Aktarımı
+            OdemeTuru yeniOdeme = new OdemeTuru();
+
             if (toggleOdemeTuruAktar.IsOn)
             {
                 foreach (var item in kaynakContext.OdemeTurleri.AsNoTracking().ToList())
@@ -246,12 +248,13 @@ namespace BenimSalonum.Admin
             }
             else
             {
-                OdemeTuru yeniOdeme = new OdemeTuru();
                 yeniOdeme.OdemeTuruKodu = "001";
                 yeniOdeme.OdemeTuruAdi = "Nakit";
                 hedefContext.OdemeTurleri.Add(yeniOdeme);
             }
             //Kasa Aktarımı
+            Kasa yeniKasa = new Kasa();
+
             if (toggleKasaAktar.IsOn)
             {
                 foreach (var item in kaynakContext.Kasalar.AsNoTracking().ToList())
@@ -261,12 +264,14 @@ namespace BenimSalonum.Admin
             }
             else
             {
-                Kasa yeniKasa = new Kasa();
                 yeniKasa.KasaKodu = "001";
                 yeniKasa.KasaAdi = "Merkez Kasa";
                 hedefContext.Kasalar.Add(yeniKasa);
-            }          
+            }
+
             //Depo Aktarımı
+            Depo yeniDepo = new Depo();
+
             if (toggleDepoAktar.IsOn)
             {
                 foreach (var item in kaynakContext.Depolar.AsNoTracking().ToList())
@@ -276,7 +281,6 @@ namespace BenimSalonum.Admin
             }
             else
             {
-                Depo yeniDepo = new Depo();
                 yeniDepo.DepoKodu = "001";
                 yeniDepo.DepoAdi = "Merkez Depo";
                 hedefContext.Depolar.Add(yeniDepo);
@@ -385,7 +389,7 @@ namespace BenimSalonum.Admin
                             hareketGiris.BirimFiyati = item.AlisFiyati1;
                             hareketGiris.Kdv = item.AlisKdv;
                             hareketGiris.Tarih = DateTime.Now;
-                            hareketGiris.DepoId = toggleDepoAktar.IsOn ? Convert.ToInt32(lookUpDepoKodu.EditValue) : 1;
+                            hareketGiris.DepoId = toggleDepoAktar.IsOn ? Convert.ToInt32(lookUpDepoKodu.EditValue) : yeniDepo.Id;
                             //Clone aldığımızda problem olmaması için. sadece kaydı ifledik.
                             if (bakiye.StokGiris > 0)
                             {
@@ -444,8 +448,8 @@ namespace BenimSalonum.Admin
                                 kasaBorc.FisKodu = cariDevir.FisKodu;
                                 kasaBorc.CariId = item.Id;
                                 kasaBorc.Hareket = "Kasa Çıkış";
-                                kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
-                                kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                                kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : yeniKasa.Id;
+                                kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : yeniOdeme.Id;
                                 kasaBorc.Tarih = DateTime.Now;
                                 kasaBorc.Tutar = Math.Abs(bakiye.Bakiye);
                                 hedefContext.KasaHareketleri.Add(kasaBorc);
@@ -460,8 +464,8 @@ namespace BenimSalonum.Admin
                                 kasaAlacak.FisKodu = cariDevir.FisKodu;
                                 kasaAlacak.CariId = item.Id;
                                 kasaAlacak.Hareket = "Kasa Giriş";
-                                kasaAlacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
-                                kasaAlacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                                kasaAlacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : yeniKasa.Id;
+                                kasaAlacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : yeniOdeme.Id;
                                 kasaAlacak.Tarih = DateTime.Now;
                                 kasaAlacak.Tutar = Math.Abs(bakiye.Bakiye);
                                 hedefContext.KasaHareketleri.Add(kasaAlacak);
@@ -487,8 +491,8 @@ namespace BenimSalonum.Admin
                             alacak.FisKodu = alacakFis.FisKodu;
                             alacak.CariId = item.Id;
                             alacak.Hareket = "Kasa Giriş";
-                            alacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
-                            alacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                            alacak.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : yeniKasa.Id;
+                            alacak.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : yeniOdeme.Id;
                             alacak.Tarih = DateTime.Now;
                             alacak.Tutar = Math.Abs(bakiye.Alacak);
                             hedefContext.KasaHareketleri.Add(alacak);
@@ -510,8 +514,8 @@ namespace BenimSalonum.Admin
                             kasaBorc.FisKodu = borcFis.FisKodu;
                             kasaBorc.CariId = item.Id;
                             kasaBorc.Hareket = "Kasa Çıkış";
-                            kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : 1;
-                            kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : 1;
+                            kasaBorc.KasaId = toggleKasaAktar.IsOn ? Convert.ToInt32(lookUpKasaKodu.EditValue) : yeniKasa.Id;
+                            kasaBorc.OdemeTuruId = toggleOdemeTuruAktar.IsOn ? Convert.ToInt32(lookUpOdemeTuruKodu.EditValue) : yeniOdeme.Id;
                             kasaBorc.Tarih = DateTime.Now;
                             kasaBorc.Tutar = Math.Abs(bakiye.Alacak);
                             hedefContext.KasaHareketleri.Add(kasaBorc);
