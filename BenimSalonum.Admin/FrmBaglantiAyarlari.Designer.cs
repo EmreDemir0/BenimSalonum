@@ -45,6 +45,7 @@
             this.checkWindows = new DevExpress.XtraEditors.CheckButton();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.btnTest = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDevir = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).BeginInit();
@@ -232,11 +233,23 @@
             this.btnTest.Text = "Server Test";
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // btnDevir
+            // 
+            this.btnDevir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.btnDevir.Location = new System.Drawing.Point(110, 334);
+            this.btnDevir.Name = "btnDevir";
+            this.btnDevir.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.btnDevir.Size = new System.Drawing.Size(139, 39);
+            this.btnDevir.TabIndex = 35;
+            this.btnDevir.Text = "Devir";
+            this.btnDevir.Click += new System.EventHandler(this.btnDevir_Click);
+            // 
             // FrmBaglantiAyarlari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 333);
+            this.ClientSize = new System.Drawing.Size(368, 378);
+            this.Controls.Add(this.btnDevir);
             this.Controls.Add(this.LblBaslik);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.checkSql);
@@ -278,5 +291,6 @@
         private DevExpress.XtraEditors.CheckButton checkWindows;
         private DevExpress.XtraEditors.SimpleButton btnKaydet;
         private DevExpress.XtraEditors.SimpleButton btnTest;
+        private DevExpress.XtraEditors.SimpleButton btnDevir;
     }
 }

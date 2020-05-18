@@ -123,5 +123,10 @@ namespace BenimSalonum.Admin
                 txtKullaniciAdi.Enabled = false;
             }
         }
+
+        private void btnDevir_Click(object sender, EventArgs e)
+        {
+            FrmDevir frmDevir = new FrmDevir();
+            frmDevir.ShowDialog();        }
     }
 }

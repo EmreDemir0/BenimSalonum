@@ -22,7 +22,9 @@ namespace BenimSalonum.Entities.Tools
         {
             Cari,
             Stok,
-            Fis
+            Fis,
+            Front,
+            Devir
         }
         public CodeTool(XtraForm form, Table table)
         {
@@ -115,6 +117,32 @@ namespace BenimSalonum.Entities.Tools
 
             return onEki + sifirDizisi + sonDeger;
         }
+        public string yeniDevirFisiOlustur()
+        {
+            var kod = _context.Kodlar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == "Devir" && c.Tablo == "Devir");
+            string onEki = kod.OnEki;
+            string sonDeger = kod.SonDeger.ToString();
+            int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
+            string sifirDizisi = new string('0', sifirSayisi);
+            //      kod.SonDeger++;
+            _context.SaveChanges();
+
+            return onEki + sifirDizisi + sonDeger;
+        }
+
+        public string yeniFrontOfficeKodOlustur()
+        {
+            var kod = _context.Kodlar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == "FIS" && c.Tablo == "Front");
+            string onEki = kod.OnEki;
+            string sonDeger = kod.SonDeger.ToString();
+            int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
+            string sifirDizisi = new string('0', sifirSayisi);
+            //      kod.SonDeger++;
+            _context.SaveChanges();
+
+            return onEki + sifirDizisi + sonDeger;
+        }
+
         public void KodArttirma()
         {
             TextEdit text = (TextEdit)_form.Controls.Find("txtKod", true).SingleOrDefault();

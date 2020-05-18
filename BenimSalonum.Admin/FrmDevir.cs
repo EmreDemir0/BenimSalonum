@@ -14,6 +14,7 @@ using BenimSalonum.Entities.Tables;
 using BenimSalonum.Entities.Tables.OtherTables;
 using BenimSalonum.Entities.DataAccess;
 using BenimSalonum.Entities.Tools;
+using System.Data.Entity;
 
 namespace BenimSalonum.Admin
 {
@@ -47,8 +48,8 @@ namespace BenimSalonum.Admin
             // yinede .
             //Tablo adınıda programın açılışında settings ini ye kaydettiği connection stringten al .
             InitializeComponent();
-            kodOlustur = new CodeTool(this, CodeTool.Table.Fis);
-            connKaynak.DataSource = "(localdb)";
+            kodOlustur = new CodeTool(this, CodeTool.Table.Devir);
+            connKaynak.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
             connKaynak.InitialCatalog = "master";
             connKaynak.IntegratedSecurity = true;
             //hedefContext.Database.SqlQuery()
@@ -79,7 +80,7 @@ namespace BenimSalonum.Admin
         {
             CheckButton buton = (CheckButton)sender;
 
-            connKaynak.DataSource = "DESKTOP-DBCCIPQ";
+            connKaynak.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
             connKaynak.InitialCatalog = buton.Text;
             connKaynak.UserID = "sa";
             connKaynak.Password = "Emre1502.";
@@ -104,8 +105,7 @@ namespace BenimSalonum.Admin
                 CheckButton buton = new CheckButton
                 {
                     Name = item,
-                    //Text = item.Replace("BS",""),
-                    Text = item,
+                    Text = item.Replace("BS",""),
                     GroupIndex = 2,
                     Height = 100,
                     Width = 100
@@ -128,7 +128,7 @@ namespace BenimSalonum.Admin
                     CheckButton buton = new CheckButton
                     {
                         Name = "BS" + form.donem,
-                        //Text = item.Replace("BS",""),
+                        //Text = item.Replace("BS", ""),
                         Text = "BS" + form.donem,
                         GroupIndex = 2,
                         Height = 100,
@@ -137,7 +137,7 @@ namespace BenimSalonum.Admin
                     buton.Click += HedefSec;
                     flowHedef.Controls.Add(buton);
 
-                    connHedef.DataSource = "DESKTOP-DBCCIPQ";
+                    connHedef.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
                     connHedef.InitialCatalog = buton.Text;
                     connHedef.UserID = "sa";
                     connHedef.Password = "Emre1502.";
@@ -157,7 +157,7 @@ namespace BenimSalonum.Admin
         {
             CheckButton buton = (CheckButton)sender;
 
-            connHedef.DataSource = "DESKTOP-DBCCIPQ";
+            connHedef.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
             connHedef.InitialCatalog = buton.Text;
             connHedef.UserID = "sa";
             connHedef.Password = "Emre1502.";
@@ -337,7 +337,26 @@ namespace BenimSalonum.Admin
             if (toggleStokAktar.IsOn)
             {
                 StokDAL stokDal = new StokDAL();
-
+                //iNDİRİM AKTARIMI
+                if (toggleStokIndirimAktar.IsOn)
+                {
+                    foreach (var itemIndirim in kaynakContext.Indirimler.AsNoTracking().ToList())
+                    {
+                        hedefContext.Indirimler.Add(itemIndirim);
+                    }
+                }
+                // HİZLİ SATIŞLAR AKTARIMI 
+                if (toggleStokHizliSatisAktar.IsOn)
+                {
+                    foreach (var itemHizliSatisGrup in kaynakContext.HizliSatisGruplari.AsNoTracking().ToList())
+                    {
+                        hedefContext.HizliSatisGruplari.Add(itemHizliSatisGrup);
+                    }
+                    foreach (var itemHizliSatis in kaynakContext.HizliSatislar.AsNoTracking().ToList())
+                    {
+                        hedefContext.HizliSatislar.Add(itemHizliSatis);
+                    }
+                }
 
                 foreach (var item in kaynakContext.Stoklar.AsNoTracking().ToList())
                 {

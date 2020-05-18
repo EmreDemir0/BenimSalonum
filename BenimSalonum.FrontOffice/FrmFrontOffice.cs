@@ -289,7 +289,7 @@ namespace BenimSalonum.FrontOffice
 
             FisTemizle();
 
-            txtKod.Text = kodolustur.KodOlustur();
+            txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
             kodolustur.KodArttirma();
         }
 
@@ -464,7 +464,7 @@ namespace BenimSalonum.FrontOffice
 
             SettingsTool.Kaydet();
 
-            txtKod.Text = kodolustur.KodOlustur();
+            txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
             kodolustur.KodArttirma();
 
             tekParca = false;
@@ -629,7 +629,7 @@ namespace BenimSalonum.FrontOffice
 
             FisTemizle();
 
-            txtKod.Text = kodolustur.KodOlustur();
+            txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
             kodolustur.KodArttirma();
         }
 
