@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDevir));
             this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.flowKaynak = new System.Windows.Forms.FlowLayoutPanel();
@@ -79,10 +81,13 @@
             this.toggleStokHareketAktar = new DevExpress.XtraEditors.ToggleSwitch();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleStokAktar = new DevExpress.XtraEditors.ToggleSwitch();
+            this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.welcomeWizardPage1.SuspendLayout();
             this.wizardPage1.SuspendLayout();
+            this.completionWizardPage1.SuspendLayout();
             this.wizardPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleKullaniciAktar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleOdemeTuruAktar.Properties)).BeginInit();
@@ -106,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokGirisCikisAktar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokHareketAktar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokAktar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -115,13 +121,18 @@
             this.wizardControl1.Controls.Add(this.completionWizardPage1);
             this.wizardControl1.Controls.Add(this.wizardPage2);
             this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wizardControl1.FinishText = "&Bitir & Kaydet";
+            this.wizardControl1.HelpText = "&Yardım";
             this.wizardControl1.Name = "wizardControl1";
+            this.wizardControl1.NextText = "&İleri >";
             this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
             this.welcomeWizardPage1,
             this.wizardPage1,
             this.wizardPage2,
             this.completionWizardPage1});
+            this.wizardControl1.PreviousText = "< &Geri";
             this.wizardControl1.Size = new System.Drawing.Size(898, 648);
+            this.wizardControl1.Text = "BenimSalonum Devir Sihirrbazı";
             this.wizardControl1.WizardStyle = DevExpress.XtraWizard.WizardStyle.WizardAero;
             this.wizardControl1.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick_1);
             // 
@@ -157,8 +168,10 @@
             // 
             // completionWizardPage1
             // 
+            this.completionWizardPage1.Controls.Add(this.pictureBox1);
             this.completionWizardPage1.Name = "completionWizardPage1";
             this.completionWizardPage1.Size = new System.Drawing.Size(838, 481);
+            this.completionWizardPage1.Text = "Veri Girişleri ve Tüm Seçimler Tamamlandı Kayıt Edilmesi İçin Bitir\'e Basınız.";
             // 
             // wizardPage2
             // 
@@ -660,6 +673,23 @@
             this.toggleStokAktar.Size = new System.Drawing.Size(178, 21);
             this.toggleStokAktar.TabIndex = 29;
             // 
+            // ımageList1
+            // 
+            this.ımageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ımageList1.ImageStream")));
+            this.ımageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.ımageList1.Images.SetKeyName(0, "Yedekleme.ico");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(838, 481);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmDevir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -674,6 +704,7 @@
             this.wizardControl1.ResumeLayout(false);
             this.welcomeWizardPage1.ResumeLayout(false);
             this.wizardPage1.ResumeLayout(false);
+            this.completionWizardPage1.ResumeLayout(false);
             this.wizardPage2.ResumeLayout(false);
             this.wizardPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleKullaniciAktar.Properties)).EndInit();
@@ -698,6 +729,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokGirisCikisAktar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokHareketAktar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleStokAktar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -755,5 +787,7 @@
         private DevExpress.XtraEditors.ToggleSwitch toggleStokHareketAktar;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ToggleSwitch toggleStokAktar;
+        private System.Windows.Forms.ImageList ımageList1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

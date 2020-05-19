@@ -15,6 +15,7 @@ using BenimSalonum.Entities.Tables.OtherTables;
 using BenimSalonum.Entities.DataAccess;
 using BenimSalonum.Entities.Tools;
 using System.Data.Entity;
+using BenimSalonum.Entities.Tools.LoadingTool;
 
 namespace BenimSalonum.Admin
 {
@@ -32,6 +33,8 @@ namespace BenimSalonum.Admin
 
         CodeTool kodOlustur;
 
+        LoadingTool yukelemeFormu;
+
         public FrmDevir()
         {
             //Ayrı bir program daha tasarlayıp entity ile içerisinde bütün veritabanlarının listelendiği bir uygulama
@@ -46,6 +49,8 @@ namespace BenimSalonum.Admin
             // yinede .
             //Tablo adınıda programın açılışında settings ini ye kaydettiği connection stringten al .
             InitializeComponent();
+            yukelemeFormu = new LoadingTool(this);
+
             kodOlustur = new CodeTool(this, CodeTool.Table.Devir);
             connKaynak.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
             connKaynak.InitialCatalog = "master";
@@ -64,7 +69,7 @@ namespace BenimSalonum.Admin
                 {
                     Name = item,
                     Text = item,
-                    GroupIndex = 1,
+                    GroupIndex = 1,                  
                     Height = 100,
                     Width = 100
                 };
@@ -121,6 +126,7 @@ namespace BenimSalonum.Admin
             {
                 if (!string.IsNullOrEmpty(form.donem))
                 {
+                    yukelemeFormu.AnimasyonBaslat();
                     dbList.Add("BS" + form.donem);
                     CheckButton buton = new CheckButton
                     {
@@ -142,6 +148,8 @@ namespace BenimSalonum.Admin
                     hedefContext = new BenimSalonumContext(connHedef.ConnectionString);
 
                     hedefContext.Database.CreateIfNotExists();
+                    yukelemeFormu.AnimasyonBitir();
+
                 }
             }
             else

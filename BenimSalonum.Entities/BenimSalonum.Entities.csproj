@@ -164,6 +164,13 @@
     <Compile Include="Tools\ConverterTool.cs" />
     <Compile Include="Tools\ExchangeTool.cs" />
     <Compile Include="Tools\ExportTool.cs" />
+    <Compile Include="Tools\LoadingTool\FrmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\LoadingTool\FrmLoading.Designer.cs">
+      <DependentUpon>FrmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\LoadingTool\LoadingTool.cs" />
     <Compile Include="Tools\ReportsPrintTool.cs" />
     <Compile Include="Tools\RoleTool.cs" />
     <Compile Include="Tools\SettingsTool.cs" />
@@ -199,6 +206,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\LoadingTool\FrmLoading.resx">
+      <DependentUpon>FrmLoading.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
