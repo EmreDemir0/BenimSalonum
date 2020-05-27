@@ -13,9 +13,12 @@ namespace BenimSalonum.Entities.Context
         {//SettingsTool.AyarOku(SettingsTool.Ayarlar.DataBaseAyarlari_BaglantiCumlesi) ?? "BenimSalonumContext"
             Database.SetInitializer<BenimSalonumContext>(new MigrateDatabaseToLatestVersion<BenimSalonumContext, Configuration>());
         }
-        public BenimSalonumContext(string connString) : base(connString)
+        public BenimSalonumContext(string connString,bool olustur =false) : base(connString)
         {
-            Database.SetInitializer<BenimSalonumContext>(new MigrateDatabaseToLatestVersion<BenimSalonumContext, Configuration>());
+            if (olustur)
+            {
+                Database.SetInitializer<BenimSalonumContext>(new MigrateDatabaseToLatestVersion<BenimSalonumContext, Configuration>());
+            }
         }
         public DbSet<Stok> Stoklar { get; set; }
         public DbSet<Cari> Cariler { get; set; }

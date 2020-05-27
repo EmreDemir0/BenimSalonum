@@ -105,7 +105,7 @@
             this.colTutar.OptionsColumn.AllowEdit = false;
             this.colTutar.OptionsColumn.ShowInCustomizationForm = false;
             this.colTutar.Visible = true;
-            this.colTutar.VisibleIndex = 1;
+            this.colTutar.VisibleIndex = 8;
             // 
             // colAciklama
             // 
@@ -115,7 +115,7 @@
             this.colAciklama.OptionsColumn.AllowEdit = false;
             this.colAciklama.OptionsColumn.ShowInCustomizationForm = false;
             this.colAciklama.Visible = true;
-            this.colAciklama.VisibleIndex = 0;
+            this.colAciklama.VisibleIndex = 10;
             // 
             // splitContainer2
             // 
@@ -170,7 +170,7 @@
             // colOdemeTuru
             // 
             this.colOdemeTuru.Caption = "Ödeme Türü";
-            this.colOdemeTuru.FieldName = "OdemeTuru";
+            this.colOdemeTuru.FieldName = "OdemeTuruAdi";
             this.colOdemeTuru.Name = "colOdemeTuru";
             this.colOdemeTuru.Visible = true;
             this.colOdemeTuru.VisibleIndex = 0;
@@ -265,12 +265,12 @@
             this.colTarih.OptionsColumn.AllowEdit = false;
             this.colTarih.OptionsColumn.ShowInCustomizationForm = false;
             this.colTarih.Visible = true;
-            this.colTarih.VisibleIndex = 2;
+            this.colTarih.VisibleIndex = 9;
             // 
             // colCariAdi
             // 
             this.colCariAdi.Caption = "Cari Adı";
-            this.colCariAdi.FieldName = "CariAdi";
+            this.colCariAdi.FieldName = "Cari.CariAdi";
             this.colCariAdi.Name = "colCariAdi";
             this.colCariAdi.OptionsColumn.AllowEdit = false;
             this.colCariAdi.OptionsColumn.ShowInCustomizationForm = false;
@@ -322,7 +322,7 @@
             this.colFisKodu.OptionsColumn.AllowEdit = false;
             this.colFisKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colFisKodu.Visible = true;
-            this.colFisKodu.VisibleIndex = 10;
+            this.colFisKodu.VisibleIndex = 0;
             // 
             // colHareket
             // 
@@ -332,7 +332,7 @@
             this.colHareket.OptionsColumn.AllowEdit = false;
             this.colHareket.OptionsColumn.ShowInCustomizationForm = false;
             this.colHareket.Visible = true;
-            this.colHareket.VisibleIndex = 9;
+            this.colHareket.VisibleIndex = 1;
             // 
             // colKasaKodu
             // 
@@ -342,7 +342,7 @@
             this.colKasaKodu.OptionsColumn.AllowEdit = false;
             this.colKasaKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colKasaKodu.Visible = true;
-            this.colKasaKodu.VisibleIndex = 8;
+            this.colKasaKodu.VisibleIndex = 7;
             // 
             // colKasaAdi
             // 
@@ -352,7 +352,7 @@
             this.colKasaAdi.OptionsColumn.AllowEdit = false;
             this.colKasaAdi.OptionsColumn.ShowInCustomizationForm = false;
             this.colKasaAdi.Visible = true;
-            this.colKasaAdi.VisibleIndex = 7;
+            this.colKasaAdi.VisibleIndex = 6;
             // 
             // colOdemeTuruKodu
             // 
@@ -362,7 +362,7 @@
             this.colOdemeTuruKodu.OptionsColumn.AllowEdit = false;
             this.colOdemeTuruKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colOdemeTuruKodu.Visible = true;
-            this.colOdemeTuruKodu.VisibleIndex = 6;
+            this.colOdemeTuruKodu.VisibleIndex = 5;
             // 
             // colOdemeTuruAdi
             // 
@@ -372,17 +372,17 @@
             this.colOdemeTuruAdi.OptionsColumn.AllowEdit = false;
             this.colOdemeTuruAdi.OptionsColumn.ShowInCustomizationForm = false;
             this.colOdemeTuruAdi.Visible = true;
-            this.colOdemeTuruAdi.VisibleIndex = 5;
+            this.colOdemeTuruAdi.VisibleIndex = 4;
             // 
             // colCariKodu
             // 
             this.colCariKodu.Caption = "Cari Kodu";
-            this.colCariKodu.FieldName = "CariKodu";
+            this.colCariKodu.FieldName = "Cari.CariKodu";
             this.colCariKodu.Name = "colCariKodu";
             this.colCariKodu.OptionsColumn.AllowEdit = false;
             this.colCariKodu.OptionsColumn.ShowInCustomizationForm = false;
             this.colCariKodu.Visible = true;
-            this.colCariKodu.VisibleIndex = 4;
+            this.colCariKodu.VisibleIndex = 2;
             // 
             // groupControl2
             // 

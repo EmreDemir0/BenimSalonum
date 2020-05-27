@@ -192,8 +192,7 @@ namespace BenimSalonum.BackOffice.Ana_Menü
             if (frmEtiketOlustur == null || frmEtiketOlustur.IsDisposed)
             {
                 frmEtiketOlustur = new FrmEtiketOlustur();
-                frmEtiketOlustur.MdiParent = this;
-                frmEtiketOlustur.Show();
+                frmEtiketOlustur.ShowDialog();
             }
         }
 

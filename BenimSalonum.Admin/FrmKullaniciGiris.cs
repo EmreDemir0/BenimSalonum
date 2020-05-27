@@ -15,6 +15,10 @@ using BenimSalonum.Entities.Tables;
 using System.Net;
 using System.Reflection;
 using System.Data.SqlClient;
+using DevExpress.Internal;
+using DevExpress.XtraEditors.Drawing;
+using BenimSalonum.Entities.Tools.LoadingTool;
+using BenimSalonum.Entities.Tables.OtherTables;
 
 namespace BenimSalonum.Admin
 {
@@ -22,9 +26,17 @@ namespace BenimSalonum.Admin
     {
         BenimSalonumContext context = new BenimSalonumContext();
         public bool girisBasarili = false;
+        List<string> dbList = new List<string>();
+        LoadingTool animasyon;
+
+        SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
+
         public FrmKullaniciGiris()
         {
             InitializeComponent();
+            animasyon = new LoadingTool(this);
+            //güncellemeleri giriş butonuna bastığında yapabilirsin yada direkt olarak herkes güncellesin.
+            //zaten offline çalısmıyor internet varsada güncellesin.
 
             if (!InternetKontrol())
             {
@@ -34,82 +46,34 @@ namespace BenimSalonum.Admin
                 }
             }
 
-            //SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder();
-            //sqlConnectionStringBuilder.ConnectionString = SettingsTool.AyarOku(SettingsTool.Ayarlar.DataBaseAyarlari_BaglantiCumlesi);
-
-
-            //if (!ConnectionTool.CheckConnection(sqlConnectionStringBuilder.ConnectionString))
-            //{
-            //    FrmBaglantiAyarlari frmBaglantiAyarlari = new FrmBaglantiAyarlari();
-            //    frmBaglantiAyarlari.ShowDialog();
-
-            //}
-
-            //BURAYA VERİ TABANI İLE EŞ ZAMANLI ÇALIŞAN EĞER DB ERİŞİM VARSA BU USERİN STRİNGİNİ DB İLE SETTİNGS.İNİ DEKİNİ KIYASLA FARKLIYSA DB DEKİNİ AL SETTİNG İNİ İPTAL OLAMIYORU ÇÜNKÜ CONTEXTE OKUTMAK İÇİN DEĞİŞKEN KULLANMAYI DENE
-            //DEĞİŞKENİDE FORM GENELİNDE ATA VE PARAMETRE OLARAK GÖNDER. DENE.
-
-            WebClient indir = new WebClient();
-            string programVersion = Assembly.Load("BenimSalonum.BackOffice").GetName().Version.ToString();
-
-            string guncelVersion = indir.DownloadString("http://localhost/version.txt");
-
-            if (programVersion != guncelVersion)
-            {
-                if (Convert.ToBoolean(SettingsTool.AyarOku(SettingsTool.Ayarlar.GenelAyarlar_GuncellemeKontrol)))
-                {
-                    if (MessageBox.Show(
-                            "Programın yeni bir sürümü mevcut. Güncellemek ister misiniz ?",
-                            "Uyarı", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        Process.Start($"{Application.StartupPath}\\BenimSalonum.Update.exe");
-                        foreach (var process in Process.GetProcessesByName("BenimSalonum.BackOffice"))
-                        {
-                            process.CloseMainWindow();
-                            process.Kill();
-                        }
-                    }
-                    else
-                    {
-                        foreach (var process in Process.GetProcessesByName("BenimSalonum.BackOffice"))
-                        {
-                            process.CloseMainWindow();
-                            process.Kill();
-                        }
-                    }
-                }
-            }
-
             txtKullaniciAdi.Text = "Yönetici";
             txtParola.Text = "12345";
 
+            dbListele();
+            dbOlustur();
 
-            using (var context = new BenimSalonumContext())
+        }
+
+        private void dbListele()
+        {
+            try
             {
-                context.Database.CreateIfNotExists();
+                connectionStringBuilder.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+                connectionStringBuilder.IntegratedSecurity = true;
+                connectionStringBuilder.InitialCatalog = "master";
+                context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
 
-                if (!context.Kullanicilar.Any(c => c.KullaniciAdi == "Yönetici"))
+                dbList = context.Database.SqlQuery<string>("Select name From master.dbo.sysdatabases Where name like 'BS%'").ToList();
+                foreach (var item in dbList)
                 {
-                    context.Kullanicilar.Add(new Kullanici
-                    {
-                        Durumu = true,
-                        KullaniciAdi = "Yönetici",
-                        Parola = "12345"
-                    });
-                    context.Kodlar.Add(new Kod
-                    {
-                        Tablo = "Fis",
-                        OnEki = "FO",
-                        SonDeger = 1
-                    });
-                    context.Kodlar.Add(new Kod
-                    {
-                        Tablo = "Fis",
-                        OnEki = "FİS",
-                        SonDeger = 1
-                    });
-                    context.SaveChanges();
+                    cmbDonem.Properties.Items.Add(item);
                 }
+                cmbDonem.SelectedIndex = 0;
             }
+            catch (Exception)
+            {
+            }
+
         }
 
         public bool InternetKontrol()
@@ -130,9 +94,88 @@ namespace BenimSalonum.Admin
         {
             Application.Exit();
         }
+        void dbOlustur()
+        {
+            if (dbList.Count == 0)
+            {
+                FrmDonemSec form = new FrmDonemSec();
+                form.ShowDialog();
+                if (!String.IsNullOrEmpty(form.donem))
+                {
+                    connectionStringBuilder.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+                    connectionStringBuilder.IntegratedSecurity = true;
+                    connectionStringBuilder.InitialCatalog = "BS" + form.donem;
+                    context = new BenimSalonumContext(connectionStringBuilder.ConnectionString, true);
+                    animasyon.AnimasyonBaslat();
+                    context.Database.CreateIfNotExists();
+                    if (!context.Kullanicilar.Any(c => c.KullaniciAdi == "Yönetici"))
+                    {
+                        context.Kullanicilar.Add(new Kullanici
+                        {
+                            Durumu = true,
+                            KullaniciID = "1",
+                            KullaniciAdi = "Yönetici",
+                            Parola = "12345"
+                        });
+                        context.Kodlar.Add(new Kod
+                        {
+                            KullaniciID = "1",
+                            Tablo = "Fis",
+                            OnEki = "FO",
+                            SonDeger = 0
+                        });
+                        context.Kodlar.Add(new Kod
+                        {
+                            KullaniciID = "1",
+                            Tablo = "Fis",
+                            OnEki = "FİS",
+                            SonDeger = 0
+                        });
+                        context.Depolar.Add(new Depo
+                        {
+                            KullaniciID = "1",
+                            DepoAdi="Depo",
+                            DepoKodu ="01",                        
+                        });
+                        context.OdemeTurleri.Add(new OdemeTuru
+                        {
+                            KullaniciID = "1",
+                            OdemeTuruAdi = "Nakit",
+                            OdemeTuruKodu = "01",
+                        });
+                        context.Kasalar.Add(new Kasa
+                        {
+                            KullaniciID = "1",
+                            KasaAdi = "AnaKasa",
+                            KasaKodu = "01",
+                        });
+                        context.Personeller.Add(new Personel
+                        {
+                            Durumu = true,
+                            KullaniciID = "1",
+                            PersonelAdi = "Deneme Personeli",
+                            PersonelKodu = "01",
+                            PersonelGiris=DateTime.Now
+                        });
+                        context.KullaniciAyarlari.Add(new KullaniciAyarlari
+                        {
+                            KullaniciID = "1",
+                            GenelAyarlar_GuncellemeKontrol = true
+                        });
+                        context.SaveChanges();                      
+                    }
 
+                    dbListele();
+                    animasyon.AnimasyonBitir();
+                }
+            }
+        }
         private void btnUnuttum_Click(object sender, EventArgs e)
         {
+            connectionStringBuilder.InitialCatalog = cmbDonem.Text;
+            connectionStringBuilder.IntegratedSecurity = true;
+
+            context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
             if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text))
             {
                 FrmParolaUnuttum form = new FrmParolaUnuttum(txtKullaniciAdi.Text);
@@ -146,7 +189,20 @@ namespace BenimSalonum.Admin
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            context = new BenimSalonumContext();
+
+            if (cmbDonem.Properties.Items.Count == 0 && string.IsNullOrEmpty(cmbDonem.Text))
+            {
+                XtraMessageBox.Show("Seçili Bir Dönem Bulunamadı.");
+                return;
+            }
+
+
+            connectionStringBuilder.InitialCatalog = cmbDonem.Text;
+            connectionStringBuilder.IntegratedSecurity = true;
+
+
+            context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
+
             if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
             {
                 girisBasarili = true;
@@ -173,6 +229,38 @@ namespace BenimSalonum.Admin
                     });
                     context.SaveChanges();
                     RoleTool.kullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text);
+
+                    //GÜNCELLEME
+
+                    WebClient indir = new WebClient();
+                    string programVersion = Assembly.Load("BenimSalonum.BackOffice").GetName().Version.ToString();
+                    string guncelVersion = indir.DownloadString("http://localhost/version.txt");
+                    if (programVersion != guncelVersion)
+                    {
+                        bool guncelleme = context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).GenelAyarlar_GuncellemeKontrol;
+                        if (guncelleme)
+                        {
+                            if (MessageBox.Show(
+                                    "Programın yeni bir sürümü mevcut. Güncelleme işlemi başlatılacaktır.",
+                                    "Uyarı", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Process.Start($"{Application.StartupPath}\\BenimSalonum.Update.exe");
+                                foreach (var process in Process.GetProcessesByName("BenimSalonum.BackOffice"))
+                                {
+                                    process.CloseMainWindow();
+                                    process.Kill();
+                                }
+                            }
+                            else
+                            {
+                                foreach (var process in Process.GetProcessesByName("BenimSalonum.BackOffice"))
+                                {
+                                    process.CloseMainWindow();
+                                    process.Kill();
+                                }
+                            }
+                        }
+                    }
                     this.Close();
                 }
             }
@@ -191,14 +279,27 @@ namespace BenimSalonum.Admin
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
+            try
             {
-                RoleTool.kullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text);
 
-                context = new BenimSalonumContext();
-                FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.FirstOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
-                frmKullanicilar.ShowDialog();
+                connectionStringBuilder.InitialCatalog = cmbDonem.Text;
+                connectionStringBuilder.IntegratedSecurity = true;
+
+
+                context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
+                if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
+                {
+                    RoleTool.kullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text);
+
+                    context = new BenimSalonumContext();
+                    FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.FirstOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
+                    frmKullanicilar.ShowDialog();
+                }
             }
+            catch (Exception)
+            {
+            }
+
         }
     }
 }

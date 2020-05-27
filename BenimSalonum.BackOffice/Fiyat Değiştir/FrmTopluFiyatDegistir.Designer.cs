@@ -58,7 +58,6 @@
             this.BtnKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.BtnAra = new DevExpress.XtraEditors.SimpleButton();
             this.BtnFiyatDegistir = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnGuncelle = new DevExpress.XtraEditors.SimpleButton();
             this.TopluDegistirGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridTopluDegistir = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -275,7 +274,6 @@
             this.groupControl2.Controls.Add(this.BtnKaydet);
             this.groupControl2.Controls.Add(this.BtnAra);
             this.groupControl2.Controls.Add(this.BtnFiyatDegistir);
-            this.groupControl2.Controls.Add(this.BtnGuncelle);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupControl2.Location = new System.Drawing.Point(0, 667);
             this.groupControl2.Name = "groupControl2";
@@ -340,7 +338,7 @@
             // 
             this.BtnKaydet.ImageOptions.ImageIndex = 0;
             this.BtnKaydet.ImageOptions.ImageList = this.imgFiyatDegistir;
-            this.BtnKaydet.Location = new System.Drawing.Point(567, 25);
+            this.BtnKaydet.Location = new System.Drawing.Point(452, 26);
             this.BtnKaydet.Name = "BtnKaydet";
             this.BtnKaydet.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.BtnKaydet.Size = new System.Drawing.Size(109, 40);
@@ -352,7 +350,7 @@
             // 
             this.BtnAra.ImageOptions.ImageIndex = 8;
             this.BtnAra.ImageOptions.ImageList = this.imgFiyatDegistir;
-            this.BtnAra.Location = new System.Drawing.Point(452, 24);
+            this.BtnAra.Location = new System.Drawing.Point(337, 24);
             this.BtnAra.Name = "BtnAra";
             this.BtnAra.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.BtnAra.Size = new System.Drawing.Size(109, 40);
@@ -371,18 +369,6 @@
             this.BtnFiyatDegistir.TabIndex = 2;
             this.BtnFiyatDegistir.Text = "Fiyat\r\nDeğiştir";
             this.BtnFiyatDegistir.Click += new System.EventHandler(this.BtnFiyatDegistir_Click);
-            // 
-            // BtnGuncelle
-            // 
-            this.BtnGuncelle.ImageOptions.ImageIndex = 5;
-            this.BtnGuncelle.ImageOptions.ImageList = this.imgFiyatDegistir;
-            this.BtnGuncelle.Location = new System.Drawing.Point(337, 24);
-            this.BtnGuncelle.Name = "BtnGuncelle";
-            this.BtnGuncelle.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.BtnGuncelle.Size = new System.Drawing.Size(109, 40);
-            this.BtnGuncelle.TabIndex = 2;
-            this.BtnGuncelle.Text = "Güncelle";
-            this.BtnGuncelle.Click += new System.EventHandler(this.BtnGuncelle_Click);
             // 
             // TopluDegistirGridControl
             // 
@@ -545,7 +531,6 @@
             this.Name = "FrmTopluFiyatDegistir";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Toplu Fiyat Değiştirme Ekranı";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTopluFiyatDegistir_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TopluDegistirGridControl)).EndInit();
@@ -584,7 +569,6 @@
         private DevExpress.XtraEditors.SimpleButton BtnKaydet;
         private DevExpress.XtraEditors.SimpleButton BtnAra;
         private DevExpress.XtraEditors.SimpleButton BtnFiyatDegistir;
-        private DevExpress.XtraEditors.SimpleButton BtnGuncelle;
         private DevExpress.XtraGrid.GridControl TopluDegistirGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridTopluDegistir;
         private DevExpress.XtraGrid.Columns.GridColumn colId;

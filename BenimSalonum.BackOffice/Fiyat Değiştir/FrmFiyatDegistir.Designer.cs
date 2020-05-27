@@ -151,6 +151,8 @@
             this.gridFiyatDegistir.GridControl = this.FiyatDegistirGridControl;
             this.gridFiyatDegistir.Name = "gridFiyatDegistir";
             this.gridFiyatDegistir.OptionsView.ColumnAutoWidth = false;
+            this.gridFiyatDegistir.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDegistir, DevExpress.Data.ColumnSortOrder.Descending)});
             // 
             // colFiyatTuru
             // 

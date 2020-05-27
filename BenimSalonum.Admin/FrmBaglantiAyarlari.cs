@@ -22,7 +22,7 @@ namespace BenimSalonum.Admin
         public FrmBaglantiAyarlari()
         {
             InitializeComponent();
-            txtServerAdi.Text = "DESKTOP-DBCCIPQ";
+            txtServerAdi.Text = "DESKTOP-KESCC\\SQLEXPRESS";
             txtKullaniciAdi.Text = "sa";
             txtParola.Text = "Emre1502.";
             checkSql.Checked = true;
@@ -30,7 +30,7 @@ namespace BenimSalonum.Admin
         private void BaglantiCumleOlustur()
         {
             connectionStringBuilder.DataSource = txtServerAdi.Text;
-            connectionStringBuilder.InitialCatalog = "BS"+txtDbAdi.Text+DateTime.Now.Year;
+            connectionStringBuilder.InitialCatalog = "master";
             if (checkWindows.Checked)
             {
                 connectionStringBuilder.IntegratedSecurity = true;
@@ -74,33 +74,9 @@ namespace BenimSalonum.Admin
 
             if (ConnectionTool.CheckConnection(connectionStringBuilder.ConnectionString))
             {
-                connectionStringBuilder.InitialCatalog = txtDbAdi.Text;
-                XtraMessageBox.Show("Veri Tabanı Kayıt Edildi. Yoksa Oluşturulacaktır. Lütfen Bekleyiniz.");
                 labelControl6.Text = "Durum : Sunucu ile Bağlantı Başarılı.";
                 SettingsTool.AyarDegistir(SettingsTool.Ayarlar.DataBaseAyarlari_BaglantiCumlesi, connectionStringBuilder.ConnectionString);
                 SettingsTool.Kaydet();
-
-                using (var context = new BenimSalonumContext())
-                {
-                    context.Database.CreateIfNotExists();
-
-                    if (!context.Kullanicilar.Any(c => c.KullaniciAdi == "Yönetici"))
-                    {
-                        context.Kullanicilar.Add(new Kullanici
-                        {
-                            Durumu = true,
-                            KullaniciAdi = "Yönetici",
-                            Parola = "12345"
-                        });
-                        context.Kodlar.Add(new Kod
-                        {
-                            Tablo = "Fis",
-                            OnEki = "FO",
-                            SonDeger = 1
-                        });
-                        context.SaveChanges();
-                    }
-                }
                 kayitedildi = true;
                 this.Close();
             }

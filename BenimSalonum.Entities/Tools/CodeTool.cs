@@ -100,7 +100,8 @@ namespace BenimSalonum.Entities.Tools
 
         public string KodOlustur(string kodOnEki, int kodSonDeger)
         {
-            int sifirSayisi = 10 - (kodOnEki.Length + kodSonDeger);
+            string sondeger = kodSonDeger.ToString();
+            int sifirSayisi = 10 - (kodOnEki.Length + sondeger.Length);
             string sifirDizisi = new string('0', sifirSayisi);
             //    kod.SonDeger++;
             return kodOnEki + sifirDizisi + kodSonDeger;

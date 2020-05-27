@@ -64,6 +64,7 @@ namespace BenimSalonum.BackOffice.Cari
                 _entity.OzelKod2 = entity.OzelKod2;
                 _entity.OzelKod3 = entity.OzelKod3;
                 _entity.OzelKod4 = entity.OzelKod4;
+                txtKod.Text = null;
             }
             else
             {

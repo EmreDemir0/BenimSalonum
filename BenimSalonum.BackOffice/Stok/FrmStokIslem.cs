@@ -61,6 +61,8 @@ namespace BenimSalonum.BackOffice.Stok
                 _entity.MinStokMiktari = entity.MinStokMiktari;
                 _entity.MaxStokMiktari = entity.MaxStokMiktari;
                 _entity.Aciklama = entity.Aciklama;
+                txtKod.Text = null;
+
             }
             else
             {

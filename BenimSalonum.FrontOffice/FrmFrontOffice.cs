@@ -27,7 +27,7 @@ namespace BenimSalonum.FrontOffice
 {
     public partial class FrmFrontOffice : DevExpress.XtraEditors.XtraForm
     {
-        BenimSalonumContext context = new BenimSalonumContext();
+        BenimSalonumContext context;
 
         FisDAL fisDal = new FisDAL();
 
@@ -61,10 +61,9 @@ namespace BenimSalonum.FrontOffice
         {
             InitializeComponent();
 
-
             FrmKullaniciGiris girisForm = new FrmKullaniciGiris();
             girisForm.ShowDialog();
-
+            context = new BenimSalonumContext();
 
             kodolustur = new CodeTool(this, CodeTool.Table.Fis);
 

@@ -75,6 +75,7 @@ namespace BenimSalonum.BackOffice
         {
             FrmKullaniciGiris frmKullaniciGiris = new FrmKullaniciGiris();
             frmKullaniciGiris.ShowDialog();
+
             if (frmKullaniciGiris.girisBasarili)
             {
                 InitializeComponent();
@@ -337,8 +338,7 @@ namespace BenimSalonum.BackOffice
             if (frmEtiketOlustur == null || frmEtiketOlustur.IsDisposed)
             {
                 frmEtiketOlustur = new FrmEtiketOlustur();
-                frmEtiketOlustur.MdiParent = this;
-                frmEtiketOlustur.Show();
+                frmEtiketOlustur.ShowDialog();
             }
         }
 

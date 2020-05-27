@@ -26,7 +26,8 @@ namespace BenimSalonum.BackOffice.Fis
         public FrmOdemeEkrani(int odemeTuruId, Nullable<decimal> odenmesiGereken = null, Nullable<decimal> odenecekTutar = null)
         {
             InitializeComponent();
-            int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
+            int kasaId = Convert.ToInt32(context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).SatisAyarlari_VarsayilanKasa);
+
 
             _kasabilgi = context.Kasalar.SingleOrDefault(c => c.Id == kasaId);
             _odemeTuruBilgi = context.OdemeTurleri.SingleOrDefault(c => c.Id == odemeTuruId);

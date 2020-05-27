@@ -25,11 +25,9 @@ namespace BenimSalonum.BackOffice.Kasa_Hareketleri
         {
             InitializeComponent();
             export = new ExportTool(this, gridKasaHareket, dropDownButton1);
-
         }
         private void Listele()
         {
-
             gridcontKasaHareket.DataSource = kasaHareketDal.GetALL(context, c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID);
         }
 

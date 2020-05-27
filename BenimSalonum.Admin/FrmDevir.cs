@@ -69,7 +69,7 @@ namespace BenimSalonum.Admin
                 {
                     Name = item,
                     Text = item,
-                    GroupIndex = 1,                  
+                    GroupIndex = 1,
                     Height = 100,
                     Width = 100
                 };
@@ -145,11 +145,64 @@ namespace BenimSalonum.Admin
                     connHedef.UserID = "sa";
                     connHedef.Password = "Emre1502.";
 
-                    hedefContext = new BenimSalonumContext(connHedef.ConnectionString);
+                    hedefContext = new BenimSalonumContext(connHedef.ConnectionString, true);
 
                     hedefContext.Database.CreateIfNotExists();
+                    if (!hedefContext.Kullanicilar.Any(c => c.KullaniciAdi == "Yönetici"))
+                    {
+                        hedefContext.Kullanicilar.Add(new Kullanici
+                        {
+                            Durumu = true,
+                            KullaniciID = "1",
+                            KullaniciAdi = "Yönetici",
+                            Parola = "12345"
+                        });
+                        hedefContext.Kodlar.Add(new Kod
+                        {
+                            Tablo = "Fis",
+                            OnEki = "FO",
+                            SonDeger = 0
+                        });
+                        hedefContext.Kodlar.Add(new Kod
+                        {
+                            Tablo = "Fis",
+                            OnEki = "FİS",
+                            SonDeger = 0
+                        });
+                        hedefContext.Depolar.Add(new Depo
+                        {
+                            KullaniciID = "1",
+                            DepoAdi = "Depo",
+                            DepoKodu = "01",
+                        });
+                        hedefContext.OdemeTurleri.Add(new OdemeTuru
+                        {
+                            KullaniciID = "1",
+                            OdemeTuruAdi = "Nakit",
+                            OdemeTuruKodu = "01",
+                        });
+                        hedefContext.Kasalar.Add(new Kasa
+                        {
+                            KullaniciID = "1",
+                            KasaAdi = "AnaKasa",
+                            KasaKodu = "01",
+                        });
+                        hedefContext.Personeller.Add(new Personel
+                        {
+                            Durumu = true,
+                            KullaniciID = "1",
+                            PersonelAdi = "Deneme Personeli",
+                            PersonelKodu = "01",
+                            PersonelGiris = DateTime.Now
+                        });
+                        hedefContext.KullaniciAyarlari.Add(new KullaniciAyarlari
+                        {
+                            KullaniciID = "1",
+                            GenelAyarlar_GuncellemeKontrol=true
+                        });
+                        hedefContext.SaveChanges();
+                    }
                     yukelemeFormu.AnimasyonBitir();
-
                 }
             }
             else
@@ -529,6 +582,13 @@ namespace BenimSalonum.Admin
                             hedefContext.KasaHareketleri.Add(kasaBorc);
                         }
                     }
+                }
+            }
+            if (toggleCariPersonelleriAktar.IsOn)
+            {
+                foreach (var item in kaynakContext.Personeller.AsNoTracking().ToList())
+                {
+                    hedefContext.Personeller.Add(item);
                 }
             }
 

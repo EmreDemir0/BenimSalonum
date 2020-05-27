@@ -32,10 +32,8 @@
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.txtParola = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtServerAdi = new DevExpress.XtraEditors.TextEdit();
             this.txtKullaniciAdi = new DevExpress.XtraEditors.TextEdit();
-            this.txtDbAdi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -49,7 +47,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDbAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +76,7 @@
             // 
             // txtParola
             // 
-            this.txtParola.Location = new System.Drawing.Point(100, 103);
+            this.txtParola.Location = new System.Drawing.Point(100, 78);
             this.txtParola.Name = "txtParola";
             this.txtParola.Size = new System.Drawing.Size(233, 20);
             this.txtParola.TabIndex = 19;
@@ -96,18 +93,6 @@
             this.labelControl2.TabIndex = 12;
             this.labelControl2.Text = "Server Adı :";
             // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Options.UseTextOptions = true;
-            this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl4.Location = new System.Drawing.Point(12, 52);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(82, 20);
-            this.labelControl4.TabIndex = 13;
-            this.labelControl4.Text = "DB Adı :";
-            // 
             // txtServerAdi
             // 
             this.txtServerAdi.Location = new System.Drawing.Point(100, 27);
@@ -117,17 +102,10 @@
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(100, 78);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(100, 53);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(233, 20);
             this.txtKullaniciAdi.TabIndex = 18;
-            // 
-            // txtDbAdi
-            // 
-            this.txtDbAdi.Location = new System.Drawing.Point(100, 52);
-            this.txtDbAdi.Name = "txtDbAdi";
-            this.txtDbAdi.Size = new System.Drawing.Size(233, 20);
-            this.txtDbAdi.TabIndex = 15;
             // 
             // labelControl1
             // 
@@ -135,7 +113,7 @@
             this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl1.Location = new System.Drawing.Point(12, 103);
+            this.labelControl1.Location = new System.Drawing.Point(12, 78);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(82, 20);
             this.labelControl1.TabIndex = 17;
@@ -147,7 +125,7 @@
             this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl3.Location = new System.Drawing.Point(12, 77);
+            this.labelControl3.Location = new System.Drawing.Point(12, 52);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(82, 20);
             this.labelControl3.TabIndex = 16;
@@ -160,20 +138,18 @@
             this.groupControl1.Controls.Add(this.label1);
             this.groupControl1.Controls.Add(this.txtParola);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.txtServerAdi);
             this.groupControl1.Controls.Add(this.txtKullaniciAdi);
-            this.groupControl1.Controls.Add(this.txtDbAdi);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Location = new System.Drawing.Point(0, 128);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(366, 155);
+            this.groupControl1.Size = new System.Drawing.Size(366, 133);
             this.groupControl1.TabIndex = 32;
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(15, 138);
+            this.labelControl6.Location = new System.Drawing.Point(15, 113);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(38, 13);
             this.labelControl6.TabIndex = 25;
@@ -213,7 +189,7 @@
             // btnKaydet
             // 
             this.btnKaydet.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnKaydet.ImageOptions.SvgImage")));
-            this.btnKaydet.Location = new System.Drawing.Point(194, 289);
+            this.btnKaydet.Location = new System.Drawing.Point(194, 267);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnKaydet.Size = new System.Drawing.Size(139, 39);
@@ -225,7 +201,7 @@
             // btnTest
             // 
             this.btnTest.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTest.ImageOptions.SvgImage")));
-            this.btnTest.Location = new System.Drawing.Point(34, 289);
+            this.btnTest.Location = new System.Drawing.Point(34, 267);
             this.btnTest.Name = "btnTest";
             this.btnTest.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnTest.Size = new System.Drawing.Size(139, 39);
@@ -235,8 +211,8 @@
             // 
             // btnDevir
             // 
-            this.btnDevir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.btnDevir.Location = new System.Drawing.Point(110, 334);
+            this.btnDevir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDevir.ImageOptions.SvgImage")));
+            this.btnDevir.Location = new System.Drawing.Point(110, 312);
             this.btnDevir.Name = "btnDevir";
             this.btnDevir.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnDevir.Size = new System.Drawing.Size(139, 39);
@@ -248,7 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 378);
+            this.ClientSize = new System.Drawing.Size(368, 355);
             this.Controls.Add(this.btnDevir);
             this.Controls.Add(this.LblBaslik);
             this.Controls.Add(this.groupControl1);
@@ -265,7 +241,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtServerAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDbAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -278,10 +253,8 @@
         private DevExpress.XtraEditors.LabelControl LblBaslik;
         private DevExpress.XtraEditors.TextEdit txtParola;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtServerAdi;
         private DevExpress.XtraEditors.TextEdit txtKullaniciAdi;
-        private DevExpress.XtraEditors.TextEdit txtDbAdi;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.GroupControl groupControl1;

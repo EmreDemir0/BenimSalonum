@@ -16,9 +16,9 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.CariAdi).HasMaxLength(50);
             this.Property(p => p.YetkiliKisi).HasMaxLength(50);
             this.Property(p => p.FaturaUnvani).HasMaxLength(50);
-            this.Property(p => p.CepTelefonu).HasMaxLength(11);
-            this.Property(p => p.Telefon).HasMaxLength(11);
-            this.Property(p => p.Fax).HasMaxLength(11);
+            this.Property(p => p.CepTelefonu).HasMaxLength(14);
+            this.Property(p => p.Telefon).HasMaxLength(14);
+            this.Property(p => p.Fax).HasMaxLength(14);
             this.Property(p => p.EMail).HasMaxLength(50);
             this.Property(p => p.Web).HasMaxLength(50);
             this.Property(p => p.Il).HasMaxLength(20);

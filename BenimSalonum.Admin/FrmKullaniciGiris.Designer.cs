@@ -38,7 +38,8 @@
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupControlLogin = new DevExpress.XtraEditors.GroupControl();
-            this.labelControlCS = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.cmbDonem = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnGiris = new DevExpress.XtraEditors.SimpleButton();
@@ -50,6 +51,7 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlLogin)).BeginInit();
             this.groupControlLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDonem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).BeginInit();
             this.SuspendLayout();
@@ -143,7 +145,8 @@
             // groupControlLogin
             // 
             this.groupControlLogin.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.groupControlLogin.Controls.Add(this.labelControlCS);
+            this.groupControlLogin.Controls.Add(this.labelControl4);
+            this.groupControlLogin.Controls.Add(this.cmbDonem);
             this.groupControlLogin.Controls.Add(this.labelControl3);
             this.groupControlLogin.Controls.Add(this.labelControl2);
             this.groupControlLogin.Controls.Add(this.btnGiris);
@@ -156,14 +159,28 @@
             this.groupControlLogin.Size = new System.Drawing.Size(596, 141);
             this.groupControlLogin.TabIndex = 56;
             // 
-            // labelControlCS
+            // labelControl4
             // 
-            this.labelControlCS.Location = new System.Drawing.Point(5, 123);
-            this.labelControlCS.Name = "labelControlCS";
-            this.labelControlCS.Size = new System.Drawing.Size(78, 13);
-            this.labelControlCS.TabIndex = 58;
-            this.labelControlCS.Text = "Bağlantı Stringi :";
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl4.Location = new System.Drawing.Point(64, 92);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(68, 30);
+            this.labelControl4.TabIndex = 58;
+            this.labelControl4.Text = "Dönem :";
             // 
+            // cmbDonem
+            // 
+            this.cmbDonem.Location = new System.Drawing.Point(138, 98);
+            this.cmbDonem.Name = "cmbDonem";
+            this.cmbDonem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold);
+            this.cmbDonem.Properties.Appearance.Options.UseFont = true;
+            this.cmbDonem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbDonem.Size = new System.Drawing.Size(129, 30);
+            this.cmbDonem.TabIndex = 5;
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(3, 158);
@@ -177,7 +194,7 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl2.Location = new System.Drawing.Point(64, 72);
+            this.labelControl2.Location = new System.Drawing.Point(64, 59);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(68, 30);
             this.labelControl2.TabIndex = 56;
@@ -206,7 +223,7 @@
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl1.Location = new System.Drawing.Point(64, 28);
+            this.labelControl1.Location = new System.Drawing.Point(64, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(68, 30);
             this.labelControl1.TabIndex = 55;
@@ -214,7 +231,7 @@
             // 
             // txtParola
             // 
-            this.txtParola.Location = new System.Drawing.Point(138, 72);
+            this.txtParola.Location = new System.Drawing.Point(138, 59);
             this.txtParola.Name = "txtParola";
             this.txtParola.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold);
             this.txtParola.Properties.Appearance.Options.UseFont = true;
@@ -224,7 +241,7 @@
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(138, 28);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(138, 15);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold);
             this.txtKullaniciAdi.Properties.Appearance.Options.UseFont = true;
@@ -261,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControlLogin)).EndInit();
             this.groupControlLogin.ResumeLayout(false);
             this.groupControlLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDonem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtParola.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -283,8 +301,9 @@
         private DevExpress.XtraEditors.TextEdit txtParola;
         private DevExpress.XtraEditors.TextEdit txtKullaniciAdi;
         private DevExpress.XtraEditors.SimpleButton btnDatabase;
-        private DevExpress.XtraEditors.LabelControl labelControlCS;
         private DevExpress.XtraEditors.SimpleButton btnKullaniciGiris;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbDonem;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }
 

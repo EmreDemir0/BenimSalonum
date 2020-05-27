@@ -102,6 +102,7 @@ namespace BenimSalonum.BackOffice.Fis
                     lblBorc.Text = _entityBakiye.Borc.ToString("C2");
                     txtCariAdi.Text = _fisentity.Cari.CariAdi;
                     txtCariKodu.Text = _fisentity.Cari.CariKodu;
+                    txtIskontoOran.Value = (decimal)_fisentity.IskontoOrani;
                 }
                 else
                 {
@@ -388,7 +389,7 @@ namespace BenimSalonum.BackOffice.Fis
                         KasaHareket entityKasaHareket = new KasaHareket
                         {
                             OdemeTuruId = Convert.ToInt32(buton.Tag),
-                            KasaId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanKasa),
+                            KasaId = Convert.ToInt32(context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).SatisAyarlari_VarsayilanKasa),
                             Tarih = DateTime.Now,
                             Tutar = txtOdenmesiGereken.Value
                         };
@@ -406,7 +407,7 @@ namespace BenimSalonum.BackOffice.Fis
                                 //cari türüne personel ekleyip seçerekte yapabiliriz.
                                 //en mantıklısı cari ve personeli birleştirmek mantıklı olacaktır.
                                 OdemeTuruId = Convert.ToInt32(buton.Tag),
-                                KasaId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanKasa),
+                                KasaId = Convert.ToInt32(context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).SatisAyarlari_VarsayilanKasa),
                                 Tarih = DateTime.Now,
                                 Tutar = Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colOdenecekTutar)),
                                 Aciklama = $"{gridViewPersonelHareket.GetRowCellValue(i, colPersonelKodu).ToString()} - {gridViewPersonelHareket.GetRowCellValue(i, colPersonelAdi).ToString()} || Aylık Maaş : {Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colAylikMaas)).ToString("C2")} || Prim Tutarı : {Convert.ToDecimal(gridViewPersonelHareket.GetRowCellValue(i, colPrimTutari)).ToString("C2")}"
@@ -441,7 +442,7 @@ namespace BenimSalonum.BackOffice.Fis
             stokHareket.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
             stokHareket.StokId = entity.Id;
             stokHareket.IndirimOrani = indirimDal.StokIndirimi(context, entity.StokKodu);
-            stokHareket.DepoId = Convert.ToInt32(KullaniciAyarlariEntity.SatisAyarlari_VarsayilanDepo);
+            stokHareket.DepoId = Convert.ToInt32(context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).SatisAyarlari_VarsayilanDepo);
             stokHareket.BirimFiyati = new[] { "Alış Faturası", "Alış İade Faturası" }.Contains(txtFisTuru.Text) ? entity.AlisFiyati1 : entity.SatisFiyati1;
             stokHareket.Miktar = txtMiktar.Value;
             stokHareket.Tarih = DateTime.Now;
@@ -727,11 +728,11 @@ namespace BenimSalonum.BackOffice.Fis
                 hata++;
             }
 
-            if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true && String.IsNullOrEmpty(txtCariKodu.Text) && txtFisTuru.Text != "Hakediş Fişi")
-            {
-                message += "Ödenmesi gereken tutar ödenmemiş görünüyor. Ödenmeyen kısmı açık hesaba aktarabilmeniz için Cari seçmeniz gerekmektedir." + System.Environment.NewLine;
-                hata++;
-            }
+            //if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true && String.IsNullOrEmpty(txtCariKodu.Text) && txtFisTuru.Text != "Hakediş Fişi")
+            //{
+            //    message += "Ödenmesi gereken tutar ödenmemiş görünüyor. Ödenmeyen kısmı açık hesaba aktarabilmeniz için Cari seçmeniz gerekmektedir." + System.Environment.NewLine;
+            //    hata++;
+            //}
 
             if (hata != 0)
             {
@@ -783,7 +784,7 @@ namespace BenimSalonum.BackOffice.Fis
             _fisentity.ToplamTutar = txtToplam.Value;
             _fisentity.IskontoOrani = txtIskontoOran.Value;
             _fisentity.IskontoTutar = txtIskontoTutar.Value;
-
+            _fisentity.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
 
             if (string.IsNullOrEmpty(_fisentity.Tarih.ToString()))
             {
@@ -828,11 +829,11 @@ namespace BenimSalonum.BackOffice.Fis
                     fisOdeme.Alacak = null;
 
                 }
-                if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
-                {
-                    XtraMessageBox.Show("Ödenmesi gereken tutar ödenmemiş görünüyor");
-                    return;
-                }
+                //if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+                //{
+                //    XtraMessageBox.Show("Ödenmesi gereken tutar ödenmemiş görünüyor");
+                //    return;
+                //}
                 context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
                 foreach (var kasaVeri in context.KasaHareketleri.Local.ToList())
                 {

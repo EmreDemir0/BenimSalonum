@@ -121,8 +121,8 @@
             // 
             // colPlasiyerKodu
             // 
-            this.colPlasiyerKodu.Caption = "Plasiyer Kodu";
-            this.colPlasiyerKodu.FieldName = "PlasiyerKodu";
+            this.colPlasiyerKodu.Caption = "Personel Kodu";
+            this.colPlasiyerKodu.FieldName = "PersonelKodu";
             this.colPlasiyerKodu.Name = "colPlasiyerKodu";
             this.colPlasiyerKodu.OptionsColumn.AllowEdit = false;
             this.colPlasiyerKodu.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
@@ -132,8 +132,8 @@
             // 
             // colPlasiyerAdi
             // 
-            this.colPlasiyerAdi.Caption = "Plasiyer Adı";
-            this.colPlasiyerAdi.FieldName = "PlasiyerAdi";
+            this.colPlasiyerAdi.Caption = "Personel Adı";
+            this.colPlasiyerAdi.FieldName = "PersonelAdi";
             this.colPlasiyerAdi.Name = "colPlasiyerAdi";
             this.colPlasiyerAdi.OptionsColumn.AllowEdit = false;
             this.colPlasiyerAdi.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;

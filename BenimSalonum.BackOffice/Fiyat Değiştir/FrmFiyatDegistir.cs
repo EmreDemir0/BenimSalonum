@@ -78,7 +78,7 @@ namespace BenimSalonum.BackOffice.Fiyat_Değiştir
                     Degeri = 0
                 }
             };
-            FiyatDegistirGridControl.DataSource = list.Where(c=>c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID);
+            FiyatDegistirGridControl.DataSource = list;
         }
 
         private void BtnKaydet_Click(object sender, EventArgs e)

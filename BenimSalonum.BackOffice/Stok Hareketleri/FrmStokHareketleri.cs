@@ -102,7 +102,7 @@ namespace BenimSalonum.BackOffice.Stok_Hareketleri
 
         private void btnDetay_Click(object sender, EventArgs e)
         {
-            FrmFisIslem form = new FrmFisIslem(gridStokHareketGenel.GetFocusedRowCellValue(colId).ToString());
+            FrmFisIslem form = new FrmFisIslem(gridStokHareketGenel.GetFocusedRowCellValue(colFisKodu).ToString());
             form.ShowDialog();
         }
 

@@ -48,7 +48,8 @@ namespace BenimSalonum.Entities.DataAccess
                           select new
                           {
 
-                              grp.Key.OdemeTuru.OdemeTuruAdi,
+                              
+                              OdemeTuruAdi = grp.Key.OdemeTuru.OdemeTuruAdi,
                               KasaGiris = (grp.Where(c=> c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OdemeTuruId == grp.Key.OdemeTuru.Id && c.Hareket == "Kasa Giriş").Sum(c=>c.Tutar) ?? 0),
                               KasaCikis = (grp.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OdemeTuruId == grp.Key.OdemeTuru.Id && c.Hareket == "Kasa Çıkış").Sum(c => c.Tutar) ?? 0),
                               Bakiye = (grp.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OdemeTuruId == grp.Key.OdemeTuru.Id && c.Hareket == "Kasa Giriş").Sum(c => c.Tutar) ?? 0) -

@@ -67,6 +67,8 @@ namespace BenimSalonum.Entities.DataAccess
                         fis.Aciklama,
                         fis.Alacak,
                         fis.Borc,
+                        fis.Personel.PersonelAdi,
+                        fis.Personel.PersonelKodu,
                         Bakiye = context.Fisler.OrderBy(c => c.Tarih).ThenBy(c => c.Id)
                        .Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.CariId == cariId && c.Tarih <= fis.Tarih && c.Id <= fis.Id)
                        .Select(c => (decimal?)(c.Alacak ?? 0 - c.Borc ?? 0))

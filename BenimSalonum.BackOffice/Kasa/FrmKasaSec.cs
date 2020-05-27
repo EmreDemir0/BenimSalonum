@@ -47,7 +47,7 @@ namespace BenimSalonum.BackOffice.Kasa
         {
             if (gridViewKasaSec.GetSelectedRows().Length != 0)
             {
-                int kasaId = (int)gridViewKasaSec.GetFocusedRowCellValue(colKasaKodu);
+                int kasaId = (int)gridViewKasaSec.GetFocusedRowCellValue(colId);
                 entity = context.Kasalar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Id == kasaId);
                 secildi = true;
                 this.Close();

@@ -13,6 +13,7 @@ using BenimSalonum.Entities.DataAccess;
 using System.Data.Entity;
 using BenimSalonum.BackOffice.Stok;
 using BenimSalonum.Entities.Tools;
+using DevExpress.DataProcessing;
 
 namespace BenimSalonum.BackOffice.Fiyat_Değiştir
 {
@@ -23,15 +24,6 @@ namespace BenimSalonum.BackOffice.Fiyat_Değiştir
         public FrmTopluFiyatDegistir()
         {
             InitializeComponent();
-            Listele();
-        }
-
-        private void Listele()
-        {
-            context.Stoklar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
-            TopluDegistirGridControl.DataSource = context.Stoklar.Local.ToBindingList();
-
-            // normalde local di hata vereckmi bak ve silme işlemini kontrol et 
         }
 
         private void BtnEkle_Click(object sender, EventArgs e)
@@ -40,26 +32,21 @@ namespace BenimSalonum.BackOffice.Fiyat_Değiştir
             form.ShowDialog();
             if (form.Secildi)
             {
-                foreach (var itemStok in form.secilen)
+                foreach (var item in form.secilen)
                 {
-                    stokDal.AddOrUpDate(context, itemStok);
+                    context.Stoklar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.StokKodu == item.StokKodu).Load();
                 }
+                TopluDegistirGridControl.DataSource = context.Stoklar.Local.ToBindingList();
             }
         }
-
-        private void FrmTopluFiyatDegistir_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
         private void BtnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        
         private void BtnKaydet_Click(object sender, EventArgs e)
         {
-            stokDal.Save(context);
+            context.SaveChanges();
         }
 
         private void BtnCikar_Click(object sender, EventArgs e)
@@ -70,17 +57,10 @@ namespace BenimSalonum.BackOffice.Fiyat_Değiştir
             }
             else
             {
-                //normalde sil dediğimizde direkt contexten siliyordu bu sayede sadece çıkardık
-                //entry.detached çıkarma işlemiy yapıyor
                 var secilen = (int)gridTopluDegistir.GetFocusedRowCellValue(colId);
                 var result = stokDal.GetByFilter(context, c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.Id == secilen);
                 context.Entry(result).State = EntityState.Detached;
             }
-        }
-
-        private void BtnGuncelle_Click(object sender, EventArgs e)
-        {
-            Listele();
         }
 
         private void BtnAra_Click(object sender, EventArgs e)
