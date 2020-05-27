@@ -279,6 +279,7 @@
             this.barButtonRaporDuzenle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonRaporDuzenle.ImageOptions.Image")));
             this.barButtonRaporDuzenle.Name = "barButtonRaporDuzenle";
             this.barButtonRaporDuzenle.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonRaporDuzenle.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonRaporDuzenle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRaporDuzenle_ItemClick);
             // 
             // barButtonEtiket

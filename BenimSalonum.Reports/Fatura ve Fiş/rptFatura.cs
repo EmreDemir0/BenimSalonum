@@ -7,6 +7,8 @@ using BenimSalonum.Entities.Context;
 using BenimSalonum.Entities.DataAccess;
 using DevExpress.DataAccess.ObjectBinding;
 using BenimSalonum.Entities.Tables;
+using BenimSalonum.Entities.Tools;
+using BenimSalonum.Entities.Tables.OtherTables;
 
 namespace BenimSalonum.Reports.Fatura_ve_Fiş
 {
@@ -18,13 +20,16 @@ namespace BenimSalonum.Reports.Fatura_ve_Fiş
             BenimSalonumContext context = new BenimSalonumContext();
             StokHareketDAL stokHareketDal = new StokHareketDAL();
             FisDAL fisDal = new FisDAL();
+            KullaniciAyarlariDAL kullaniciAyarlariDal = new KullaniciAyarlariDAL();
+            KullaniciAyarlari kullaniciAyarlari = kullaniciAyarlariDal.GetByFilter(context, c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID);
+            Fis fisBilgi = fisDal.GetByFilter(context, c =>c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu);
+            StokHareket stokBilgi = stokHareketDal.GetByFilter(context, c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu);
 
-            Fis fisBilgi = fisDal.GetByFilter(context, c => c.FisKodu == fisKodu);
-            StokHareket stokBilgi = stokHareketDal.GetByFilter(context, c => c.FisKodu == fisKodu);
-
-            ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetALL(context,c=>c.FisKodu==fisKodu) };
+            ObjectDataSource stokHareketDataSource = new ObjectDataSource { DataSource = stokHareketDal.GetALL(context, c=>c.FisKodu==fisKodu) };
             this.DataSource = stokHareketDataSource;
-
+            xrFirmaUnvan.Text = kullaniciAyarlari.FirmaAyarlari_FaturaUnvani;
+            xrFirmaAdres.Text = kullaniciAyarlari.FirmaAyarlari_Adres;
+            xrVergiDetay.Text = kullaniciAyarlari.FirmaAyarlari_VergiDairesi +" / "+ kullaniciAyarlari.FirmaAyarlari_VergiNo;
             //CARİ-FİŞ BİLGİ  {Cari bilgilerini fişten çekemezsin caridal dan al. }
             colCariAdi.Text = fisBilgi.FaturaUnvani;
             colAdres.Text = fisBilgi.Adres;

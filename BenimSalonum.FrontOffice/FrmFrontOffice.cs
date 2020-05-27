@@ -441,11 +441,11 @@ namespace BenimSalonum.FrontOffice
 
                     ReportsPrintTool yazdir = new ReportsPrintTool();
                     rptFatura fatura = new rptFatura(txtKod.Text);
-                    yazdir.RaporYazdir(fatura, belge); break;
+                    yazdir.RaporYazdir(fatura, belge, context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID)); break;
                 case ReportsPrintTool.Belge.BilgiFisi:
                     ReportsPrintTool yazdirBilgiFisi = new ReportsPrintTool();
                     rptBilgiFisi bilgiFisi = new rptBilgiFisi(txtKod.Text);
-                    yazdirBilgiFisi.RaporYazdir(bilgiFisi, belge);
+                    yazdirBilgiFisi.RaporYazdir(bilgiFisi, belge, context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
                     break;
             }
 

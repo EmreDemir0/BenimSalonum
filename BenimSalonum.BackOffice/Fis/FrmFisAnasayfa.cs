@@ -234,7 +234,7 @@ namespace BenimSalonum.BackOffice.Fis
             string secilen = FislerGridView.GetFocusedRowCellValue(colFisKodu).ToString();
             ReportsPrintTool yazdir = new ReportsPrintTool();
             rptFatura fatura = new rptFatura(secilen);
-            yazdir.RaporYazdir(fatura, ReportsPrintTool.Belge.Fatura);
+            yazdir.RaporYazdir(fatura, ReportsPrintTool.Belge.Fatura,context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
         }
     }
 

@@ -50,9 +50,9 @@
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.Link_rptStokHareketleri = new DevExpress.XtraNavBar.NavBarItem();
+            this.Link_rptUrunBazliStokHareketleri = new DevExpress.XtraNavBar.NavBarItem();
             this.filterEditorControl1 = new DevExpress.DataAccess.UI.FilterEditorControl();
             this.filterEditorControl2 = new DevExpress.DataAccess.UI.FilterEditorControl();
-            this.Link_rptUrunBazliStokHareketleri = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.txtRaporGrubu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRaporAdi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -240,6 +240,7 @@
             this.navBarControl1.Size = new System.Drawing.Size(216, 617);
             this.navBarControl1.TabIndex = 35;
             this.navBarControl1.Text = "navBarControl1";
+            this.navBarControl1.Visible = false;
             // 
             // navBarGroup1
             // 
@@ -261,6 +262,7 @@
             // 
             this.navBarItem4.Caption = "Stok Listesi Raporu";
             this.navBarItem4.Name = "navBarItem4";
+            this.navBarItem4.Visible = false;
             this.navBarItem4.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarLink_Click);
             // 
             // navBarGroup2
@@ -275,6 +277,7 @@
             // 
             this.navBarItem2.Caption = "Genel Cari Bakiye Raporu";
             this.navBarItem2.Name = "navBarItem2";
+            this.navBarItem2.Visible = false;
             this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarLink_Click);
             // 
             // navBarGroup3
@@ -292,6 +295,12 @@
             this.Link_rptStokHareketleri.Name = "Link_rptStokHareketleri";
             this.Link_rptStokHareketleri.Tag = "Bu rapor stok hareketlerini listelemektedir.";
             this.Link_rptStokHareketleri.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarLink_Click);
+            // 
+            // Link_rptUrunBazliStokHareketleri
+            // 
+            this.Link_rptUrunBazliStokHareketleri.Caption = "Ürün Bazlı Stok Hareketleri";
+            this.Link_rptUrunBazliStokHareketleri.Name = "Link_rptUrunBazliStokHareketleri";
+            this.Link_rptUrunBazliStokHareketleri.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarLink_Click);
             // 
             // filterEditorControl1
             // 
@@ -323,12 +332,6 @@
             this.filterEditorControl2.TabIndex = 37;
             this.filterEditorControl2.Text = "filterEditorControl2";
             this.filterEditorControl2.UseMenuForOperandsAndOperators = false;
-            // 
-            // Link_rptUrunBazliStokHareketleri
-            // 
-            this.Link_rptUrunBazliStokHareketleri.Caption = "Ürün Bazlı Stok Hareketleri";
-            this.Link_rptUrunBazliStokHareketleri.Name = "Link_rptUrunBazliStokHareketleri";
-            this.Link_rptUrunBazliStokHareketleri.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarLink_Click);
             // 
             // FrmRaporListesi
             // 

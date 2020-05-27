@@ -42,6 +42,7 @@ namespace BenimSalonum.BackOffice.Ayarlar
 
             comboFaturaAyar.DataBindings.Add("Text", _entity, "SatisAyarlari_FaturaYazdirmaAyari");
             comboBilgiFisi.DataBindings.Add("Text", _entity, "SatisAyarlari_BilgiFisiYazdırmaAyari");
+
             comboFaturaYaziciSec.DataBindings.Add("Text", _entity, "SatisAyarlari_FaturaYazici");
             comboBilgiFisiYaziciSec.DataBindings.Add("Text", _entity, "SatisAyarlari_BilgiFisiYazici");
             calcFisKodu.DataBindings.Add("Text", _entity, "SatisAyarlari_FisKodu");
@@ -97,8 +98,7 @@ namespace BenimSalonum.BackOffice.Ayarlar
             txtSmsOrjinator.Text = _entity.smsAyarlari_Orjinator;
 
             labelControl4.Text = "Kayıt Durumu : ";
-            DepoYukle();
-            KasaYukle();
+
         }
         public void DepoYukle()
         {
@@ -181,6 +181,11 @@ namespace BenimSalonum.BackOffice.Ayarlar
         private void cmbKasaVars_SelectedIndexChanged(object sender, EventArgs e)
         {
             KasaYukle();
+        }
+
+        private void FrmAyarlar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

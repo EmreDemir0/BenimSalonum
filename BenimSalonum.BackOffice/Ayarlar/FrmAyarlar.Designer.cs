@@ -650,6 +650,7 @@
             this.Name = "FrmAyarlar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uygulama Seçenekleri & Ayarları";
+            this.Load += new System.EventHandler(this.FrmAyarlar_Load);
             this.navigationPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.comboBilgiFisiYaziciSec.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboFaturaYaziciSec.Properties)).EndInit();

@@ -50,9 +50,10 @@
             this.UnitDiscountParameter = new DevExpress.XtraReports.Parameters.Parameter();
             this.UnitTaxParameter = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblAdresBilgi = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrVergiDetay = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrFirmaAdres = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrFirmaUnvan = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -90,7 +91,6 @@
             this.colAraToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.colKdvToplam = new DevExpress.XtraReports.UI.XRLabel();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
-            this.lblAdresBilgi = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -269,9 +269,9 @@
             // 
             this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.lblAdresBilgi,
-            this.xrLabel10,
-            this.xrLabel8,
-            this.xrLabel9,
+            this.xrVergiDetay,
+            this.xrFirmaAdres,
+            this.xrFirmaUnvan,
             this.xrPictureBox1,
             this.xrTable2,
             this.xrLine1,
@@ -288,41 +288,48 @@
             this.PageHeader.HeightF = 622.2324F;
             this.PageHeader.Name = "PageHeader";
             // 
-            // xrLabel10
+            // lblAdresBilgi
             // 
-            this.xrLabel10.Dpi = 254F;
-            this.xrLabel10.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(0F, 133.6675F);
-            this.xrLabel10.Multiline = true;
-            this.xrLabel10.Name = "xrLabel10";
-            this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(554.3021F, 41.48665F);
-            this.xrLabel10.StylePriority.UseFont = false;
-            this.xrLabel10.Text = "Yenimahalle 0420349528";
+            this.lblAdresBilgi.Dpi = 254F;
+            this.lblAdresBilgi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 382.5875F);
+            this.lblAdresBilgi.Multiline = true;
+            this.lblAdresBilgi.Name = "lblAdresBilgi";
+            this.lblAdresBilgi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.lblAdresBilgi.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.lblAdresBilgi.Text = "colTelefon";
             // 
-            // xrLabel8
+            // xrVergiDetay
             // 
-            this.xrLabel8.Dpi = 254F;
-            this.xrLabel8.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(0F, 49.84749F);
-            this.xrLabel8.Multiline = true;
-            this.xrLabel8.Name = "xrLabel8";
-            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(554.3021F, 83.81998F);
-            this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.Text = "Pamuklar Mahallesi Kızılcahamam Caddesi 50 / B";
+            this.xrVergiDetay.Dpi = 254F;
+            this.xrVergiDetay.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.xrVergiDetay.LocationFloat = new DevExpress.Utils.PointFloat(0F, 133.6675F);
+            this.xrVergiDetay.Multiline = true;
+            this.xrVergiDetay.Name = "xrVergiDetay";
+            this.xrVergiDetay.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrVergiDetay.SizeF = new System.Drawing.SizeF(554.3021F, 41.48665F);
+            this.xrVergiDetay.StylePriority.UseFont = false;
             // 
-            // xrLabel9
+            // xrFirmaAdres
             // 
-            this.xrLabel9.Dpi = 254F;
-            this.xrLabel9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(0F, 3.069176F);
-            this.xrLabel9.Multiline = true;
-            this.xrLabel9.Name = "xrLabel9";
-            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(638.9687F, 46.77831F);
-            this.xrLabel9.StylePriority.UseFont = false;
-            this.xrLabel9.Text = "Aktifim Kozmetik San. Tic. Ltd. Şti.";
+            this.xrFirmaAdres.Dpi = 254F;
+            this.xrFirmaAdres.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.xrFirmaAdres.LocationFloat = new DevExpress.Utils.PointFloat(0F, 49.84749F);
+            this.xrFirmaAdres.Multiline = true;
+            this.xrFirmaAdres.Name = "xrFirmaAdres";
+            this.xrFirmaAdres.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrFirmaAdres.SizeF = new System.Drawing.SizeF(554.3021F, 83.81998F);
+            this.xrFirmaAdres.StylePriority.UseFont = false;
+            // 
+            // xrFirmaUnvan
+            // 
+            this.xrFirmaUnvan.Dpi = 254F;
+            this.xrFirmaUnvan.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.xrFirmaUnvan.LocationFloat = new DevExpress.Utils.PointFloat(0F, 3.069176F);
+            this.xrFirmaUnvan.Multiline = true;
+            this.xrFirmaUnvan.Name = "xrFirmaUnvan";
+            this.xrFirmaUnvan.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrFirmaUnvan.SizeF = new System.Drawing.SizeF(638.9687F, 46.77831F);
+            this.xrFirmaUnvan.StylePriority.UseFont = false;
             // 
             // xrPictureBox1
             // 
@@ -440,17 +447,17 @@
             this.colCariAdi.Multiline = true;
             this.colCariAdi.Name = "colCariAdi";
             this.colCariAdi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.colCariAdi.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.colCariAdi.SizeF = new System.Drawing.SizeF(859.9901F, 84.8783F);
             this.colCariAdi.Text = "colCariAdi";
             // 
             // colAdres
             // 
             this.colAdres.Dpi = 254F;
-            this.colAdres.LocationFloat = new DevExpress.Utils.PointFloat(0F, 259.2917F);
+            this.colAdres.LocationFloat = new DevExpress.Utils.PointFloat(0F, 285.75F);
             this.colAdres.Multiline = true;
             this.colAdres.Name = "colAdres";
             this.colAdres.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.colAdres.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.colAdres.SizeF = new System.Drawing.SizeF(859.9901F, 96.83752F);
             this.colAdres.Text = "colAdres";
             // 
             // colTelefon
@@ -480,7 +487,7 @@
             this.colEmail.Multiline = true;
             this.colEmail.Name = "colEmail";
             this.colEmail.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.colEmail.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.colEmail.SizeF = new System.Drawing.SizeF(505.3542F, 58.42001F);
             this.colEmail.Text = "colEmail";
             // 
             // colVergiNo
@@ -500,7 +507,7 @@
             this.colTarih.Multiline = true;
             this.colTarih.Name = "colTarih";
             this.colTarih.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.colTarih.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.colTarih.SizeF = new System.Drawing.SizeF(406.1229F, 58.41998F);
             this.colTarih.Text = "Fatura Tarihi :";
             // 
             // colFisNo
@@ -510,7 +517,7 @@
             this.colFisNo.Multiline = true;
             this.colFisNo.Name = "colFisNo";
             this.colFisNo.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.colFisNo.SizeF = new System.Drawing.SizeF(254F, 58.42F);
+            this.colFisNo.SizeF = new System.Drawing.SizeF(403.1228F, 58.41998F);
             this.colFisNo.Text = "FaturaNo :";
             // 
             // vendorLogo
@@ -685,16 +692,6 @@
             // 
             this.excelDataSource1.Name = "excelDataSource1";
             // 
-            // lblAdresBilgi
-            // 
-            this.lblAdresBilgi.Dpi = 254F;
-            this.lblAdresBilgi.LocationFloat = new DevExpress.Utils.PointFloat(0F, 317.7117F);
-            this.lblAdresBilgi.Multiline = true;
-            this.lblAdresBilgi.Name = "lblAdresBilgi";
-            this.lblAdresBilgi.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
-            this.lblAdresBilgi.SizeF = new System.Drawing.SizeF(254F, 58.42F);
-            this.lblAdresBilgi.Text = "colTelefon";
-            // 
             // rptFatura
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -791,9 +788,9 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel7;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.DataAccess.Excel.ExcelDataSource excelDataSource1;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel10;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel8;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel9;
+        private DevExpress.XtraReports.UI.XRLabel xrVergiDetay;
+        private DevExpress.XtraReports.UI.XRLabel xrFirmaAdres;
+        private DevExpress.XtraReports.UI.XRLabel xrFirmaUnvan;
         private DevExpress.XtraReports.UI.XRLabel lblAdresBilgi;
     }
 }
