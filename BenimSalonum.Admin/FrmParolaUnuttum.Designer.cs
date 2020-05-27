@@ -101,7 +101,7 @@
             this.btnKaydet.ImageOptions.ImageIndex = 1;
             this.btnKaydet.ImageOptions.ImageList = this.ımageList2;
             this.btnKaydet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnKaydet.Location = new System.Drawing.Point(211, 25);
+            this.btnKaydet.Location = new System.Drawing.Point(192, 25);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnKaydet.Size = new System.Drawing.Size(109, 40);

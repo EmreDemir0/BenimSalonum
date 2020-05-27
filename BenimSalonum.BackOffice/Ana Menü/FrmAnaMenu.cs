@@ -245,7 +245,7 @@ namespace BenimSalonum.BackOffice
         {
             if (frmSms == null || frmSms.IsDisposed)
             {
-                frmSms = new FrmSms();
+                frmSms = new FrmSms(context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
                 frmSms.MdiParent = this;
                 frmSms.Show();
             }

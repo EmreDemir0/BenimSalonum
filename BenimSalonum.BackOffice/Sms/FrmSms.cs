@@ -12,6 +12,9 @@ using BenimSalonum.Entities.Context;
 using BenimSalonum.Entities.DataAccess;
 using System.Net;
 using BenimSalonum.Entities.Tools;
+using BenimSalonum.Entities.Tables;
+using BenimSalonum.Entities.Tables.OtherTables;
+using DevExpress.CodeParser;
 
 namespace BenimSalonum.BackOffice.Sms
 {
@@ -20,28 +23,16 @@ namespace BenimSalonum.BackOffice.Sms
         BenimSalonumContext context = new BenimSalonumContext();
         CariDAL cariDal = new CariDAL();
         List<Entities.Tables.Cari> cariList = new List<Entities.Tables.Cari>();
+        private KullaniciAyarlari _entity;
 
-        public FrmSms()
+        public FrmSms(KullaniciAyarlari entity)
         {
             InitializeComponent();
+            _entity = entity;
             gridControl1.DataSource = cariDal.CariTelefonlari(context);
-            gridControl2.DataSource = cariList.Where(c=>c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID);
-            checkButton1.Checked = false;
+            gridControl2.DataSource = cariList;
+            checkButton1.Checked = true;
             checkButton2.Checked = false;
-        }
-
-        private void gridView1_DoubleClick(object sender, EventArgs e)
-        {
-            if (gridView1.GetFocusedRowCellValue(colListeCepTelefonu) != null)
-            {
-                cariList.Add(new Entities.Tables.Cari
-                {
-                    CariKodu = gridView1.GetFocusedRowCellValue(colListeCariKodu).ToString(),
-                    CariAdi = gridView1.GetFocusedRowCellValue(colListeCariAdi).ToString(),
-                    CepTelefonu = gridView1.GetFocusedRowCellValue(colListeCepTelefonu).ToString()
-                });
-                gridView2.RefreshData();
-            }
         }
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -89,10 +80,10 @@ namespace BenimSalonum.BackOffice.Sms
 
             if (checkButton1.Checked == true || checkButton2.Checked == true)
             {
-                string GonderilecekVeri = "data=<sms><kno>" + txtKullaniciNo.Text + "</kno>" +
-                                          "<kulad>" + txtKullaniciAdi.Text + "</kulad>" +
-                                          "<sifre>" + txtSifre.Text + "</sifre>" +
-                                          "<gonderen>" + txtOrjinator.Text + "</gonderen>" +
+                string GonderilecekVeri = "data=<sms><kno>" + _entity.smsAyarlari_KullaniciNo + "</kno>" +
+                                          "<kulad>" + _entity.smsAyarlari_KullaniciAdi + "</kulad>" +
+                                          "<sifre>" + _entity.smsAyarlari_Parola + "</sifre>" +
+                                          "<gonderen>" + _entity.smsAyarlari_Orjinator + "</gonderen>" +
                                           "<mesaj>" + txtMesaj.Text + "</mesaj>" +
                                           "<numaralar>" + gonderilecekNumaralar + "</numaralar>" +
                                           "<tur>" + tur + "</tur></sms>";
@@ -106,8 +97,8 @@ namespace BenimSalonum.BackOffice.Sms
 
         private void btnBakiye_Click(object sender, EventArgs e)
         {
-            string smsozet = "data=<smsrapor><kulad>" + txtKullaniciAdi.Text + "</kulad>" +
-                  "<sifre>" + txtSifre.Text + "</sifre></smsrapor>";
+            string smsozet = "data=<smsrapor><kulad>" + _entity.smsAyarlari_KullaniciAdi + "</kulad>" +
+                  "<sifre>" + _entity.smsAyarlari_Parola + "</sifre></smsrapor>";
             MessageBox.Show(XmlPost("http://panel.vatansms.com/panel/smstakippost.php", smsozet));
         }
         private string XmlPost(string PostAddress, string xmlData)
@@ -123,26 +114,18 @@ namespace BenimSalonum.BackOffice.Sms
             }
         }
 
-        private void btnAyarlar_Click(object sender, EventArgs e)
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SmsAyarlari_KullaniciAdi, txtKullaniciAdi.Text);
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SmsAyarlari_Parola, txtSifre.Text);
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SmsAyarlari_KullaniciNo, txtKullaniciNo.Text);
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SmsAyarlari_Orjinator, txtOrjinator.Text);
-            try
+            if (gridView1.GetFocusedRowCellValue(colListeCepTelefonu) != null)
             {
-                SettingsTool.Kaydet();
-                XtraMessageBox.Show("Başarılı Bir Şekilde Bilgileriniz Kayıt Edildi." + DateTime.Now);
-
+                cariList.Add(new Entities.Tables.Cari
+                {
+                    CariKodu = gridView1.GetFocusedRowCellValue(colListeCariKodu).ToString(),
+                    CariAdi = gridView1.GetFocusedRowCellValue(colListeCariAdi).ToString(),
+                    CepTelefonu = gridView1.GetFocusedRowCellValue(colListeCepTelefonu).ToString()
+                });
+                gridView2.RefreshData();
             }
-            catch (Exception)
-            {
-                XtraMessageBox.Show("Kayıt Başarısız.");
-            }
-        }
-
-        private void FrmSms_FormClosing(object sender, FormClosingEventArgs e)
-        {
         }
     }
 }

@@ -97,6 +97,10 @@
             this.groupGenel = new DevExpress.XtraEditors.GroupControl();
             this.labelKullaniciID = new System.Windows.Forms.Label();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.txtMersisNo = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSicilNo = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeb.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcRiskLimiti.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcSatisOzelFiyat.Properties)).BeginInit();
@@ -136,6 +140,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupGenel)).BeginInit();
             this.groupGenel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMersisNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSicilNo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtWeb
@@ -262,7 +268,7 @@
             this.groupControl2.Controls.Add(this.btnKaydet);
             this.groupControl2.Controls.Add(this.btnKapat);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl2.Location = new System.Drawing.Point(0, 656);
+            this.groupControl2.Location = new System.Drawing.Point(0, 679);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(593, 69);
             this.groupControl2.TabIndex = 51;
@@ -339,7 +345,7 @@
             this.groupGrup.Controls.Add(this.labelControl23);
             this.groupGrup.Controls.Add(this.labelControl21);
             this.groupGrup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupGrup.Location = new System.Drawing.Point(0, 456);
+            this.groupGrup.Location = new System.Drawing.Point(0, 480);
             this.groupGrup.Name = "groupGrup";
             this.groupGrup.Size = new System.Drawing.Size(593, 112);
             this.groupGrup.TabIndex = 53;
@@ -485,7 +491,7 @@
             this.groupOzel.Controls.Add(this.calcAlisOzelFiyat);
             this.groupOzel.Controls.Add(this.labelControl19);
             this.groupOzel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupOzel.Location = new System.Drawing.Point(0, 568);
+            this.groupOzel.Location = new System.Drawing.Point(0, 592);
             this.groupOzel.Name = "groupOzel";
             this.groupOzel.Size = new System.Drawing.Size(593, 87);
             this.groupOzel.TabIndex = 54;
@@ -557,7 +563,7 @@
             this.groupIletisim.Controls.Add(this.txtIlce);
             this.groupIletisim.Controls.Add(this.txtSemt);
             this.groupIletisim.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupIletisim.Location = new System.Drawing.Point(0, 262);
+            this.groupIletisim.Location = new System.Drawing.Point(0, 286);
             this.groupIletisim.Name = "groupIletisim";
             this.groupIletisim.Size = new System.Drawing.Size(593, 194);
             this.groupIletisim.TabIndex = 52;
@@ -699,7 +705,7 @@
             // 
             // txtAciklama
             // 
-            this.txtAciklama.Location = new System.Drawing.Point(93, 180);
+            this.txtAciklama.Location = new System.Drawing.Point(91, 205);
             this.txtAciklama.Name = "txtAciklama";
             this.txtAciklama.Size = new System.Drawing.Size(490, 20);
             this.txtAciklama.TabIndex = 8;
@@ -760,7 +766,7 @@
             this.labelControl7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl7.Location = new System.Drawing.Point(5, 179);
+            this.labelControl7.Location = new System.Drawing.Point(3, 204);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(82, 20);
             this.labelControl7.TabIndex = 6;
@@ -855,6 +861,10 @@
             // 
             // groupGenel
             // 
+            this.groupGenel.Controls.Add(this.txtMersisNo);
+            this.groupGenel.Controls.Add(this.labelControl9);
+            this.groupGenel.Controls.Add(this.labelControl29);
+            this.groupGenel.Controls.Add(this.txtSicilNo);
             this.groupGenel.Controls.Add(this.labelKullaniciID);
             this.groupGenel.Controls.Add(this.btnKod);
             this.groupGenel.Controls.Add(this.txtAciklama);
@@ -876,7 +886,7 @@
             this.groupGenel.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupGenel.Location = new System.Drawing.Point(0, 50);
             this.groupGenel.Name = "groupGenel";
-            this.groupGenel.Size = new System.Drawing.Size(593, 212);
+            this.groupGenel.Size = new System.Drawing.Size(593, 236);
             this.groupGenel.TabIndex = 50;
             this.groupGenel.Text = "Genel Bilgiler";
             // 
@@ -893,11 +903,49 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
+            // txtMersisNo
+            // 
+            this.txtMersisNo.Location = new System.Drawing.Point(93, 179);
+            this.txtMersisNo.Name = "txtMersisNo";
+            this.txtMersisNo.Size = new System.Drawing.Size(200, 20);
+            this.txtMersisNo.TabIndex = 25;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Options.UseTextOptions = true;
+            this.labelControl9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl9.Location = new System.Drawing.Point(302, 179);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(75, 20);
+            this.labelControl9.TabIndex = 27;
+            this.labelControl9.Text = "Sicil No :";
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Appearance.Options.UseTextOptions = true;
+            this.labelControl29.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl29.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl29.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl29.Location = new System.Drawing.Point(5, 179);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(82, 20);
+            this.labelControl29.TabIndex = 24;
+            this.labelControl29.Text = "Mersis No :";
+            // 
+            // txtSicilNo
+            // 
+            this.txtSicilNo.Location = new System.Drawing.Point(383, 179);
+            this.txtSicilNo.Name = "txtSicilNo";
+            this.txtSicilNo.Size = new System.Drawing.Size(200, 20);
+            this.txtSicilNo.TabIndex = 26;
+            // 
             // FrmCariIslem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 725);
+            this.ClientSize = new System.Drawing.Size(593, 748);
             this.Controls.Add(this.groupOzel);
             this.Controls.Add(this.groupGrup);
             this.Controls.Add(this.groupIletisim);
@@ -950,6 +998,8 @@
             this.groupGenel.ResumeLayout(false);
             this.groupGenel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMersisNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSicilNo.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1023,5 +1073,9 @@
         private DevExpress.XtraEditors.TextEdit txtIlce;
         private DevExpress.XtraEditors.TextEdit txtSemt;
         private System.Windows.Forms.Label labelKullaniciID;
+        private DevExpress.XtraEditors.TextEdit txtMersisNo;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.TextEdit txtSicilNo;
     }
 }

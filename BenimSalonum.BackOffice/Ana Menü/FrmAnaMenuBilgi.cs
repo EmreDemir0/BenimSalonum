@@ -69,6 +69,9 @@ namespace BenimSalonum.BackOffice.Ana_Menü
         public static bool YardimAcikmi = false;
         public static bool MesajYazAcikmi = false;
         public static bool WebSitemizAcikmi = false;
+
+        BenimSalonumContext context = new BenimSalonumContext();
+
         public FrmAnaMenuBilgi()
         {
             InitializeComponent();
@@ -181,7 +184,7 @@ namespace BenimSalonum.BackOffice.Ana_Menü
         {
             if (frmSms == null || frmSms.IsDisposed)
             {
-                frmSms = new FrmSms();
+                frmSms = new FrmSms(context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
                 frmSms.MdiParent = this;
                 frmSms.Show();
             }
@@ -236,7 +239,6 @@ namespace BenimSalonum.BackOffice.Ana_Menü
         {
             if (frmAyarlar == null || frmAyarlar.IsDisposed)
             {
-                BenimSalonumContext context = new BenimSalonumContext();
                 frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).FirstOrDefault());
                 frmAyarlar.MdiParent = this;
                 frmAyarlar.Show();

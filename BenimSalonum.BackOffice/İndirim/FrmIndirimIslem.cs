@@ -89,14 +89,11 @@ namespace BenimSalonum.BackOffice.İndirim
                     itemIndirim.IndirimTuru = "Sınırlı";
                 }
             }
-            if (dateBitis.DateTime == dateBaslangic.DateTime)
+            if (dateBitis.DateTime == dateBaslangic.DateTime && btnSinirli.Checked)
             {
-                XtraMessageBox.Show("Başlangıç ve Bitiş Tarihi Aynı Olamaz");
+                XtraMessageBox.Show("Başlangıç ve Bitiş Tarihi Aynı Olamaz Ayalarınızı Güncelleyin.");
             }
-            else
-            {
                 ındirimDal.Save(context);
-            }
         }
 
         private void BtnCikar_Click(object sender, EventArgs e)

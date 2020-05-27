@@ -14,6 +14,7 @@ using BenimSalonum.Entities.Tools;
 using BenimSalonum.Entities.Tables;
 using System.Data.Entity.Migrations;
 using BenimSalonum.Entities.Tables.OtherTables;
+using System.Printing;
 
 namespace BenimSalonum.BackOffice.Ayarlar
 {
@@ -30,8 +31,8 @@ namespace BenimSalonum.BackOffice.Ayarlar
 
             _entity = entity;
 
-            //comboFaturaYaziciSec.Properties.Items.AddRange(YaziciListesi());
-            //comboBilgiFisiYaziciSec.Properties.Items.AddRange(YaziciListesi());
+            comboFaturaYaziciSec.Properties.Items.AddRange(YaziciListesi());
+            comboBilgiFisiYaziciSec.Properties.Items.AddRange(YaziciListesi());
 
             toggleGuncelleme.DataBindings.Add("EditValue", _entity, "GenelAyarlar_GuncellemeKontrol");
 
@@ -58,6 +59,8 @@ namespace BenimSalonum.BackOffice.Ayarlar
             txtSmsOrjinator.DataBindings.Add("Text", _entity, "smsAyarlari_Orjinator");
 
 
+
+
             /////////////////////////////////////            
 
 
@@ -70,17 +73,28 @@ namespace BenimSalonum.BackOffice.Ayarlar
             cmbKasaVars.Text = _entity.SatisAyarlari_VarsayilanKasa;
 
 
-            comboFaturaAyar.SelectedIndex = Convert.ToInt32(_entity.SatisAyarlari_FaturaYazdirmaAyari);
+            comboFaturaAyar.Text = _entity.SatisAyarlari_FaturaYazdirmaAyari;
 
             toggleGuncelleme.IsOn = _entity.GenelAyarlar_GuncellemeKontrol;
 
-            comboBilgiFisi.SelectedIndex = Convert.ToInt32(_entity.SatisAyarlari_BilgiFisiYazdırmaAyari);
+            comboBilgiFisi.Text = _entity.SatisAyarlari_BilgiFisiYazdırmaAyari;
 
             comboFaturaYaziciSec.Text = _entity.SatisAyarlari_FaturaYazici;
 
             comboBilgiFisiYaziciSec.Text = _entity.SatisAyarlari_BilgiFisiYazici;
 
             txtFirmaAdi.Text = _entity.FirmaAyarlari_FirmaAdi;
+
+            txtFaturaUnvani.Text = _entity.FirmaAyarlari_FaturaUnvani;
+            txtVergiDairesi.Text = _entity.FirmaAyarlari_VergiDairesi;
+            txtVergiNo.Text = _entity.FirmaAyarlari_VergiNo;
+            txtAdres.Text = _entity.FirmaAyarlari_Adres;
+            txtEposta.Text = _entity.FirmaAyarlari_Eposta;
+
+            txtSmsKullaniciAdi.Text = _entity.smsAyarlari_KullaniciAdi;
+            txtSmsKullaniciNo.Text = _entity.smsAyarlari_KullaniciNo;
+            txtSmsParola.Text = _entity.smsAyarlari_Parola;
+            txtSmsOrjinator.Text = _entity.smsAyarlari_Orjinator;
 
             labelControl4.Text = "Kayıt Durumu : ";
             DepoYukle();
@@ -89,6 +103,7 @@ namespace BenimSalonum.BackOffice.Ayarlar
         public void DepoYukle()
         {
             string secilenKod = cmbDepoVars.SelectedItem.ToString() ?? "";
+
             string gelenYetkili = context.Depolar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.DepoKodu == secilenKod).DepoAdi;
 
             if (cmbDepoAdiVars.Text != gelenYetkili)
@@ -106,8 +121,8 @@ namespace BenimSalonum.BackOffice.Ayarlar
         }
         public void KasaYukle()
         {
-
             string secilenKod = cmbKasaVars.SelectedItem.ToString() ?? "";
+
             string gelenYetkili = context.Kasalar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.KasaKodu == secilenKod).KasaAdi;
 
             if (cmbKasaAdiVars.Text != gelenYetkili)
@@ -123,12 +138,10 @@ namespace BenimSalonum.BackOffice.Ayarlar
                 }
             }
         }
-        //private List<string> YaziciListesi()
-        //{
-        //    return new LocalPrintServer().GetPrintQueues().Select(c => c.Name).ToList();
-
-        //    VİDEODAN İZLE HANGİ REFERANSI ALDIĞINA BAK
-        //}
+        private List<string> YaziciListesi()
+        {
+            return new LocalPrintServer().GetPrintQueues().Select(c => c.Name).ToList();
+        }
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {

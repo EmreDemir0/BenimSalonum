@@ -39,7 +39,7 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.FirmaAyarlari_FaturaUnvani).HasMaxLength(50);
             this.Property(p => p.FirmaAyarlari_VergiDairesi).HasMaxLength(50);
             this.Property(p => p.FirmaAyarlari_VergiNo).HasMaxLength(50);
-            this.Property(p => p.FirmaAyarlari_Adres).HasMaxLength(50);
+            this.Property(p => p.FirmaAyarlari_Adres).HasMaxLength(200);
             this.Property(p => p.FirmaAyarlari_Eposta).HasMaxLength(50);
 
             this.ToTable("KullaniciAyarlari");

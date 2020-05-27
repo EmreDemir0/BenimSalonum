@@ -162,6 +162,24 @@ namespace BenimSalonum.Admin
                             KullaniciID = "1",
                             GenelAyarlar_GuncellemeKontrol = true
                         });
+                        context.Tanimlar.Add(new Tanim
+                        {
+                            KullaniciID = "1",
+                            Turu = "CariGrubu",
+                            Tanimi = "Müşteri"
+                        });
+                        context.Tanimlar.Add(new Tanim
+                        {
+                            KullaniciID = "1",
+                            Turu = "CariGrubu",
+                            Tanimi = "Firma"
+                        });
+                        context.Tanimlar.Add(new Tanim
+                        {
+                            KullaniciID = "1",
+                            Turu = "CariGrubu",
+                            Tanimi = "Cari"
+                        });
                         context.SaveChanges();                      
                     }
 

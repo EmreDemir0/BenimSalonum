@@ -586,7 +586,7 @@
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(89, 25);
             this.labelControl15.TabIndex = 33;
-            this.labelControl15.Text = "Orjinator :";
+            this.labelControl15.Text = "Başlık :";
             // 
             // txtSmsParola
             // 

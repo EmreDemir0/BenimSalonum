@@ -33,6 +33,8 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.OzelKod4).HasMaxLength(30);
             this.Property(p => p.VergiDairesi).HasMaxLength(30);
             this.Property(p => p.VergiNo).HasMaxLength(11);
+            this.Property(p => p.TicaretSicilNo).HasMaxLength(11);
+            this.Property(p => p.MersisNo).HasMaxLength(16);
             this.Property(p => p.IskontoOrani).HasPrecision(12, 2);
             this.Property(p => p.RiskLimiti).HasPrecision(12, 2);
             this.Property(p => p.AlisOzelFiyati).HasPrecision(12, 2);
@@ -65,6 +67,8 @@ namespace BenimSalonum.Entities.Mapping
             this.Property(p => p.OzelKod4).HasColumnName("OzelKod4");
             this.Property(p => p.VergiDairesi).HasColumnName("VergiDairesi");
             this.Property(p => p.VergiNo).HasColumnName("VergiNo");
+            this.Property(p => p.TicaretSicilNo).HasColumnName("TicaretSicilNo");
+            this.Property(p => p.MersisNo).HasColumnName("MersisNo");
             this.Property(p => p.IskontoOrani).HasColumnName("IskontoOrani");
             this.Property(p => p.RiskLimiti).HasColumnName("RiskLimiti");
             this.Property(p => p.AlisOzelFiyati).HasColumnName("AlisOzelFiyati");

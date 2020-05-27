@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSms));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colListeCariKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colListeCariAdi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,18 +56,8 @@
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.txtMesaj = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtKullaniciNo = new DevExpress.XtraEditors.TextEdit();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtKullaniciAdi = new DevExpress.XtraEditors.TextEdit();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSifre = new DevExpress.XtraEditors.TextEdit();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtOrjinator = new DevExpress.XtraEditors.TextEdit();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnBakiye = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btnAyarlar = new DevExpress.XtraEditors.SimpleButton();
             this.btnGonder = new DevExpress.XtraEditors.SimpleButton();
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
@@ -84,11 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMesaj.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSifre.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOrjinator.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -99,7 +84,6 @@
             this.colListeCepTelefonu});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // colListeCariKodu
             // 
@@ -138,6 +122,7 @@
             this.gridControl1.TabIndex = 53;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
             // 
             // groupControl1
             // 
@@ -184,9 +169,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions7.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions7.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
@@ -292,9 +277,7 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.groupBox2);
             this.groupControl2.Controls.Add(this.btnBakiye);
-            this.groupControl2.Controls.Add(this.btnAyarlar);
             this.groupControl2.Controls.Add(this.btnGonder);
             this.groupControl2.Controls.Add(this.btnKapat);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -303,102 +286,6 @@
             this.groupControl2.Size = new System.Drawing.Size(1014, 80);
             this.groupControl2.TabIndex = 52;
             this.groupControl2.Text = " Menü";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtKullaniciNo);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtKullaniciAdi);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtSifre);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtOrjinator);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(212, 21);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(418, 54);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            // 
-            // txtKullaniciNo
-            // 
-            this.txtKullaniciNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtKullaniciNo.Location = new System.Drawing.Point(76, 10);
-            this.txtKullaniciNo.Name = "txtKullaniciNo";
-            this.txtKullaniciNo.Size = new System.Drawing.Size(125, 20);
-            this.txtKullaniciNo.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Başlık :";
-            // 
-            // txtKullaniciAdi
-            // 
-            this.txtKullaniciAdi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(76, 31);
-            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(125, 20);
-            this.txtKullaniciAdi.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(209, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Şifre :";
-            // 
-            // txtSifre
-            // 
-            this.txtSifre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtSifre.Location = new System.Drawing.Point(282, 10);
-            this.txtSifre.Name = "txtSifre";
-            this.txtSifre.Size = new System.Drawing.Size(125, 20);
-            this.txtSifre.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Kullanıcı Adı :";
-            // 
-            // txtOrjinator
-            // 
-            this.txtOrjinator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtOrjinator.Location = new System.Drawing.Point(282, 31);
-            this.txtOrjinator.Name = "txtOrjinator";
-            this.txtOrjinator.Size = new System.Drawing.Size(125, 20);
-            this.txtOrjinator.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Kullanıcı No :";
             // 
             // btnBakiye
             // 
@@ -423,21 +310,6 @@
             this.ımageList1.Images.SetKeyName(1, "folder_out.png");
             this.ımageList1.Images.SetKeyName(2, "Ayar.png");
             this.ımageList1.Images.SetKeyName(3, "Bakiye.png");
-            // 
-            // btnAyarlar
-            // 
-            this.btnAyarlar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAyarlar.ImageOptions.ImageIndex = 2;
-            this.btnAyarlar.ImageOptions.ImageList = this.ımageList1;
-            this.btnAyarlar.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnAyarlar.Location = new System.Drawing.Point(123, 29);
-            this.btnAyarlar.Name = "btnAyarlar";
-            this.btnAyarlar.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.btnAyarlar.Size = new System.Drawing.Size(83, 40);
-            this.btnAyarlar.TabIndex = 3;
-            this.btnAyarlar.Text = "Ayarları\r\nKaydet";
-            this.btnAyarlar.Click += new System.EventHandler(this.btnAyarlar_Click);
             // 
             // btnGonder
             // 
@@ -506,7 +378,6 @@
             this.Name = "FrmSms";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sms Gönderme Paneli";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSms_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -521,12 +392,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMesaj.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciAdi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSifre.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOrjinator.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,18 +419,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.MemoEdit txtMesaj;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private DevExpress.XtraEditors.TextEdit txtKullaniciNo;
-        private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.TextEdit txtKullaniciAdi;
-        private System.Windows.Forms.Label label5;
-        private DevExpress.XtraEditors.TextEdit txtSifre;
-        private System.Windows.Forms.Label label3;
-        private DevExpress.XtraEditors.TextEdit txtOrjinator;
-        private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.SimpleButton btnBakiye;
         private System.Windows.Forms.ImageList ımageList1;
-        private DevExpress.XtraEditors.SimpleButton btnAyarlar;
         private DevExpress.XtraEditors.SimpleButton btnGonder;
         private DevExpress.XtraEditors.SimpleButton btnKapat;
         private DevExpress.XtraEditors.LabelControl LblBaslik;

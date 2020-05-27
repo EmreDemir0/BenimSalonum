@@ -505,7 +505,7 @@
             // 
             this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
-            this.dropDownButton1.Location = new System.Drawing.Point(1314, 10);
+            this.dropDownButton1.Location = new System.Drawing.Point(1314, 7);
             this.dropDownButton1.Name = "dropDownButton1";
             this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.dropDownButton1.Size = new System.Drawing.Size(50, 40);

@@ -52,6 +52,8 @@ namespace BenimSalonum.BackOffice.Cari
                 _entity.Fax = entity.Fax;
                 _entity.VergiDairesi = entity.VergiDairesi;
                 _entity.VergiNo = entity.VergiNo;
+                _entity.TicaretSicilNo = entity.TicaretSicilNo;
+                _entity.MersisNo = entity.MersisNo;
                 _entity.Il = entity.Il;
                 _entity.Ilce = entity.Ilce;
                 _entity.Semt = entity.Semt;
@@ -79,6 +81,8 @@ namespace BenimSalonum.BackOffice.Cari
             txtFaturaUnvani.DataBindings.Add("Text", _entity, "FaturaUnvani");
             txtVergiDairesi.DataBindings.Add("Text", _entity, "VergiDairesi");
             txtVergiNo.DataBindings.Add("Text", _entity, "VergiNo");
+            txtSicilNo.DataBindings.Add("Text", _entity, "TicaretSicilNo");
+            txtMersisNo.DataBindings.Add("Text", _entity, "MersisNo");
             txtAciklama.DataBindings.Add("Text", _entity, "Aciklama");
             txtCepTelefonu.DataBindings.Add("Text", _entity, "CepTelefonu");
             txtSabitTelefon.DataBindings.Add("Text", _entity, "Telefon");

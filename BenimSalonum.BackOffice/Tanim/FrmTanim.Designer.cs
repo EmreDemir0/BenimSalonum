@@ -144,7 +144,7 @@
             // 
             // colAciklama
             // 
-            this.colAciklama.Caption = "Açıkmala";
+            this.colAciklama.Caption = "Açıklama";
             this.colAciklama.FieldName = "Aciklama";
             this.colAciklama.Name = "colAciklama";
             this.colAciklama.OptionsColumn.AllowEdit = false;

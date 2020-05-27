@@ -59,6 +59,7 @@
             this.colPersonelUnvani = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPersonelKodu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPersonelAdi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             this.picBoxAcik = new System.Windows.Forms.PictureBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -81,7 +82,6 @@
             this.toolStripMenuItemSil = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHareket = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGuncelle = new System.Windows.Forms.ToolStripMenuItem();
-            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PersonellerGridControl)).BeginInit();
@@ -296,7 +296,6 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.btnCariFiltre);
             this.splitContainerControl1.Panel1.Controls.Add(this.PersonellerFilterControl);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.dropDownButton1);
             this.splitContainerControl1.Panel2.Controls.Add(this.PersonellerGridControl);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1364, 615);
@@ -413,6 +412,16 @@
             this.colPersonelAdi.Visible = true;
             this.colPersonelAdi.VisibleIndex = 3;
             this.colPersonelAdi.Width = 108;
+            // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
+            this.dropDownButton1.Location = new System.Drawing.Point(1314, 4);
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.dropDownButton1.Size = new System.Drawing.Size(50, 40);
+            this.dropDownButton1.TabIndex = 43;
             // 
             // picBoxAcik
             // 
@@ -654,23 +663,13 @@
             this.toolStripMenuItemGuncelle.Text = "Güncelle";
             this.toolStripMenuItemGuncelle.Click += new System.EventHandler(this.toolStripMenuItemGuncelle_Click);
             // 
-            // dropDownButton1
-            // 
-            this.dropDownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dropDownButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dropDownButton1.ImageOptions.SvgImage")));
-            this.dropDownButton1.Location = new System.Drawing.Point(1277, 3);
-            this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.dropDownButton1.Size = new System.Drawing.Size(54, 30);
-            this.dropDownButton1.TabIndex = 43;
-            // 
             // FrmPersonelAnasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 736);
             this.ContextMenuStrip = this.contextMenuPersonel;
+            this.Controls.Add(this.dropDownButton1);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.picBoxAcik);
             this.Controls.Add(this.groupControl1);
