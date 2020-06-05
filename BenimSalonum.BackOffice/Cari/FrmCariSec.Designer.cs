@@ -277,7 +277,7 @@
             this.GridControlCariSec.Location = new System.Drawing.Point(0, 54);
             this.GridControlCariSec.MainView = this.GridViewCariSec;
             this.GridControlCariSec.Name = "GridControlCariSec";
-            this.GridControlCariSec.Size = new System.Drawing.Size(1364, 682);
+            this.GridControlCariSec.Size = new System.Drawing.Size(1364, 613);
             this.GridControlCariSec.TabIndex = 13;
             this.GridControlCariSec.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GridViewCariSec});
@@ -441,8 +441,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 736);
-            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.GridControlCariSec);
+            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.LblBaslik);
             this.Name = "FrmCariSec";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

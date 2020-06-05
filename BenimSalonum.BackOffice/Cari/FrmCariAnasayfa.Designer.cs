@@ -613,47 +613,46 @@
             this.toolStripMenuItemHareket,
             this.toolStripMenuItemGuncelle});
             this.contextMenuCari.Name = "contextMenuStrip1";
-            this.contextMenuCari.Size = new System.Drawing.Size(145, 136);
-            // 
+            this.contextMenuCari.Size = new System.Drawing.Size(181, 158);            // 
             // toolStripMenuItemEkle
             // 
             this.toolStripMenuItemEkle.Name = "toolStripMenuItemEkle";
-            this.toolStripMenuItemEkle.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemEkle.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemEkle.Text = "Yeni Cari Ekle";
             this.toolStripMenuItemEkle.Click += new System.EventHandler(this.toolStripMenuItemEkle_Click);
             // 
             // toolStripMenuItemDuzenle
             // 
             this.toolStripMenuItemDuzenle.Name = "toolStripMenuItemDuzenle";
-            this.toolStripMenuItemDuzenle.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemDuzenle.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemDuzenle.Text = "Düzenle";
             this.toolStripMenuItemDuzenle.Click += new System.EventHandler(this.toolStripMenuItemDuzenle_Click);
             // 
             // toolStripMenuItemSil
             // 
             this.toolStripMenuItemSil.Name = "toolStripMenuItemSil";
-            this.toolStripMenuItemSil.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemSil.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemSil.Text = "Sil";
             this.toolStripMenuItemSil.Click += new System.EventHandler(this.toolStripMenuItemSil_Click);
             // 
             // toolStripMenuItemKopyala
             // 
             this.toolStripMenuItemKopyala.Name = "toolStripMenuItemKopyala";
-            this.toolStripMenuItemKopyala.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemKopyala.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemKopyala.Text = "Kopyala";
             this.toolStripMenuItemKopyala.Click += new System.EventHandler(this.toolStripMenuItemKopyala_Click);
             // 
             // toolStripMenuItemHareket
             // 
             this.toolStripMenuItemHareket.Name = "toolStripMenuItemHareket";
-            this.toolStripMenuItemHareket.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemHareket.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemHareket.Text = "Cari Hareket";
             this.toolStripMenuItemHareket.Click += new System.EventHandler(this.toolStripMenuItemHareket_Click);
             // 
             // toolStripMenuItemGuncelle
             // 
             this.toolStripMenuItemGuncelle.Name = "toolStripMenuItemGuncelle";
-            this.toolStripMenuItemGuncelle.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemGuncelle.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemGuncelle.Text = "Güncelle";
             this.toolStripMenuItemGuncelle.Click += new System.EventHandler(this.toolStripMenuItemGuncelle_Click);
             // 

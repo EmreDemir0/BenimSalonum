@@ -52,7 +52,7 @@ namespace BenimSalonum.Admin
             yukelemeFormu = new LoadingTool(this);
 
             kodOlustur = new CodeTool(this, CodeTool.Table.Devir);
-            connKaynak.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+            connKaynak.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
             connKaynak.InitialCatalog = "master";
             connKaynak.IntegratedSecurity = true;
             //hedefContext.Database.SqlQuery()
@@ -82,7 +82,7 @@ namespace BenimSalonum.Admin
         {
             CheckButton buton = (CheckButton)sender;
 
-            connKaynak.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+            connKaynak.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
             connKaynak.InitialCatalog = buton.Text;
             connKaynak.UserID = "sa";
             connKaynak.Password = "Emre1502.";
@@ -140,7 +140,7 @@ namespace BenimSalonum.Admin
                     buton.Click += HedefSec;
                     flowHedef.Controls.Add(buton);
 
-                    connHedef.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+                    connHedef.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
                     connHedef.InitialCatalog = buton.Text;
                     connHedef.UserID = "sa";
                     connHedef.Password = "Emre1502.";
@@ -233,7 +233,7 @@ namespace BenimSalonum.Admin
         {
             CheckButton buton = (CheckButton)sender;
 
-            connHedef.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+            connHedef.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
             connHedef.InitialCatalog = buton.Text;
             connHedef.UserID = "sa";
             connHedef.Password = "Emre1502.";

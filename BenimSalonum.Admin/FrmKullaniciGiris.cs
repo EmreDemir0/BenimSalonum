@@ -58,7 +58,7 @@ namespace BenimSalonum.Admin
         {
             try
             {
-                connectionStringBuilder.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+                connectionStringBuilder.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
                 connectionStringBuilder.IntegratedSecurity = true;
                 connectionStringBuilder.InitialCatalog = "master";
                 context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
@@ -102,7 +102,7 @@ namespace BenimSalonum.Admin
                 form.ShowDialog();
                 if (!String.IsNullOrEmpty(form.donem))
                 {
-                    connectionStringBuilder.DataSource = "DESKTOP-KESCC\\SQLEXPRESS";
+                    connectionStringBuilder.DataSource = "DESKTOP-6BQ24TV\\SQLEXPRESS";
                     connectionStringBuilder.IntegratedSecurity = true;
                     connectionStringBuilder.InitialCatalog = "BS" + form.donem;
                     context = new BenimSalonumContext(connectionStringBuilder.ConnectionString, true);
@@ -299,18 +299,18 @@ namespace BenimSalonum.Admin
         {
             try
             {
-
                 connectionStringBuilder.InitialCatalog = cmbDonem.Text;
                 connectionStringBuilder.IntegratedSecurity = true;
 
 
                 context = new BenimSalonumContext(connectionStringBuilder.ConnectionString);
+
                 if (context.Kullanicilar.Any(c => c.KullaniciAdi == txtKullaniciAdi.Text && c.Parola == txtParola.Text))
                 {
                     RoleTool.kullaniciEntity = context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text);
 
                     context = new BenimSalonumContext();
-                    FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.FirstOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
+                    FrmKullaniciIslem frmKullanicilar = new FrmKullaniciIslem(context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == txtKullaniciAdi.Text));
                     frmKullanicilar.ShowDialog();
                 }
             }

@@ -561,11 +561,9 @@ namespace BenimSalonum.BackOffice.Fis
             FrmCariSec form = new FrmCariSec();
             form.ShowDialog();
             if (form.Secildi)
-
             {
                 Entities.Tables.Cari entity = form.secilen.FirstOrDefault();
                 _entityBakiye = this.cariDal.CariBakiyesi(context, entity.Id);
-
                 _cariId = entity.Id;
                 _fisentity.CariId = entity.Id;
                 txtCariKodu.Text = entity.CariKodu;

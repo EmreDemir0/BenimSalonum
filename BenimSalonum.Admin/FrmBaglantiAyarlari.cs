@@ -22,7 +22,7 @@ namespace BenimSalonum.Admin
         public FrmBaglantiAyarlari()
         {
             InitializeComponent();
-            txtServerAdi.Text = "DESKTOP-KESCC\\SQLEXPRESS";
+            txtServerAdi.Text = "DESKTOP-6BQ24TV\\SQLEXPRESS";
             txtKullaniciAdi.Text = "sa";
             txtParola.Text = "Emre1502.";
             checkSql.Checked = true;

@@ -136,12 +136,19 @@ namespace BenimSalonum.Entities.DataAccess
             var result = (from c in context.Cariler.Where(c=>c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID)
                           select new
                           {
+                              c.Id,
+                              c.Durumu,
+                              c.FaturaUnvani,
                               c.CariKodu,
                               c.CariAdi,
-                              c.CepTelefonu
+                              c.CepTelefonu,
+                              c.EMail
+                              
                           }).ToList();
             return result;
         }
+
+
 
     }
 }

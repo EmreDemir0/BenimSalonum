@@ -70,8 +70,8 @@ namespace BenimSalonum.BackOffice.Ayarlar
             cmbKasaVars.DataSource = context.Kasalar.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Select(c => c.KasaKodu).ToList();
 
 
-            cmbDepoVars.Text = _entity.SatisAyarlari_VarsayilanDepo;
-            cmbKasaVars.Text = _entity.SatisAyarlari_VarsayilanKasa;
+            cmbDepoVars.Text = _entity.SatisAyarlari_VarsayilanDepo ?? "01";
+            cmbKasaVars.Text = _entity.SatisAyarlari_VarsayilanKasa ?? "01";
 
 
             comboFaturaAyar.Text = _entity.SatisAyarlari_FaturaYazdirmaAyari;
@@ -175,12 +175,27 @@ namespace BenimSalonum.BackOffice.Ayarlar
 
         private void cmbDepoVars_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DepoYukle();
+            try
+            {
+                DepoYukle();
+            }
+            catch (Exception)
+            {
+            }
+
         }
 
         private void cmbKasaVars_SelectedIndexChanged(object sender, EventArgs e)
         {
-            KasaYukle();
+            try
+            {
+                KasaYukle();
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private void FrmAyarlar_Load(object sender, EventArgs e)

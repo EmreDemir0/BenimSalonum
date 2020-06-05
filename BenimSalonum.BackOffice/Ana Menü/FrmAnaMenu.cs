@@ -67,6 +67,8 @@ namespace BenimSalonum.BackOffice
         FrmBackup frmBackUp;
         FrmEtiketOlustur frmEtiketOlustur;
         FrmOzgunRaporHazirla frmOzgunRaporHazirla;
+        FrmTahsilat frmTahsilat;
+        FrmRehber frmRehber;
         public static bool HakkindaAcikmi = false;
         public static bool YardimAcikmi = false;
         public static bool MesajYazAcikmi = false;
@@ -355,6 +357,25 @@ namespace BenimSalonum.BackOffice
         {
             context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == RoleTool.kullaniciEntity.KullaniciAdi).Aktif = false;
             context.SaveChanges();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (frmTahsilat == null || frmTahsilat.IsDisposed)
+            {
+                frmTahsilat = new FrmTahsilat();
+                frmTahsilat.ShowDialog();
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (frmRehber == null || frmRehber.IsDisposed)
+            {
+                frmRehber = new FrmRehber();
+                frmRehber.MdiParent = this;
+                frmRehber.Show();
+            }
         }
     }
 }
