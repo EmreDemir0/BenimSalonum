@@ -44,6 +44,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtCevap = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.btnPasifYap = new DevExpress.XtraEditors.SimpleButton();
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.ımageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnKapat = new DevExpress.XtraEditors.SimpleButton();
@@ -59,10 +60,9 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtGorevi = new DevExpress.XtraEditors.TextEdit();
             this.groupGenel = new DevExpress.XtraEditors.GroupControl();
-            this.labelKullaniciID = new System.Windows.Forms.Label();
-            this.btnPasifYap = new DevExpress.XtraEditors.SimpleButton();
             this.toggleAktif = new DevExpress.XtraEditors.ToggleSwitch();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelKullaniciID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -274,6 +274,18 @@
             this.groupControl2.TabIndex = 50;
             this.groupControl2.Text = " Menü";
             // 
+            // btnPasifYap
+            // 
+            this.btnPasifYap.ImageOptions.ImageIndex = 3;
+            this.btnPasifYap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPasifYap.ImageOptions.SvgImage")));
+            this.btnPasifYap.Location = new System.Drawing.Point(5, 26);
+            this.btnPasifYap.Name = "btnPasifYap";
+            this.btnPasifYap.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.btnPasifYap.Size = new System.Drawing.Size(168, 40);
+            this.btnPasifYap.TabIndex = 4;
+            this.btnPasifYap.Text = "Oturum Aktif Hatası";
+            this.btnPasifYap.Click += new System.EventHandler(this.btnPasifYap_Click);
+            // 
             // btnKaydet
             // 
             this.btnKaydet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -349,6 +361,7 @@
             // 
             // txtKullaniciAdi
             // 
+            this.txtKullaniciAdi.Enabled = false;
             this.txtKullaniciAdi.Location = new System.Drawing.Point(109, 51);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(308, 20);
@@ -461,27 +474,6 @@
             this.groupGenel.TabIndex = 51;
             this.groupGenel.Text = "Genel Bilgiler";
             // 
-            // labelKullaniciID
-            // 
-            this.labelKullaniciID.AutoSize = true;
-            this.labelKullaniciID.Location = new System.Drawing.Point(207, 30);
-            this.labelKullaniciID.Name = "labelKullaniciID";
-            this.labelKullaniciID.Size = new System.Drawing.Size(0, 13);
-            this.labelKullaniciID.TabIndex = 27;
-            this.labelKullaniciID.Visible = false;
-            // 
-            // btnPasifYap
-            // 
-            this.btnPasifYap.ImageOptions.ImageIndex = 3;
-            this.btnPasifYap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPasifYap.ImageOptions.SvgImage")));
-            this.btnPasifYap.Location = new System.Drawing.Point(5, 26);
-            this.btnPasifYap.Name = "btnPasifYap";
-            this.btnPasifYap.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.btnPasifYap.Size = new System.Drawing.Size(168, 40);
-            this.btnPasifYap.TabIndex = 4;
-            this.btnPasifYap.Text = "Oturum Aktif Hatası";
-            this.btnPasifYap.Click += new System.EventHandler(this.btnPasifYap_Click);
-            // 
             // toggleAktif
             // 
             this.toggleAktif.EditValue = true;
@@ -503,6 +495,15 @@
             this.labelControl10.Size = new System.Drawing.Size(103, 20);
             this.labelControl10.TabIndex = 28;
             this.labelControl10.Text = "Uygulamada Online :";
+            // 
+            // labelKullaniciID
+            // 
+            this.labelKullaniciID.AutoSize = true;
+            this.labelKullaniciID.Location = new System.Drawing.Point(207, 30);
+            this.labelKullaniciID.Name = "labelKullaniciID";
+            this.labelKullaniciID.Size = new System.Drawing.Size(0, 13);
+            this.labelKullaniciID.TabIndex = 27;
+            this.labelKullaniciID.Visible = false;
             // 
             // FrmKullaniciIslem
             // 

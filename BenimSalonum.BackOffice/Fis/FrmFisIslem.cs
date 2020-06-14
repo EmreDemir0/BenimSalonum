@@ -81,6 +81,7 @@ namespace BenimSalonum.BackOffice.Fis
                     _fisentity.FisTuru = "Toptan Satış Faturası";//BURADA BİR SEÇME ŞANSI VER.
                 }
                 context.StokHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == fisKodu).Load();
+
                 if (string.IsNullOrEmpty(_fisentity.FisBaglantiKodu))
                 {
                     context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisKodu).Load();
@@ -750,9 +751,9 @@ namespace BenimSalonum.BackOffice.Fis
 
 
             ///////////////////////////////////////////////////////////
-            ///w
             ///
-            context.StokHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
+          //  context.StokHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
+
             foreach (var stokVeri in context.StokHareketleri.Local.ToList())
             {
                 stokVeri.Tarih = stokVeri.Tarih == null
@@ -792,63 +793,69 @@ namespace BenimSalonum.BackOffice.Fis
             fisDal.AddOrUpDate(context, _fisentity);
             if (ayarlar.OdemeEkrani)
             {
-                Entities.Tables.Fis fisOdeme = new Entities.Tables.Fis();
+                if (txtOdenenTutar.Value != 0)
+                {
 
-                if (string.IsNullOrEmpty(_fisentity.FisBaglantiKodu))
-                {
-                    fisOdeme = _fisentity.Clone();
-                    fisOdeme.FisTuru = "Fiş Ödemesi";
-                    fisOdeme.Id = -1;//sonradan
-                    fisOdeme.Aciklama = _fisentity.FisKodu + " <=Nolu Faturaya Ait Ödeme Fişi";
-                    fisOdeme.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
-                    fisOdeme.FisBaglantiKodu = _fisentity.FisKodu;
-                    fisOdeme.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
-                }
-                else
-                {
-                    fisOdeme = context.Fisler.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisBaglantiKodu);
-                }
-                /// sonradan
-                /// 
-                if (fisOdeme != null)
-                {
-                    _fisentity.FisBaglantiKodu = fisOdeme.FisKodu;
+                    Entities.Tables.Fis fisOdeme = new Entities.Tables.Fis();
 
-                }
-
-                if (ayarlar.BakiyeTuru == "Borç")
-                {
-                    fisOdeme.Alacak = txtOdenenTutar.Value;
-                    fisOdeme.Borc = null;
-                }
-                else if (ayarlar.BakiyeTuru == "Alacak")
-                {
-                    fisOdeme.Borc = txtOdenenTutar.Value;
-                    fisOdeme.Alacak = null;
-
-                }
-                //if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
-                //{
-                //    XtraMessageBox.Show("Ödenmesi gereken tutar ödenmemiş görünüyor");
-                //    return;
-                //}
-                context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
-                foreach (var kasaVeri in context.KasaHareketleri.Local.ToList())
-                {
-                    kasaVeri.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
-                    kasaVeri.Tarih = kasaVeri.Tarih == null
-                        ? Convert.ToDateTime(txtTarih.DateTime)
-                        : Convert.ToDateTime(kasaVeri.Tarih);
-                    kasaVeri.FisKodu = fisOdeme.FisKodu;
-                    kasaVeri.Hareket = ayarlar.KasaHareketi;
-
-                    if (txtFisTuru.Text != "Hakediş Fişi")
+                    if (string.IsNullOrEmpty(_fisentity.FisBaglantiKodu))
                     {
-                        kasaVeri.CariId = _cariId;
+                        fisOdeme = _fisentity.Clone();
+                        fisOdeme.FisTuru = "Fiş Ödemesi";
+                        fisOdeme.Id = -1;//sonradan
+                        fisOdeme.Aciklama = _fisentity.FisKodu + " <= Nolu Faturaya Ait Ödeme Fişi";
+                        fisOdeme.FisKodu = kodOlustur.YeniFisOdemeKoduOlustur();
+                        fisOdeme.FisBaglantiKodu = _fisentity.FisKodu;
+                        fisOdeme.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
+                        kodOlustur.FisKoduArttir();
                     }
+                    else
+                    {
+                        fisOdeme = context.Fisler.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.FisKodu == _fisentity.FisBaglantiKodu);
+                    }
+                    /// sonradan
+                    /// 
+                    if (fisOdeme != null)
+                    {
+                        _fisentity.FisBaglantiKodu = fisOdeme.FisKodu;
+
+                    }
+
+                    if (ayarlar.BakiyeTuru == "Borç")
+                    {
+                        fisOdeme.Alacak = txtOdenenTutar.Value;
+                        fisOdeme.Borc = null;
+                    }
+                    else if (ayarlar.BakiyeTuru == "Alacak")
+                    {
+                        fisOdeme.Borc = txtOdenenTutar.Value;
+                        fisOdeme.Alacak = null;
+
+                    }
+
+                    //if (txtOdenmesiGereken.Value != 0 && ayarlar.OdemeEkrani == true)
+                    //{
+                    //    XtraMessageBox.Show("Ödenmesi gereken tutar ödenmemiş görünüyor");
+                    //    return;
+                    //}
+                    //    context.KasaHareketleri.Where(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).Load();
+                    foreach (var kasaVeri in context.KasaHareketleri.Local.ToList())
+                    {
+                        kasaVeri.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
+                        kasaVeri.Tarih = kasaVeri.Tarih == null
+                            ? Convert.ToDateTime(txtTarih.DateTime)
+                            : Convert.ToDateTime(kasaVeri.Tarih);
+                        kasaVeri.FisKodu = fisOdeme.FisKodu;
+                        kasaVeri.Hareket = ayarlar.KasaHareketi;
+
+                        if (txtFisTuru.Text != "Hakediş Fişi")
+                        {
+                            kasaVeri.CariId = _cariId;
+                        }
+                    }
+                    fisOdeme.ToplamTutar = txtOdenenTutar.Value;
+                    fisDal.AddOrUpDate(context, fisOdeme);
                 }
-                fisOdeme.ToplamTutar = txtOdenenTutar.Value;
-                fisDal.AddOrUpDate(context, fisOdeme);
             }
 
             context.KullaniciLoglari.Add(new KullaniciLog

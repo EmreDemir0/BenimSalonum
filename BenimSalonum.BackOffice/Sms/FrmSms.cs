@@ -28,6 +28,7 @@ namespace BenimSalonum.BackOffice.Sms
         public FrmSms(KullaniciAyarlari entity)
         {
             InitializeComponent();
+            gridView1.OptionsView.ShowAutoFilterRow = true;
             _entity = entity;
             gridControl1.DataSource = cariDal.CariTelefonlari(context);
             gridControl2.DataSource = cariList;

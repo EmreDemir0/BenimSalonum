@@ -327,7 +327,7 @@
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "REHBER";
+            this.barButtonItem4.Caption = "E-POSTA";
             this.barButtonItem4.Id = 56;
             this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
             this.barButtonItem4.Name = "barButtonItem4";

@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace BenimSalonum.Backup
 {
@@ -19,7 +20,7 @@ namespace BenimSalonum.Backup
         {
             InitializeComponent();
 
-            txtYedekKonum.Text = SettingsTool.AyarOku(SettingsTool.Ayarlar.YedeklemeAyarlari_YedeklemeKonumu);
+            txtYedekKonum.Text = context.KullaniciAyarlari.FirstOrDefault(c=>c.Id == RoleTool.kullaniciEntity.Id).YedeklemeAyarlari_YedeklemeKonumu ?? "D:\\";
 
         }
         //BURADA SETTİNGS TOOLA AYRI AYRI KAYDETTİĞİMİZ DB ADINI KULLAN.
@@ -27,11 +28,11 @@ namespace BenimSalonum.Backup
         private void btnGeriYukleme_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "BenimSalonum *.nsy|*.nsy";
+            dialog.Filter = "BS2020*.nsy|*.nsy";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string sqlCumle =
-                    $"USE master;ALTER DATABASE NetSatis SET SINGLE USER WITH ROLLBACK IMMEDIATE;ALTER DATABASE NetSatis SET READ ONLY;RESTORE DATABASE NetSatis FROM DISK='{dialog.FileName}';ALTER DATABASE NetSatis SET MILTI_USER";
+                    $"USE master;ALTER DATABASE BS2020 SET SINGLE USER WITH ROLLBACK IMMEDIATE;ALTER DATABASE BS2020 SET READ ONLY;RESTORE DATABASE BS2020 FROM DISK='{dialog.FileName}';ALTER DATABASE BS2020 SET MILTI_USER";
                 context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, sqlCumle);
             }
         }
@@ -49,8 +50,10 @@ namespace BenimSalonum.Backup
 
         private void btnYedekleme_Click(object sender, EventArgs e)
         {
-            string sqlcumle = $"USE NetSatis;BACKUP DATABASE NetSatis TO DISK ='{txtYedekKonum.Text + "\\" + DateTime.Now.ToShortDateString() + " NetSatisBackup.bak"}'";
+
+            string sqlcumle = $"USE BS2020;BACKUP DATABASE BS2020 TO DISK ='{txtYedekKonum.Text + "\\" + DateTime.Now.ToShortDateString() + " BS2020.bak"}'";
             context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, sqlcumle);
+            XtraMessageBox.Show("Yedekleme Başarılı > "+DateTime.Now);
         }
     }
 }

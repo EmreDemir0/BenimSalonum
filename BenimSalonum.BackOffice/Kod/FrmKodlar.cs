@@ -35,10 +35,18 @@ namespace BenimSalonum.BackOffice.Kod
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            //buray musteri ıd kontrolü koy
+            int index = gridKod.RowCount;
+            if (index != 0)
+            {
+                for (int i = 0; i < index; i++)
+                {
+                    gridKod.SetRowCellValue(i, "KullaniciID", RoleTool.kullaniciEntity.KullaniciID);
+                }
+            }
             try
             {
                 context.Kodlar.Local.ForEach(c => c.Tablo = _tablo);
+
                 context.SaveChanges();
 
 
@@ -59,7 +67,8 @@ namespace BenimSalonum.BackOffice.Kod
 
         private void gridKod_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
-            Entities.Tables.Kod row = (Entities.Tables.Kod)e.Row;
+            Entities.Tables.Kod row = (Entities.Tables.Kod)e.Row;          
+
             if (context.Kodlar.Local.Any(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == row.OnEki && c.Tablo == _tablo))
             {
                 XtraMessageBox.Show("Aynı Ön Ekle Kod Kaydedilemez");

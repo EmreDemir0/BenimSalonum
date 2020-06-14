@@ -58,6 +58,7 @@
             this.ımageListTanim = new System.Windows.Forms.ImageList(this.components);
             this.btnKaydet = new DevExpress.XtraEditors.SimpleButton();
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
+            this.KullaniciID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
             this.navigationFrame1.SuspendLayout();
             this.navigationPage2.SuspendLayout();
@@ -111,6 +112,7 @@
             // gridKod
             // 
             this.gridKod.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.KullaniciID,
             this.colId,
             this.colOnEki,
             this.colSonDeger,
@@ -146,7 +148,7 @@
             this.colOnEki.FieldName = "OnEki";
             this.colOnEki.Name = "colOnEki";
             this.colOnEki.Visible = true;
-            this.colOnEki.VisibleIndex = 1;
+            this.colOnEki.VisibleIndex = 2;
             this.colOnEki.Width = 347;
             // 
             // colSonDeger
@@ -155,7 +157,7 @@
             this.colSonDeger.FieldName = "SonDeger";
             this.colSonDeger.Name = "colSonDeger";
             this.colSonDeger.Visible = true;
-            this.colSonDeger.VisibleIndex = 2;
+            this.colSonDeger.VisibleIndex = 3;
             this.colSonDeger.Width = 399;
             // 
             // colSil
@@ -165,7 +167,7 @@
             this.colSil.FieldName = "Sil";
             this.colSil.Name = "colSil";
             this.colSil.Visible = true;
-            this.colSil.VisibleIndex = 0;
+            this.colSil.VisibleIndex = 1;
             this.colSil.Width = 27;
             // 
             // navigationPage1
@@ -327,6 +329,14 @@
             this.LblBaslik.TabIndex = 30;
             this.LblBaslik.Text = "OTOMATİK KOD OLUŞTURMA SİHİRBAZI";
             // 
+            // KullaniciID
+            // 
+            this.KullaniciID.Caption = "gridColumn1";
+            this.KullaniciID.FieldName = "KullaniciID";
+            this.KullaniciID.Name = "KullaniciID";
+            this.KullaniciID.Visible = true;
+            this.KullaniciID.VisibleIndex = 0;
+            // 
             // FrmKodlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,5 +393,6 @@
         private System.Windows.Forms.ImageList ımageListTanim;
         private DevExpress.XtraEditors.SimpleButton btnKaydet;
         private DevExpress.XtraEditors.LabelControl LblBaslik;
+        private DevExpress.XtraGrid.Columns.GridColumn KullaniciID;
     }
 }

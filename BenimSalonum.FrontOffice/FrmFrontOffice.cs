@@ -262,14 +262,14 @@ namespace BenimSalonum.FrontOffice
             satis.BekleyenFis.Adres = txtAdres.Text;
             satis.BekleyenFis.BelgeNo = txtBelgeNo.Text;
             satis.BekleyenFis.CepTelefonu = txtCepTelefonu.Text;
-        
+
             satis.BekleyenFis.FaturaUnvani = txtFaturaUnvani.Text;
             satis.BekleyenFis.FisTuru = _fisentity.FisTuru; satis.BekleyenFis.Il = txtIl.Text;
             satis.BekleyenFis.Ilce = txtIlce.Text;
             satis.BekleyenFis.Semt = txtSemt.Text;
             satis.BekleyenFis.PlasiyerId = _fisentity.PlasiyerId;
             satis.BekleyenFis.VergiDairesi = txtVergiDairesi.Text;
-            satis.BekleyenFis.VergiNo = txtVergiNo.Text;        
+            satis.BekleyenFis.VergiNo = txtVergiNo.Text;
             satis.BekleyenFis.IskontoOrani = txtIskontoOran.Value;
 
 
@@ -289,7 +289,7 @@ namespace BenimSalonum.FrontOffice
             FisTemizle();
 
             txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
-            kodolustur.KodArttirma();
+            kodolustur.FisKoduArttir();
         }
 
         private void FisiKaydet(ReportsPrintTool.Belge belge)
@@ -328,7 +328,7 @@ namespace BenimSalonum.FrontOffice
                 hata++;
             }
 
-            if (!String.IsNullOrEmpty(txtCariKodu.Text) && (_entityBakiye.Bakiye - txtOdenmesiGereken.Value) < 0 && ((_entityBakiye.Bakiye - txtOdenmesiGereken.Value) * -1) > _entityBakiye.RiskLimiti && tekParca == false)
+            if (String.IsNullOrEmpty(txtCariKodu.Text) && (_entityBakiye.Bakiye - txtOdenmesiGereken.Value) < 0 && ((_entityBakiye.Bakiye - txtOdenmesiGereken.Value) * -1) > _entityBakiye.RiskLimiti && tekParca == false)
             {
                 message += "Cari risk limiti aşılıyor. Satış yapılamaz." + System.Environment.NewLine;
                 hata++;
@@ -365,7 +365,7 @@ namespace BenimSalonum.FrontOffice
                 kasaVeri.Hareket = txtIslem.Text == "İADE" ? "Kasa Çıkış" : "Kasa Giriş";
                 kasaVeri.CariId = _cariId;
             }
-
+            _fisentity.KullaniciID = RoleTool.kullaniciEntity.KullaniciID;
             _fisentity.FisKodu = txtKod.Text;
             _fisentity.BelgeNo = txtBelgeNo.Text;
             _fisentity.Aciklama = txtAciklama.Text;
@@ -373,7 +373,7 @@ namespace BenimSalonum.FrontOffice
             _fisentity.CepTelefonu = txtCepTelefonu.Text;
             _fisentity.Il = txtIl.Text;
             _fisentity.Ilce = txtIlce.Text;
-            _fisentity.Semt = txtSemt.Text;       
+            _fisentity.Semt = txtSemt.Text;
             _fisentity.Adres = txtAdres.Text;
             _fisentity.VergiDairesi = txtVergiDairesi.Text;
             _fisentity.VergiNo = txtVergiNo.Text;
@@ -385,33 +385,35 @@ namespace BenimSalonum.FrontOffice
 
             fisDal.AddOrUpDate(context, _fisentity);
 
-            int kasaId = Convert.ToInt32(SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_VarsayilanKasa));
+            int kasaId = Convert.ToInt32(context.KullaniciAyarlari.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID).SatisAyarlari_VarsayilanKasa);
 
-            Fis odemeFisi = _fisentity.Clone();
-            odemeFisi.FisTuru = "Fiş Ödemesi";
-            odemeFisi.FisKodu = kodolustur.YeniFisOdemeKoduOlustur();
-
-            _fisentity.FisBaglantiKodu = odemeFisi.FisKodu;
-            odemeFisi.FisBaglantiKodu = _fisentity.FisKodu;
-
-            odemeFisi.ToplamTutar = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
-
-            if (txtIslem.Text == "SATIŞ")
+            if (txtOdenen.Value > 0)
             {
-                _fisentity.Borc = txtToplam.Value;
-                odemeFisi.Alacak = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
-                odemeFisi.Borc = null;
-                _fisentity.Alacak = null;
-            }
-            else
-            {
-                _fisentity.Alacak = txtToplam.Value;
-                odemeFisi.Borc = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
-                odemeFisi.Alacak = null;
-                _fisentity.Borc = null;
-            }
-            fisDal.AddOrUpDate(context, odemeFisi);
+                Fis odemeFisi = _fisentity.Clone();
+                odemeFisi.FisTuru = "Fiş Ödemesi";
+                odemeFisi.FisKodu = kodolustur.YeniFisOdemeKoduOlustur();
 
+                _fisentity.FisBaglantiKodu = odemeFisi.FisKodu;
+                odemeFisi.FisBaglantiKodu = _fisentity.FisKodu;
+
+                odemeFisi.ToplamTutar = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
+
+                if (txtIslem.Text == "SATIŞ")
+                {
+                    _fisentity.Borc = txtToplam.Value;
+                    odemeFisi.Alacak = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
+                    odemeFisi.Borc = null;
+                    _fisentity.Alacak = null;
+                }
+                else
+                {
+                    _fisentity.Alacak = txtToplam.Value;
+                    odemeFisi.Borc = tekParca ? txtToplam.Value : txtOdenenTutar.Value;
+                    odemeFisi.Alacak = null;
+                    _fisentity.Borc = null;
+                }
+                fisDal.AddOrUpDate(context, odemeFisi);
+            }//ödeme 0 sa yapılan if yeni koydum test et
 
 
             if (!chkOdemeBol.Checked && odemeTuruId != -1)
@@ -428,7 +430,14 @@ namespace BenimSalonum.FrontOffice
                 });
                 OdenenTutarGuncelle();
             }
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception )
+            {
+            }
+
 
             chkOdemeBol.Checked = false;
 
@@ -457,16 +466,10 @@ namespace BenimSalonum.FrontOffice
             }
 
             FisTemizle();
-            string FisKoduBilgisi = SettingsTool.AyarOku(SettingsTool.Ayarlar.SatisAyarlari_FisKodu);
-
-            SettingsTool.AyarDegistir(SettingsTool.Ayarlar.SatisAyarlari_FisKodu, Convert.ToString(Convert.ToInt32(FisKoduBilgisi) + 1));
-
-            SettingsTool.Kaydet();
-
+            kodolustur.FisKoduArttir();
             txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
-            kodolustur.KodArttirma();
-
             tekParca = false;
+            
         }
 
         private void OdenenTutarGuncelle()
@@ -481,6 +484,7 @@ namespace BenimSalonum.FrontOffice
 
         private void FisTemizle()
         {
+            txtKod.Text = null;
             txtIskontoOran.Value = 0;
 
             CariTemizle();
@@ -588,7 +592,7 @@ namespace BenimSalonum.FrontOffice
                 {
                     Name = bekleyenSatisId.ToString(),
                     Text = txtCariKodu.Text + " - " + txtCariAdi.Text + "\n" + "\n" + context.StokHareketleri.Local.Count + " adet ürün eklendi." + "\n" + txtToplam.Value.ToString("C2"),
-                    Height = 120,                
+                    Height = 120,
                     Width = flowBekleyenSatislar.Width - 5
                 };
 
@@ -603,7 +607,7 @@ namespace BenimSalonum.FrontOffice
             satis.BekleyenFis.Adres = txtAdres.Text;
             satis.BekleyenFis.BelgeNo = txtBelgeNo.Text;
             satis.BekleyenFis.CepTelefonu = txtCepTelefonu.Text;
-            satis.BekleyenFis.FaturaUnvani = txtFaturaUnvani.Text;       
+            satis.BekleyenFis.FaturaUnvani = txtFaturaUnvani.Text;
             satis.BekleyenFis.FisTuru = _fisentity.FisTuru; satis.BekleyenFis.Il = txtIl.Text;
             satis.BekleyenFis.Ilce = txtIlce.Text;
             satis.BekleyenFis.Semt = txtSemt.Text;
@@ -627,9 +631,6 @@ namespace BenimSalonum.FrontOffice
             cagirilanSatisId = -1;
 
             FisTemizle();
-
-            txtKod.Text = kodolustur.yeniFrontOfficeKodOlustur();
-            kodolustur.KodArttirma();
         }
 
         private void btnBeklet_Click(object sender, EventArgs e)
@@ -646,7 +647,8 @@ namespace BenimSalonum.FrontOffice
                 }
             }
 
-            FisTemizle(); var SatisBilgisi = _bekleyenSatis.SingleOrDefault(c => c.Id == id);
+            FisTemizle();
+            var SatisBilgisi = _bekleyenSatis.SingleOrDefault(c => c.Id == id);
 
             _fisentity.CariId = SatisBilgisi.BekleyenFis.CariId;
 
@@ -1031,6 +1033,26 @@ namespace BenimSalonum.FrontOffice
         private void btnOdemeBitir_Click(object sender, EventArgs e)
         {
             radialOdeme.ShowPopup(MousePosition);
+        }
+
+        private void btnStokSecc_Click(object sender, EventArgs e)
+        {
+            FrmStokSec form = new FrmStokSec();
+            form.ShowDialog();
+            if (form.Secildi)
+            {
+                if (StokKontrol(form.secilen.SingleOrDefault()))
+                {
+                    stokHareketDal.AddOrUpDate(context, StokSec(form.secilen.SingleOrDefault()));
+                    Toplamlar();
+                }
+            }
+        }
+
+        private void FrmFrontOffice_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            context.Kullanicilar.SingleOrDefault(c => c.KullaniciAdi == RoleTool.kullaniciEntity.KullaniciAdi).Aktif = false;
+            context.SaveChanges();
         }
     }
 }

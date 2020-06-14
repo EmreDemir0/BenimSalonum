@@ -106,7 +106,7 @@ namespace BenimSalonum.BackOffice
             RoleTool.RolleriYukle(ribbonControlAnaMenu);
             try
             {
-                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi + "ID : " + RoleTool.kullaniciEntity.KullaniciID}";
+                barKullaniciAdi.Caption = $"Giriş Yapan Kullanıcı : {RoleTool.kullaniciEntity.KullaniciAdi + " > ID : " + RoleTool.kullaniciEntity.KullaniciID}";
             }
             catch (Exception)
             {
@@ -123,7 +123,6 @@ namespace BenimSalonum.BackOffice
             if (frmStokAnasayfa == null || frmStokAnasayfa.IsDisposed)
             {
                 frmStokAnasayfa = new FrmStokAnasayfa();
-                frmStokAnasayfa.MdiParent = this;
                 frmStokAnasayfa.Show();
             }
         }
@@ -133,7 +132,6 @@ namespace BenimSalonum.BackOffice
             if (frmCariAnasayfa == null || frmCariAnasayfa.IsDisposed)
             {
                 frmCariAnasayfa = new FrmCariAnasayfa();
-                frmCariAnasayfa.MdiParent = this;
                 frmCariAnasayfa.Show();
             }
         }
@@ -143,7 +141,6 @@ namespace BenimSalonum.BackOffice
             if (frmFisAnasayfa == null || frmFisAnasayfa.IsDisposed)
             {
                 frmFisAnasayfa = new FrmFisAnasayfa();
-                frmFisAnasayfa.MdiParent = this;
                 frmFisAnasayfa.Show();
             }
         }
@@ -153,7 +150,6 @@ namespace BenimSalonum.BackOffice
             if (frmStokHareketleri == null || frmStokHareketleri.IsDisposed)
             {
                 frmStokHareketleri = new FrmStokHareketleri();
-                frmStokHareketleri.MdiParent = this;
                 frmStokHareketleri.Show();
             }
         }
@@ -163,7 +159,6 @@ namespace BenimSalonum.BackOffice
             if (frmKasaHareketleri == null || frmKasaHareketleri.IsDisposed)
             {
                 frmKasaHareketleri = new FrmKasaHareketleri();
-                frmKasaHareketleri.MdiParent = this;
                 frmKasaHareketleri.Show();
             }
         }
@@ -178,7 +173,6 @@ namespace BenimSalonum.BackOffice
             if (frmIndirim == null || frmIndirim.IsDisposed)
             {
                 frmIndirim = new FrmIndirim();
-                frmIndirim.MdiParent = this;
                 frmIndirim.Show();
             }
         }
@@ -188,7 +182,6 @@ namespace BenimSalonum.BackOffice
             if (frmTopluFiyatDegistir == null || frmTopluFiyatDegistir.IsDisposed)
             {
                 frmTopluFiyatDegistir = new FrmTopluFiyatDegistir();
-                frmTopluFiyatDegistir.MdiParent = this;
                 frmTopluFiyatDegistir.Show();
             }
         }
@@ -198,7 +191,6 @@ namespace BenimSalonum.BackOffice
             if (frmHizliSatis == null || frmHizliSatis.IsDisposed)
             {
                 frmHizliSatis = new FrmHizliSatis();
-                frmHizliSatis.MdiParent = this;
                 frmHizliSatis.Show();
             }
         }
@@ -208,7 +200,6 @@ namespace BenimSalonum.BackOffice
             if (frmPersonelAnasayfa == null || frmPersonelAnasayfa.IsDisposed)
             {
                 frmPersonelAnasayfa = new FrmPersonelAnasayfa();
-                frmPersonelAnasayfa.MdiParent = this;
                 frmPersonelAnasayfa.Show();
             }
         }
@@ -218,7 +209,6 @@ namespace BenimSalonum.BackOffice
             if (frmKasaAnasayfa == null || frmKasaAnasayfa.IsDisposed)
             {
                 frmKasaAnasayfa = new FrmKasaAnasayfa();
-                frmKasaAnasayfa.MdiParent = this;
                 frmKasaAnasayfa.Show();
             }
         }
@@ -228,7 +218,6 @@ namespace BenimSalonum.BackOffice
             if (frmDepoAnasayfa == null || frmDepoAnasayfa.IsDisposed)
             {
                 frmDepoAnasayfa = new FrmDepoAnasayfa();
-                frmDepoAnasayfa.MdiParent = this;
                 frmDepoAnasayfa.Show();
             }
         }
@@ -238,7 +227,6 @@ namespace BenimSalonum.BackOffice
             if (frmOdemeTuruAnasayfa == null || frmOdemeTuruAnasayfa.IsDisposed)
             {
                 frmOdemeTuruAnasayfa = new FrmOdemeTuruAnasayfa();
-                frmOdemeTuruAnasayfa.MdiParent = this;
                 frmOdemeTuruAnasayfa.Show();
             }
         }
@@ -248,7 +236,6 @@ namespace BenimSalonum.BackOffice
             if (frmSms == null || frmSms.IsDisposed)
             {
                 frmSms = new FrmSms(context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
-                frmSms.MdiParent = this;
                 frmSms.Show();
             }
         }
@@ -258,7 +245,6 @@ namespace BenimSalonum.BackOffice
             if (frmDovizKurlari == null || frmDovizKurlari.IsDisposed)
             {
                 frmDovizKurlari = new FrmDovizKurlari();
-                frmDovizKurlari.MdiParent = this;
                 frmDovizKurlari.Show();
             }
         }
@@ -273,7 +259,6 @@ namespace BenimSalonum.BackOffice
             if (frmAyarlar == null || frmAyarlar.IsDisposed)
             {
                 frmAyarlar = new FrmAyarlar(context.KullaniciAyarlari.FirstOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID));
-                frmAyarlar.MdiParent = this;
                 frmAyarlar.Show();
             }
         }
@@ -330,7 +315,6 @@ namespace BenimSalonum.BackOffice
             if (frmOzgunRaporHazirla == null || frmOzgunRaporHazirla.IsDisposed)
             {
                 frmOzgunRaporHazirla = new FrmOzgunRaporHazirla();
-                frmOzgunRaporHazirla.MdiParent = this;
                 frmOzgunRaporHazirla.Show();
             }
         }
@@ -373,7 +357,6 @@ namespace BenimSalonum.BackOffice
             if (frmRehber == null || frmRehber.IsDisposed)
             {
                 frmRehber = new FrmRehber();
-                frmRehber.MdiParent = this;
                 frmRehber.Show();
             }
         }

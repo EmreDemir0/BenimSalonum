@@ -113,7 +113,7 @@ namespace BenimSalonum.Entities.Tools
             string sonDeger = kod.SonDeger.ToString();
             int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
             string sifirDizisi = new string('0', sifirSayisi);
-            //      kod.SonDeger++;
+          //    kod.SonDeger++;
             _context.SaveChanges();
 
             return onEki + sifirDizisi + sonDeger;
@@ -125,15 +125,15 @@ namespace BenimSalonum.Entities.Tools
             string sonDeger = kod.SonDeger.ToString();
             int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
             string sifirDizisi = new string('0', sifirSayisi);
-            //      kod.SonDeger++;
+            // kod.SonDeger++;
             _context.SaveChanges();
-
+            
             return onEki + sifirDizisi + sonDeger;
         }
 
         public string yeniFrontOfficeKodOlustur()
         {
-            var kod = _context.Kodlar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == "FIS" && c.Tablo == "Front");
+            var kod = _context.Kodlar.SingleOrDefault(c => c.KullaniciID == RoleTool.kullaniciEntity.KullaniciID && c.OnEki == "FİS" && c.Tablo == "Fis");
             string onEki = kod.OnEki;
             string sonDeger = kod.SonDeger.ToString();
             int sifirSayisi = 10 - (onEki.Length + sonDeger.Length);
@@ -154,6 +154,11 @@ namespace BenimSalonum.Entities.Tools
                 _context.Kodlar.SingleOrDefault(c => c.Id == id).SonDeger++;
                 _context.SaveChanges();
             }
+        }
+        public void FisKoduArttir()
+        {
+            _context.Kodlar.SingleOrDefault(c => c.OnEki =="FİS").SonDeger++;
+            _context.SaveChanges();
         }
 
     }

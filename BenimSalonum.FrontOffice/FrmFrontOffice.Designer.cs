@@ -143,7 +143,6 @@
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.txtBelgeNo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
-            this.txtKod = new DevExpress.XtraEditors.TextEdit();
             this.navFonsiyonlar = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.btnSatisBeklet = new DevExpress.XtraEditors.SimpleButton();
             this.chkOdemeBol = new DevExpress.XtraEditors.CheckButton();
@@ -221,6 +220,7 @@
             this.flowOdemeTurleri = new System.Windows.Forms.FlowLayoutPanel();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.radialOdeme = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
+            this.txtKod = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).BeginInit();
             this.navigationPane1.SuspendLayout();
             this.navFisBilgi.SuspendLayout();
@@ -267,7 +267,6 @@
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBelgeNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKod.Properties)).BeginInit();
             this.navFonsiyonlar.SuspendLayout();
             this.navPersonel.SuspendLayout();
             this.navSatisBekletme.SuspendLayout();
@@ -308,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOdenmesiGereken.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialOdeme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKod.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList1
@@ -676,8 +676,7 @@
             this.txtDovizTutar.Location = new System.Drawing.Point(66, 59);
             this.txtDovizTutar.Name = "txtDovizTutar";
             this.txtDovizTutar.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtDovizTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDovizTutar.Properties.Appearance.FontSizeDelta = 1;
+            this.txtDovizTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtDovizTutar.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtDovizTutar.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtDovizTutar.Properties.Appearance.Options.UseBackColor = true;
@@ -745,8 +744,7 @@
             this.txtOdenen.Location = new System.Drawing.Point(66, 27);
             this.txtOdenen.Name = "txtOdenen";
             this.txtOdenen.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtOdenen.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtOdenen.Properties.Appearance.FontSizeDelta = 1;
+            this.txtOdenen.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtOdenen.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtOdenen.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtOdenen.Properties.Appearance.Options.UseBackColor = true;
@@ -770,8 +768,7 @@
             this.txtParaUstu.Location = new System.Drawing.Point(67, 58);
             this.txtParaUstu.Name = "txtParaUstu";
             this.txtParaUstu.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtParaUstu.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtParaUstu.Properties.Appearance.FontSizeDelta = 1;
+            this.txtParaUstu.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtParaUstu.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtParaUstu.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtParaUstu.Properties.Appearance.Options.UseBackColor = true;
@@ -834,8 +831,7 @@
             this.txtIskontoOran.Location = new System.Drawing.Point(68, 26);
             this.txtIskontoOran.Name = "txtIskontoOran";
             this.txtIskontoOran.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtIskontoOran.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIskontoOran.Properties.Appearance.FontSizeDelta = 1;
+            this.txtIskontoOran.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtIskontoOran.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtIskontoOran.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtIskontoOran.Properties.Appearance.Options.UseBackColor = true;
@@ -862,8 +858,7 @@
             this.txtIskontoTutar.Location = new System.Drawing.Point(68, 54);
             this.txtIskontoTutar.Name = "txtIskontoTutar";
             this.txtIskontoTutar.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtIskontoTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIskontoTutar.Properties.Appearance.FontSizeDelta = 1;
+            this.txtIskontoTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtIskontoTutar.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtIskontoTutar.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtIskontoTutar.Properties.Appearance.Options.UseBackColor = true;
@@ -914,8 +909,7 @@
             this.txtIndirimToplam.Location = new System.Drawing.Point(68, 126);
             this.txtIndirimToplam.Name = "txtIndirimToplam";
             this.txtIndirimToplam.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtIndirimToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtIndirimToplam.Properties.Appearance.FontSizeDelta = 1;
+            this.txtIndirimToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtIndirimToplam.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtIndirimToplam.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtIndirimToplam.Properties.Appearance.Options.UseBackColor = true;
@@ -961,8 +955,7 @@
             this.txtToplam.Location = new System.Drawing.Point(6, 26);
             this.txtToplam.Name = "txtToplam";
             this.txtToplam.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtToplam.Properties.Appearance.FontSizeDelta = 1;
+            this.txtToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtToplam.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtToplam.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtToplam.Properties.Appearance.Options.UseBackColor = true;
@@ -985,8 +978,7 @@
             this.txtKdvToplam.Location = new System.Drawing.Point(68, 95);
             this.txtKdvToplam.Name = "txtKdvToplam";
             this.txtKdvToplam.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtKdvToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtKdvToplam.Properties.Appearance.FontSizeDelta = 1;
+            this.txtKdvToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtKdvToplam.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtKdvToplam.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtKdvToplam.Properties.Appearance.Options.UseBackColor = true;
@@ -1010,8 +1002,7 @@
             this.txtAraToplam.Location = new System.Drawing.Point(68, 64);
             this.txtAraToplam.Name = "txtAraToplam";
             this.txtAraToplam.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtAraToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtAraToplam.Properties.Appearance.FontSizeDelta = 1;
+            this.txtAraToplam.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtAraToplam.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtAraToplam.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtAraToplam.Properties.Appearance.Options.UseBackColor = true;
@@ -1091,6 +1082,7 @@
             // 
             // txtCariAdi
             // 
+            this.txtCariAdi.EditValue = "- Seçilen Bir Cari Yok -";
             this.txtCariAdi.Enabled = false;
             this.txtCariAdi.Location = new System.Drawing.Point(9, 153);
             this.txtCariAdi.Name = "txtCariAdi";
@@ -1100,7 +1092,7 @@
             // 
             // txtCariKodu
             // 
-            this.txtCariKodu.EditValue = "- Seçilen Bir Cari Yok -";
+            this.txtCariKodu.EditValue = "";
             this.txtCariKodu.Enabled = false;
             this.txtCariKodu.Location = new System.Drawing.Point(9, 127);
             this.txtCariKodu.Name = "txtCariKodu";
@@ -1281,13 +1273,13 @@
             // 
             // groupControl6
             // 
+            this.groupControl6.Controls.Add(this.txtKod);
             this.groupControl6.Controls.Add(this.btnKod);
             this.groupControl6.Controls.Add(this.labelControl32);
             this.groupControl6.Controls.Add(this.txtAciklama);
             this.groupControl6.Controls.Add(this.labelControl29);
             this.groupControl6.Controls.Add(this.txtBelgeNo);
             this.groupControl6.Controls.Add(this.labelControl28);
-            this.groupControl6.Controls.Add(this.txtKod);
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
@@ -1364,16 +1356,6 @@
             this.labelControl28.Size = new System.Drawing.Size(58, 20);
             this.labelControl28.TabIndex = 26;
             this.labelControl28.Text = "Fiş Kodu :";
-            // 
-            // txtKod
-            // 
-            this.txtKod.EditValue = "";
-            this.txtKod.Location = new System.Drawing.Point(63, 25);
-            this.txtKod.Name = "txtKod";
-            this.txtKod.Properties.NullText = "Fiş Kodu Giriniz.";
-            this.txtKod.Properties.NullValuePrompt = "Fiş Kodu Giriniz.";
-            this.txtKod.Size = new System.Drawing.Size(83, 20);
-            this.txtKod.TabIndex = 0;
             // 
             // navFonsiyonlar
             // 
@@ -1569,6 +1551,7 @@
             this.btnStokSecc.Size = new System.Drawing.Size(127, 35);
             this.btnStokSecc.TabIndex = 59;
             this.btnStokSecc.Text = "Stok Seç";
+            this.btnStokSecc.Click += new System.EventHandler(this.btnStokSecc_Click);
             // 
             // label1
             // 
@@ -2191,8 +2174,7 @@
             this.txtOdenenTutar.Location = new System.Drawing.Point(201, 4);
             this.txtOdenenTutar.Name = "txtOdenenTutar";
             this.txtOdenenTutar.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtOdenenTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtOdenenTutar.Properties.Appearance.FontSizeDelta = 1;
+            this.txtOdenenTutar.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtOdenenTutar.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtOdenenTutar.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtOdenenTutar.Properties.Appearance.Options.UseBackColor = true;
@@ -2214,8 +2196,7 @@
             this.txtOdenmesiGereken.Location = new System.Drawing.Point(201, 35);
             this.txtOdenmesiGereken.Name = "txtOdenmesiGereken";
             this.txtOdenmesiGereken.Properties.Appearance.BackColor = System.Drawing.Color.White;
-            this.txtOdenmesiGereken.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtOdenmesiGereken.Properties.Appearance.FontSizeDelta = 1;
+            this.txtOdenmesiGereken.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtOdenmesiGereken.Properties.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.txtOdenmesiGereken.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtOdenmesiGereken.Properties.Appearance.Options.UseBackColor = true;
@@ -2258,6 +2239,13 @@
             this.radialOdeme.Manager = this.barManager1;
             this.radialOdeme.Name = "radialOdeme";
             // 
+            // txtKod
+            // 
+            this.txtKod.Location = new System.Drawing.Point(63, 26);
+            this.txtKod.Name = "txtKod";
+            this.txtKod.Size = new System.Drawing.Size(83, 20);
+            this.txtKod.TabIndex = 38;
+            // 
             // FrmFrontOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2273,6 +2261,7 @@
             this.Name = "FrmFrontOffice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Benim Salonum - Ön Ofis Uygualaması";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFrontOffice_FormClosing);
             this.Load += new System.EventHandler(this.FrmFrontOffice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.navigationPane1)).EndInit();
             this.navigationPane1.ResumeLayout(false);
@@ -2320,7 +2309,6 @@
             this.groupControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtAciklama.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBelgeNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKod.Properties)).EndInit();
             this.navFonsiyonlar.ResumeLayout(false);
             this.navPersonel.ResumeLayout(false);
             this.navSatisBekletme.ResumeLayout(false);
@@ -2362,6 +2350,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOdenmesiGereken.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radialOdeme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKod.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2436,7 +2425,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.TextEdit txtBelgeNo;
         private DevExpress.XtraEditors.LabelControl labelControl28;
-        private DevExpress.XtraEditors.TextEdit txtKod;
         private DevExpress.XtraBars.Navigation.NavigationPage navFonsiyonlar;
         private DevExpress.XtraEditors.SimpleButton btnSatisBeklet;
         private DevExpress.XtraEditors.CheckButton chkOdemeBol;
@@ -2530,6 +2518,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIsim;
         private DevExpress.XtraGrid.Columns.GridColumn colBanknoteSelling;
         private DevExpress.XtraBars.Ribbon.RadialMenu radialOdeme;
+        private DevExpress.XtraEditors.TextEdit txtKod;
     }
 }
 
